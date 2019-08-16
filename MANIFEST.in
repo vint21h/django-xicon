@@ -7,3 +7,5 @@ include COPYING
 include AUTHORS
 include xicon/templates/xicon/templatetags/xicon_favicon.html
 include xicon/templates/xicon/templatetags/xicon_favicons.html
+include xicon/templates/xicon/templatetags/xicon_apple_touch_icon.html
+include xicon/templates/xicon/templatetags/xicon_apple_touch_icons.html

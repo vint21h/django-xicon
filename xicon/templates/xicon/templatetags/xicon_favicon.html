@@ -2,4 +2,7 @@
 {# xicon/templates/xicon/templatetags/xicon_favicon.html #}
 
 
-<link rel="shortcut icon" href="{% static XICON_FAVICON.path %}" type="{{ XICON_FAVICON.mimetype }}" sizes="{% if XICON_FAVICON.size %}{{ XICON_FAVICON.size }}{% else %}any{% endif %}"/>
+{% load static %}
+
+
+<link rel="shortcut icon" href="{% static XICON_FAVICON.path %}" type="{{ XICON_FAVICON.mimetype }}" sizes="{% if XICON_FAVICON.size %}{{ XICON_FAVICON.size.width }}x{{ XICON_FAVICON.size.height }}{% else %}any{% endif %}"/>
