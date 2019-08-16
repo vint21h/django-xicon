@@ -1,0 +1,14 @@
+# django-xicon
+# .coveragerc
+
+
+[run]
+source = xicon
+omit =
+    */__init__.py
+
+[report]
+omit =
+    */__init__.py
+exclude_lines =
+    pragma: no cover
