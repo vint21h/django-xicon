@@ -5,3 +5,4 @@
 include README.rst
 include COPYING
 include AUTHORS
+include xicon/templates/xicon/templatetags/xicon_favicon.html
