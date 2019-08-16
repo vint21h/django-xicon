@@ -12,7 +12,8 @@ from django.conf import settings
 __all__ = [
     "FAVICONS",
     "APPLE_TOUCH_ICONS",
-    "APPLE_TOUCH_ICON_MASK_COLOR",
+    "APPLE_TOUCH_ICON_MASK_ICON_PATH",
+    "APPLE_TOUCH_ICON_MASK_ICON_COLOR",
     "APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR",
     "APPLE_MOBILE_WEB_APP_TITLE",
 ]  # type: list
@@ -24,8 +25,11 @@ FAVICONS = getattr(
 APPLE_TOUCH_ICONS = getattr(
     settings, "XICON_APPLE_TOUCH_ICONS", []
 )  # type: Iterable[Dict[str, Union[str, Dict[str, int], None]]]
-APPLE_TOUCH_ICON_MASK_COLOR = getattr(
-    settings, "XICON_APPLE_TOUCH_ICON_MASK_COLOR", ""
+APPLE_TOUCH_ICON_MASK_ICON_PATH = getattr(
+    settings, "XICON_APPLE_TOUCH_ICON_MASK_ICON_PATH", ""
+)  # type: str
+APPLE_TOUCH_ICON_MASK_ICON_COLOR = getattr(
+    settings, "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR", ""
 )  # type: str
 APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = getattr(
     settings, "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR", ""

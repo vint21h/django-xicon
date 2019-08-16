@@ -31,22 +31,9 @@ Add ``"xicon"`` to your urls definitions.
         url(r"^xicon/", include("xicon.urls")),
     )
 
-Load ``"xicon_tags"`` to your base template and place icons meta tags to <head> html tag by calling ``{% xicon_meta %}``.
 
-For example:
-
-.. code-block:: django
-
-    {% load xicon_tags %}
-
-    <head>
-        {% xicon_meta %}
-    </head>
-
-
-xicon settings
---------------
-
+django-xicon settings
+---------------------
 
 Licensing
 ---------
