@@ -1,0 +1,10 @@
+{# django-xicon #}
+{# xicon/templates/xicon/templatetags/xicon_favicons.html #}
+
+
+{% load xicons_tags %}
+
+
+{% for favicon in XICON_FAVICONS %}
+    {% xicon_favicon favicon %}
+{% endfor %}

@@ -9,7 +9,7 @@ from typing import Dict, Union, Iterable
 from django.conf import settings
 
 
-__all__ = []  # type: list
+__all__ = ["FAVICONS"]  # type: list
 
 
 FAVICONS = getattr(

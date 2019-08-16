@@ -8,6 +8,8 @@ from typing import Dict, Union, Iterable
 
 from django import template
 
+from xicon.settings import FAVICONS
+
 
 __all__ = ["xicon_favicon"]  # type: list
 
@@ -32,5 +34,21 @@ def xicon_favicon(
     """
 
     context.update({"XICON_FAVICON": favicon})
+
+    return context
+
+
+@register.inclusion_tag("xicon/templatetags/xicon_favicons.html", takes_context=True)
+def xicon_favicons(context: template.Context,) -> template.Context:
+    """
+    Render classic favicon meta tags.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_FAVICONS": FAVICONS})
 
     return context
