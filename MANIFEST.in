@@ -5,6 +5,7 @@
 include README.rst
 include COPYING
 include AUTHORS
+include xicon/templates/xicon/includes/xicon.html
 include xicon/templates/xicon/includes/apple.html
 include xicon/templates/xicon/includes/android-chrome.html
 include xicon/templates/xicon/includes/msapplication.html
