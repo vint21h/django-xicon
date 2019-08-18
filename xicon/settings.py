@@ -23,6 +23,9 @@ __all__ = [
     "ANDROID_CHROME_BACKGROUND_COLOR",
     "ANDROID_CHROME_DISPLAY",
     "ANDROID_CHROME_ORIENTATION",
+    "MSAPPLICATION_NAME",
+    "MSAPPLICATION_TILE_COLOR",
+    "MSAPPLICATION_TILES",
 ]  # type: list
 
 
@@ -63,3 +66,10 @@ ANDROID_CHROME_DISPLAY = getattr(
 ANDROID_CHROME_ORIENTATION = getattr(
     settings, "XICON_ANDROID_CHROME_ORIENTATION", ""
 )  # type: str
+MSAPPLICATION_NAME = getattr(settings, "XICON_MSAPPLICATION_NAME", "")  # type: str
+MSAPPLICATION_TILE_COLOR = getattr(
+    settings, "XICON_MSAPPLICATION_TILE_COLOR", ""
+)  # type: str
+MSAPPLICATION_TILES = getattr(
+    settings, "XICON_MSAPPLICATION_TILES", []
+)  # type: Iterable[Dict[str, str]]
