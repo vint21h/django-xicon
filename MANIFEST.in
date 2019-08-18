@@ -9,7 +9,7 @@ include xicon/templates/xicon/includes/xicon.html
 include xicon/templates/xicon/includes/apple.html
 include xicon/templates/xicon/includes/android-chrome.html
 include xicon/templates/xicon/includes/msapplication.html
-include xicon/templates/xicon/includes/xicon-android-chrome-manifest-meta.html
+include xicon/templates/xicon/includes/android-chrome-manifest-meta.html
 include xicon/templates/xicon/includes/msapplication-browserconfig-meta.html
 include xicon/templates/xicon/templatetags/xicon_favicon.html
 include xicon/templates/xicon/templatetags/xicon_favicons.html

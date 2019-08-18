@@ -38,3 +38,10 @@ repos:
       entry: pipenv run mypy
       types: [python]
       pass_filenames: false
+    - id: check-manifest
+      name: check-manifest
+      stages: [commit]
+      language: system
+      pass_filenames: false
+      entry: pipenv run check-manifest
+      types: [python]
