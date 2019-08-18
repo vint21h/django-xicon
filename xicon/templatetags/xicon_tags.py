@@ -11,6 +11,7 @@ from django import template
 from xicon.settings import (
     FAVICONS,
     APPLE_TOUCH_ICONS,
+    ANDROID_CHROME_THEME_COLOR,
     APPLE_MOBILE_WEB_APP_TITLE,
     APPLE_TOUCH_ICON_MASK_ICON_PATH,
     APPLE_TOUCH_ICON_MASK_ICON_COLOR,
@@ -26,6 +27,7 @@ __all__ = [
     "xicon_apple_touch_icon_mask_icon",
     "xicon_apple_mobile_web_app_status_bar_style",
     "xicon_apple_mobile_web_app_title",
+    "xicon_android_chrome_theme_color",
 ]  # type: list
 
 
@@ -170,5 +172,23 @@ def xicon_apple_mobile_web_app_title(context: template.Context) -> template.Cont
     """
 
     context.update({"XICON_APPLE_MOBILE_WEB_APP_TITLE": APPLE_MOBILE_WEB_APP_TITLE})
+
+    return context
+
+
+@register.inclusion_tag(
+    "xicon/templatetags/xicon_android_chrome_theme_color.html", takes_context=True
+)
+def xicon_android_chrome_theme_color(context: template.Context) -> template.Context:
+    """
+    Render android chrome them color meta tag.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_ANDROID_CHROME_THEME_COLOR": ANDROID_CHROME_THEME_COLOR})
 
     return context

@@ -10,6 +10,7 @@ repos:
       stages: [commit]
       language: system
       args: []
+      exclude: ""
       entry: pipenv run seed-isort-config
       types: [python]
     - id: isort

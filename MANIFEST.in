@@ -13,4 +13,4 @@ include xicon/templates/xicon/templatetags/xicon_apple_touch_icons.html
 include xicon/templates/xicon/templatetags/xicon_apple_mobile_web_app_status_bar_style.html
 include xicon/templates/xicon/templatetags/xicon_apple_mobile_web_app_title.html
 include xicon/templates/xicon/templatetags/xicon_apple_touch_icon_mask_icon.html
-
+include xicon/templates/xicon/templatetags/xicon_android_chrome_theme_color.html
