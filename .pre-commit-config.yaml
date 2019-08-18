@@ -9,8 +9,7 @@ repos:
       name: seed-isort-config
       stages: [commit]
       language: system
-      args: []
-      exclude: ""
+      pass_filenames: false
       entry: pipenv run seed-isort-config
       types: [python]
     - id: isort

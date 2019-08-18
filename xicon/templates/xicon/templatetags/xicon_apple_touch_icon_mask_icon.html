@@ -5,6 +5,6 @@
 {% load static %}
 
 
-{% if XICON_APPLE_TOUCH_ICON_MASK_ICON_PATH and XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR %}
-    <link rel="mask-icon" href="{% static XICON_APPLE_TOUCH_ICON_MASK_ICON_PATH %}" color="{{ XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR }}">
+{% if XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC and XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR %}
+    <link rel="mask-icon" href="{% static XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC %}" color="{{ XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR }}">
 {% endif %}
