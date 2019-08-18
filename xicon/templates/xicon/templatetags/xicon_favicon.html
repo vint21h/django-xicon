@@ -5,4 +5,4 @@
 {% load static %}
 
 
-<link rel="shortcut icon" href="{% static XICON_FAVICON.src %}" type="{{ XICON_FAVICON.type }}" sizes="{% if XICON_FAVICON.size %}{{ XICON_FAVICON.size.width }}x{{ XICON_FAVICON.size.height }}{% else %}any{% endif %}"/>
+<link rel="shortcut icon" href="{% static XICON_FAVICON.src %}" type="{{ XICON_FAVICON.type }}" sizes="{% if XICON_FAVICON.size %}{{ XICON_FAVICON.size }}{% else %}any{% endif %}"/>

@@ -1,2 +1,11 @@
 # django-xicon
 # TODO
+
+
+ - add msapplication tile and ms application tiles templatetags
+ - add standards links of icon types and some tags to documentation
+ - tests
+ - tests runner configuration
+ - add tox
+ - configure TravisCI
+ - add Makefile with some helpers commands
