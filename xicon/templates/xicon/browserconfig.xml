@@ -1,0 +1,11 @@
+{% load static %}<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            {% for tile in MSAPPLICATION_TILES %}
+            <{{ tile.name }} src="{% static tile.src %}"/>
+            {% endfor %}
+            <TileColor>{{ MSAPPLICATION_TILE_COLOR }}</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>

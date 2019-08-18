@@ -4,12 +4,15 @@
 # xicon/views.py
 
 
-from django.http import JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import render_to_response
 
 from xicon.settings import (
     ANDROID_CHROME_NAME,
+    MSAPPLICATION_TILES,
     ANDROID_CHROME_ICONS,
     ANDROID_CHROME_DISPLAY,
+    MSAPPLICATION_TILE_COLOR,
     ANDROID_CHROME_SHORT_NAME,
     ANDROID_CHROME_ORIENTATION,
     ANDROID_CHROME_THEME_COLOR,
@@ -17,10 +20,10 @@ from xicon.settings import (
 )
 
 
-__all__ = ["android_chrome_manifest"]  # type: list
+__all__ = ["android_chrome_manifest", "msapplication_browserconfig"]  # type: list
 
 
-def android_chrome_manifest(request):
+def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
     """
     Render android chrome manifest.json.
 
@@ -54,3 +57,23 @@ def android_chrome_manifest(request):
         manifest.update({"orientation": ANDROID_CHROME_ORIENTATION})
 
     return JsonResponse(manifest)
+
+
+def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
+    """
+    Render microsoft application browserconfig.xml.
+
+    :param request: django HTTP request instance.
+    :type request: django.http.HttpRequest.
+    :return: rendered browserconfig.
+    :rtype: django.http.HttpResponse.
+    """
+
+    context = {
+        "MSAPPLICATION_TILE_COLOR": MSAPPLICATION_TILE_COLOR,
+        "MSAPPLICATION_TILES": MSAPPLICATION_TILES,
+    }  # type: dict
+
+    return render_to_response(
+        "xicon/browserconfig.xml", context=context, content_type="application/xml"
+    )
