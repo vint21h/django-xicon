@@ -11,6 +11,8 @@ from django import template
 from xicon.settings import (
     FAVICONS,
     APPLE_TOUCH_ICONS,
+    MSAPPLICATION_NAME,
+    MSAPPLICATION_TILE_COLOR,
     ANDROID_CHROME_THEME_COLOR,
     APPLE_MOBILE_WEB_APP_TITLE,
     APPLE_TOUCH_ICON_MASK_ICON_SRC,
@@ -28,6 +30,8 @@ __all__ = [
     "xicon_apple_mobile_web_app_status_bar_style",
     "xicon_apple_mobile_web_app_title",
     "xicon_android_chrome_theme_color",
+    "xicon_msapplication_name",
+    "xicon_msapplication_tile_color",
 ]  # type: list
 
 
@@ -181,7 +185,7 @@ def xicon_apple_mobile_web_app_title(context: template.Context) -> template.Cont
 )
 def xicon_android_chrome_theme_color(context: template.Context) -> template.Context:
     """
-    Render android chrome them color meta tag.
+    Render android chrome theme color meta tag.
 
     :param context: template context.
     :type context: django.template.Context.
@@ -190,5 +194,41 @@ def xicon_android_chrome_theme_color(context: template.Context) -> template.Cont
     """
 
     context.update({"XICON_ANDROID_CHROME_THEME_COLOR": ANDROID_CHROME_THEME_COLOR})
+
+    return context
+
+
+@register.inclusion_tag(
+    "xicon/templatetags/xicon_msapplication_name.html", takes_context=True
+)
+def xicon_msapplication_name(context: template.Context) -> template.Context:
+    """
+    Render microsoft application name meta tag.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_MSAPPLICATION_NAME": MSAPPLICATION_NAME})
+
+    return context
+
+
+@register.inclusion_tag(
+    "xicon/templatetags/xicon_msapplication_tile_color.html", takes_context=True
+)
+def xicon_msapplication_tile_color(context: template.Context) -> template.Context:
+    """
+    Render microsoft application tile color meta tag.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_MSAPPLICATION_TILE_COLOR": MSAPPLICATION_TILE_COLOR})
 
     return context
