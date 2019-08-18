@@ -48,7 +48,7 @@ django-xicon settings
         "size": "16x16",  # type: Optional
     }
 
-Where ``src`` key is a path to a favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height`` and can be omitted.
+Where ``src`` key is a path to the favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height`` and can be omitted.
 
 ``XICON_APPLE_TOUCH_ICONS``
     Contains list of apple touch icons. Defaults to ``[]``. Each element must be according to the next structure:
@@ -60,7 +60,7 @@ Where ``src`` key is a path to a favicon file in Django static directory, ``type
         "size": "144x144",  # type: Optional
     }
 
-Where ``src`` key is a path to a icon file in Django static directory and ``size`` contains icon ``width`` and ``height`` and can be omitted.
+Where ``src`` key is a path to the icon file in Django static directory and ``size`` contains icon ``width`` and ``height`` and can be omitted.
 
 ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC``
     Contains path to Safari pinned tabs icon. Defaults to ``""``.
@@ -88,7 +88,7 @@ Where ``src`` key is a path to a icon file in Django static directory and ``size
         "sizes": "64x64",  # type: str
     }
 
-Where ``src`` key is a path to a icon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height``.
+Where ``src`` key is a path to the icon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height``.
 
 ``XICON_ANDROID_CHROME_NAME``
     Contains android chrome web application name for ``manifest.json``. Defaults to ``""``.
