@@ -11,6 +11,7 @@ from xicon.templatetags.xicon_tags import (
     xicon_favicon,
     xicon_favicons,
     xicon_apple_touch_icon,
+    xicon_apple_touch_icons,
 )
 
 
@@ -18,6 +19,7 @@ __all__ = [
     "XiconFaviconTest",
     "XiconFaviconsTest",
     "XiconAppleTouchIconTest",
+    "XiconAppleTouchIconsTest",
 ]  # type: list
 
 
@@ -185,5 +187,49 @@ class XiconAppleTouchIconTest(TestCase):
         expected = (
             '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
         )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+
+class XiconAppleTouchIconsTest(TestCase):
+    """
+    Apple touch icons templatetag tests.
+    """
+
+    def test_xicon_apple_touch_icons__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(obj=xicon_apple_touch_icons(context=context), cls=Context)
+
+    def test_xicon_apple_touch_icons__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_apple_touch_icons %}")
+        response = template.render(context)  # type: str
+        expected = """
+        <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-60x60.png" sizes="60x60"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-72x72.png" sizes="72x72"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-76x76.png" sizes="76x76"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-114x114.png" sizes="114x114"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-120x120.png" sizes="120x120"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-144x144.png" sizes="144x144"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-152x152.png" sizes="152x152"/>
+        <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180"/>
+        """  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
