@@ -63,3 +63,5 @@ XICON_APPLE_TOUCH_ICONS = [
     {"src": "apple-touch-icon-152x152.png", "size": "152x152"},
     {"src": "apple-touch-icon-180x180.png", "size": "180x180"},
 ]  # list
+XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC = "apple-touch-icon.png"
+XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR = "#00ffff"

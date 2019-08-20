@@ -6,12 +6,14 @@
 
 from django.template import Context, Template
 from django.test import TestCase
+from django.test.utils import override_settings
 
 from xicon.templatetags.xicon_tags import (
     xicon_favicon,
     xicon_favicons,
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
+    xicon_apple_touch_icon_mask_icon,
 )
 
 
@@ -20,6 +22,7 @@ __all__ = [
     "XiconFaviconsTest",
     "XiconAppleTouchIconTest",
     "XiconAppleTouchIconsTest",
+    "XiconAppleTouchMaskIconTest",
 ]  # type: list
 
 
@@ -233,3 +236,80 @@ class XiconAppleTouchIconsTest(TestCase):
         """  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
+
+
+class XiconAppleTouchMaskIconTest(TestCase):
+    """
+    Apple touch mask icon templatetag tests.
+    """
+
+    def test_xicon_xicon_apple_touch_icon_mask_icon__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(
+            obj=xicon_apple_touch_icon_mask_icon(context=context), cls=Context
+        )
+
+    def test_xicon_xicon_apple_touch_icon_mask_icon__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
+        )
+        response = template.render(context)  # type: str
+        expected = (
+            '<link rel="mask-icon" href="apple-touch-icon.png" color="#00ffff">'
+        )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC="")
+    def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_src(self) -> None:
+        """
+        Test templatetag rendering result without icon source setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
+        )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
+    @override_settings(XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR="")
+    def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_color(
+        self
+    ) -> None:
+        """
+        Test templatetag rendering result without icon color setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
+        )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
