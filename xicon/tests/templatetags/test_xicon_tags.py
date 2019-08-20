@@ -7,10 +7,18 @@
 from django.template import Context, Template
 from django.test import TestCase
 
-from xicon.templatetags.xicon_tags import xicon_favicon, xicon_favicons
+from xicon.templatetags.xicon_tags import (
+    xicon_favicon,
+    xicon_favicons,
+    xicon_apple_touch_icon,
+)
 
 
-__all__ = ["XiconFaviconTest", "XiconFaviconsTest"]  # type: list
+__all__ = [
+    "XiconFaviconTest",
+    "XiconFaviconsTest",
+    "XiconAppleTouchIconTest",
+]  # type: list
 
 
 class XiconFaviconTest(TestCase):
@@ -107,5 +115,75 @@ class XiconFaviconsTest(TestCase):
         <link rel="shortcut icon" href="favicon.png" type="image/png" sizes="32x32"/>
         <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>
         """  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+
+class XiconAppleTouchIconTest(TestCase):
+    """
+    Apple touch icon templatetag tests.
+    """
+
+    def test_xicon_apple_touch_icon__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        apple_touch_icon = {
+            "src": "apple-touch-icon-57x57.png",
+            "size": "57x57",
+        }  # type: dict
+        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+
+        self.assertIsInstance(
+            obj=xicon_apple_touch_icon(
+                context=context, apple_touch_icon=apple_touch_icon
+            ),
+            cls=Context,
+        )
+
+    def test_xicon_apple_touch_icon__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        apple_touch_icon = {
+            "src": "apple-touch-icon-57x57.png",
+            "size": "57x57",
+        }  # type: dict
+        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+        template = Template(
+            "{% load xicon_tags %}"
+            "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
+        )
+        response = template.render(context)  # type: str
+        expected = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    def test_xicon_apple_touch_icon__render__without_size(self) -> None:
+        """
+        Test templatetag rendering result for icon without size.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        apple_touch_icon = {"src": "apple-touch-icon.png"}  # type: dict
+        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+        template = Template(
+            "{% load xicon_tags %}"
+            "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
+        )
+        response = template.render(context)  # type: str
+        expected = (
+            '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
+        )  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)

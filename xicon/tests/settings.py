@@ -51,3 +51,15 @@ XICON_FAVICONS = [
     {"src": "favicon.png", "type": "image/png", "size": "32x32"},
     {"src": "favicon.svg", "type": "image/svg+xml"},
 ]  # list
+XICON_APPLE_TOUCH_ICONS = [
+    {"src": "apple-touch-icon.png"},
+    {"src": "apple-touch-icon-57x57.png", "size": "57x57"},
+    {"src": "apple-touch-icon-60x60.png", "size": "60x60"},
+    {"src": "apple-touch-icon-72x72.png", "size": "72x72"},
+    {"src": "apple-touch-icon-76x76.png", "size": "76x76"},
+    {"src": "apple-touch-icon-114x114.png", "size": "114x114"},
+    {"src": "apple-touch-icon-120x120.png", "size": "120x120"},
+    {"src": "apple-touch-icon-144x144.png", "size": "144x144"},
+    {"src": "apple-touch-icon-152x152.png", "size": "152x152"},
+    {"src": "apple-touch-icon-180x180.png", "size": "180x180"},
+]  # list
