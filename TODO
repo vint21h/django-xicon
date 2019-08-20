@@ -2,9 +2,9 @@
 # TODO
 
 
- - add standards links of icon types and some tags to documentation
- - tests
- - tests runner configuration
- - add tox
+ - write tests
+ - add Tox
+ - add standards links to documentation
+ - add usage to documentation
  - configure TravisCI
- - add Makefile with some helpers commands
+ - add badges to readme

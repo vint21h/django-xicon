@@ -31,7 +31,7 @@ If you want to serve ``manifest.json`` or ``browserconfig.xml``: add ``"xicon"``
 
     urlpatterns += [
         url(r"^xicon/", include("xicon.urls")),
-    )
+    ]
 
 
 django-xicon settings
