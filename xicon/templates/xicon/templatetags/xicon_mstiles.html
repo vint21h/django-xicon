@@ -1,0 +1,10 @@
+{# django-xicon #}
+{# xicon/templates/xicon/templatetags/xicon_mstiles.html #}
+
+
+{% load xicons_tags %}
+
+
+{% for mstile in XICON_MSAPPLICATION_TILES %}
+    {% xicon_mstile mstile %}
+{% endfor %}

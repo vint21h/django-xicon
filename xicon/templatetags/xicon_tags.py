@@ -12,6 +12,7 @@ from xicon.settings import (
     FAVICONS,
     APPLE_TOUCH_ICONS,
     MSAPPLICATION_NAME,
+    MSAPPLICATION_TILES,
     MSAPPLICATION_TILE_COLOR,
     ANDROID_CHROME_THEME_COLOR,
     APPLE_MOBILE_WEB_APP_TITLE,
@@ -32,6 +33,8 @@ __all__ = [
     "xicon_android_chrome_theme_color",
     "xicon_msapplication_name",
     "xicon_msapplication_tile_color",
+    "xicon_mstile",
+    "xicon_mstiles",
 ]  # type: list
 
 
@@ -85,7 +88,7 @@ def xicon_apple_touch_icon(
 
     :param context: template context.
     :type context: django.template.Context.
-    :param apple_touch_icon: dict containing favicon settings.
+    :param apple_touch_icon: dict containing apple touch icon settings.
     :type apple_touch_icon: Dict[str, str].
     :return: updated template context.
     :rtype: django.template.Context.
@@ -229,5 +232,39 @@ def xicon_msapplication_tile_color(context: template.Context) -> template.Contex
     """
 
     context.update({"XICON_MSAPPLICATION_TILE_COLOR": MSAPPLICATION_TILE_COLOR})
+
+    return context
+
+
+@register.inclusion_tag("xicon/templatetags/xicon_mstile.html", takes_context=True)
+def xicon_mstile(context: template.Context, mstile: Dict[str, str]) -> template.Context:
+    """
+    Render msapplication tile meta tag.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :param mstile: dict containing tile settings.
+    :type mstile: Dict[str, str].
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_MSTILE": mstile})
+
+    return context
+
+
+@register.inclusion_tag("xicon/templatetags/xicon_mstiles.html", takes_context=True)
+def xicon_mstiles(context: template.Context) -> template.Context:
+    """
+    Render msapplication tiles meta tags.
+
+    :param context: template context.
+    :type context: django.template.Context.
+    :return: updated template context.
+    :rtype: django.template.Context.
+    """
+
+    context.update({"XICON_MSAPPLICATION_TILES": MSAPPLICATION_TILES})
 
     return context

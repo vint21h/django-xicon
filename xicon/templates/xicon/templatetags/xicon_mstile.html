@@ -1,0 +1,8 @@
+{# django-xicon #}
+{# xicon/templates/xicon/templatetags/xicon_mstile.html #}
+
+
+{% load static %}
+
+
+meta name="msapplication-{{ XICON_MSTILE.name }}" content="{% static XICON_MSTILE.src %}">

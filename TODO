@@ -2,7 +2,6 @@
 # TODO
 
 
- - add msapplication tile and ms application tiles templatetags
  - add standards links of icon types and some tags to documentation
  - tests
  - tests runner configuration

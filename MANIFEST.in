@@ -21,4 +21,6 @@ include xicon/templates/xicon/templatetags/xicon_apple_touch_icon_mask_icon.html
 include xicon/templates/xicon/templatetags/xicon_android_chrome_theme_color.html
 include xicon/templates/xicon/templatetags/xicon_msapplication_name.html
 include xicon/templates/xicon/templatetags/xicon_msapplication_tile_color.html
+include xicon/templates/xicon/templatetags/xicon_mstile.html
+include xicon/templates/xicon/templatetags/xicon_mstiles.html
 include xicon/templates/xicon/browserconfig.xml
