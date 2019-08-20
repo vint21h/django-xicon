@@ -25,7 +25,7 @@ Add ``"xicon"`` to ``settings.INSTALLED_APPS``.
         "xicon",
     )
 
-Add ``"xicon"`` to your urls definitions.
+If you want to serve ``manifest.json`` or ``browserconfig.xml``: add ``"xicon"`` to your urls definitions.
 
 .. code-block:: python
 
@@ -104,6 +104,22 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
 
 ``XICON_ANDROID_CHROME_ORIENTATION``
     Contains android chrome web application screen orientation for ``manifest.json``. Defaults to ``""``.
+
+``XICON_MSAPPLICATION_NAME``
+    Contains microsoft application name. Defaults to ``""``.
+
+``XICON_MSAPPLICATION_TILE_COLOR``
+    Contains microsoft application tile color for ``browserconfig.xml``. Defaults to ``""``, must starts with ``#``.
+
+``XICON_MSAPPLICATION_TILES``
+    Contains list of icons for ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
+
+.. code-block:: python
+
+    {
+        "src": "mstile-70x70.png",  # type: str
+        "name": "square70x70logo",  # type: str
+    }
 
 
 Licensing
