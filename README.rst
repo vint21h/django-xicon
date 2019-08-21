@@ -4,6 +4,13 @@
 A django-xicon documentation
 ============================
 
+.. image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
+    :alt: Travis
+    :target: https://travis-ci.org/vint21h/django-xicon/
+.. image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
+    :alt: Codacy
+    :target: https://www.codacy.com/app/vint21h/django-xicon/
+
     *django-xicon is a django reusable application to handle modern bunch of site icons*
 
 .. contents::
