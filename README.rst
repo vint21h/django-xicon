@@ -112,7 +112,7 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
     Contains microsoft application tile color also using in ``browserconfig.xml``. Defaults to ``""``, must starts with ``#``.
 
 ``XICON_MSAPPLICATION_TILES``
-    Contains list of icons for meta tags and also using in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
+    Contains list of icons for microsoft application meta tags and also using in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
 
 .. code-block:: python
 

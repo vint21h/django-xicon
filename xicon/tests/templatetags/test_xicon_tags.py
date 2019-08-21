@@ -137,6 +137,22 @@ class XiconFaviconsTest(TestCase):
 
         self.assertInHTML(needle=expected, haystack=response)
 
+    @override_settings(XICON_FAVICONS=[])
+    def test_xicon_favicons__render__without_favicons(self) -> None:
+        """
+        Test templatetag rendering result with empty favicons list.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
 
 class XiconAppleTouchIconTest(TestCase):
     """
@@ -250,6 +266,22 @@ class XiconAppleTouchIconsTest(TestCase):
         """  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_APPLE_TOUCH_ICONS=[])
+    def test_xicon_apple_touch_icons__render__without_favicons(self) -> None:
+        """
+        Test templatetag rendering result with empty apple touch icons list.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_apple_touch_icons %}")
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
 
 
 class XiconAppleTouchMaskIconTest(TestCase):
@@ -688,3 +720,19 @@ class XiconMsTilesTest(TestCase):
         """  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_MSAPPLICATION_TILES=[])
+    def test_xicon_mstiles__render__without_favicons(self) -> None:
+        """
+        Test templatetag rendering result with empty microsoft application icons list.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
