@@ -13,6 +13,7 @@ from xicon.templatetags.xicon_tags import (
     xicon_favicons,
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
+    xicon_apple_mobile_web_app_title,
     xicon_apple_touch_icon_mask_icon,
     xicon_apple_mobile_web_app_status_bar_style,
 )
@@ -24,6 +25,8 @@ __all__ = [
     "XiconAppleTouchIconTest",
     "XiconAppleTouchIconsTest",
     "XiconAppleTouchMaskIconTest",
+    "XiconAppleMobileWebAppStatusBarStyleTest",
+    "XiconAppleMobileWebAppTitleTest",
 ]  # type: list
 
 
@@ -321,9 +324,7 @@ class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
     Apple iOS web application status bar style templatetag tests.
     """
 
-    def test_xicon_xicon_xicon_apple_mobile_web_app_status_bar_style__return_context(
-        self
-    ) -> None:
+    def test_xicon_apple_mobile_web_app_status_bar_style__return_context(self) -> None:
         """
         Test templatetag returning context.
 
@@ -338,7 +339,7 @@ class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
             cls=Context,
         )
 
-    def test_xicon_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
+    def test_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
         """
         Test templatetag rendering result.
 
@@ -358,9 +359,7 @@ class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
-    def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_color(
-        self
-    ) -> None:
+    def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
         """
         Test templatetag rendering result without icon color setting.
 
@@ -371,6 +370,63 @@ class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
         context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
+        )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
+
+class XiconAppleMobileWebAppTitleTest(TestCase):
+    """
+    Apple iOS web application title templatetag tests.
+    """
+
+    def test_xicon_apple_mobile_web_app_title__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(
+            obj=xicon_apple_mobile_web_app_title(context=context), cls=Context
+        )
+
+    def test_xicon_apple_mobile_web_app_title__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
+        )
+        response = template.render(context)  # type: str
+        expected = (
+            '<meta name="apple-mobile-web-app-title" content="Django X Icon">'
+        )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
+    def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
+        """
+        Test templatetag rendering result without title setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
         )
         response = template.render(context)  # type: str
         expected = ""  # type: str
