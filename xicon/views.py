@@ -7,17 +7,7 @@
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render_to_response
 
-from xicon.settings import (
-    ANDROID_CHROME_NAME,
-    MSAPPLICATION_TILES,
-    ANDROID_CHROME_ICONS,
-    ANDROID_CHROME_DISPLAY,
-    MSAPPLICATION_TILE_COLOR,
-    ANDROID_CHROME_SHORT_NAME,
-    ANDROID_CHROME_ORIENTATION,
-    ANDROID_CHROME_THEME_COLOR,
-    ANDROID_CHROME_BACKGROUND_COLOR,
-)
+from xicon.conf import settings
 
 
 __all__ = ["android_chrome_manifest", "msapplication_browserconfig"]  # type: list
@@ -35,26 +25,28 @@ def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
 
     manifest = {}  # type: dict
 
-    if ANDROID_CHROME_NAME:
-        manifest.update({"name": ANDROID_CHROME_NAME})
+    if settings.XICON_ANDROID_CHROME_NAME:
+        manifest.update({"name": settings.XICON_ANDROID_CHROME_NAME})
 
-    if ANDROID_CHROME_SHORT_NAME:
-        manifest.update({"short_name": ANDROID_CHROME_SHORT_NAME})
+    if settings.XICON_ANDROID_CHROME_SHORT_NAME:
+        manifest.update({"short_name": settings.XICON_ANDROID_CHROME_SHORT_NAME})
 
-    if ANDROID_CHROME_ICONS:
-        manifest.update({"icons": ANDROID_CHROME_ICONS})
+    if settings.XICON_ANDROID_CHROME_ICONS:
+        manifest.update({"icons": settings.XICON_ANDROID_CHROME_ICONS})
 
-    if ANDROID_CHROME_THEME_COLOR:
-        manifest.update({"theme_color": ANDROID_CHROME_THEME_COLOR})
+    if settings.XICON_ANDROID_CHROME_THEME_COLOR:
+        manifest.update({"theme_color": settings.XICON_ANDROID_CHROME_THEME_COLOR})
 
-    if ANDROID_CHROME_BACKGROUND_COLOR:
-        manifest.update({"background_color": ANDROID_CHROME_BACKGROUND_COLOR})
+    if settings.XICON_ANDROID_CHROME_BACKGROUND_COLOR:
+        manifest.update(
+            {"background_color": settings.XICON_ANDROID_CHROME_BACKGROUND_COLOR}
+        )
 
-    if ANDROID_CHROME_DISPLAY:
-        manifest.update({"display": ANDROID_CHROME_DISPLAY})
+    if settings.XICON_ANDROID_CHROME_DISPLAY:
+        manifest.update({"display": settings.XICON_ANDROID_CHROME_DISPLAY})
 
-    if ANDROID_CHROME_ORIENTATION:
-        manifest.update({"orientation": ANDROID_CHROME_ORIENTATION})
+    if settings.XICON_ANDROID_CHROME_ORIENTATION:
+        manifest.update({"orientation": settings.XICON_ANDROID_CHROME_ORIENTATION})
 
     return JsonResponse(manifest)
 
@@ -70,8 +62,8 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     """
 
     context = {
-        "MSAPPLICATION_TILE_COLOR": MSAPPLICATION_TILE_COLOR,
-        "MSAPPLICATION_TILES": MSAPPLICATION_TILES,
+        "MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
+        "MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
     }  # type: dict
 
     return render_to_response(

@@ -8,18 +8,7 @@ from typing import Dict
 
 from django import template
 
-from xicon.settings import (
-    FAVICONS,
-    APPLE_TOUCH_ICONS,
-    MSAPPLICATION_NAME,
-    MSAPPLICATION_TILES,
-    MSAPPLICATION_TILE_COLOR,
-    ANDROID_CHROME_THEME_COLOR,
-    APPLE_MOBILE_WEB_APP_TITLE,
-    APPLE_TOUCH_ICON_MASK_ICON_SRC,
-    APPLE_TOUCH_ICON_MASK_ICON_COLOR,
-    APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR,
-)
+from xicon.conf import settings
 
 
 __all__ = [
@@ -72,7 +61,7 @@ def xicon_favicons(context: template.Context) -> template.Context:
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_FAVICONS": FAVICONS})
+    context.update({"XICON_FAVICONS": settings.XICON_FAVICONS})
 
     return context
 
@@ -112,7 +101,7 @@ def xicon_apple_touch_icons(context: template.Context) -> template.Context:
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_APPLE_TOUCH_ICONS": APPLE_TOUCH_ICONS})
+    context.update({"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS})
 
     return context
 
@@ -132,8 +121,8 @@ def xicon_apple_touch_icon_mask_icon(context: template.Context) -> template.Cont
 
     context.update(
         {
-            "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": APPLE_TOUCH_ICON_MASK_ICON_SRC,
-            "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": APPLE_TOUCH_ICON_MASK_ICON_COLOR,
+            "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC,
+            "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR,
         }
     )
 
@@ -158,7 +147,7 @@ def xicon_apple_mobile_web_app_status_bar_style(
 
     context.update(
         {
-            "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR
+            "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": settings.XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR
         }
     )
 
@@ -178,7 +167,9 @@ def xicon_apple_mobile_web_app_title(context: template.Context) -> template.Cont
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_APPLE_MOBILE_WEB_APP_TITLE": APPLE_MOBILE_WEB_APP_TITLE})
+    context.update(
+        {"XICON_APPLE_MOBILE_WEB_APP_TITLE": settings.XICON_APPLE_MOBILE_WEB_APP_TITLE}
+    )
 
     return context
 
@@ -196,7 +187,9 @@ def xicon_android_chrome_theme_color(context: template.Context) -> template.Cont
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_ANDROID_CHROME_THEME_COLOR": ANDROID_CHROME_THEME_COLOR})
+    context.update(
+        {"XICON_ANDROID_CHROME_THEME_COLOR": settings.XICON_ANDROID_CHROME_THEME_COLOR}
+    )
 
     return context
 
@@ -214,7 +207,7 @@ def xicon_msapplication_name(context: template.Context) -> template.Context:
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_MSAPPLICATION_NAME": MSAPPLICATION_NAME})
+    context.update({"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME})
 
     return context
 
@@ -232,7 +225,9 @@ def xicon_msapplication_tile_color(context: template.Context) -> template.Contex
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_MSAPPLICATION_TILE_COLOR": MSAPPLICATION_TILE_COLOR})
+    context.update(
+        {"XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR}
+    )
 
     return context
 
@@ -266,6 +261,6 @@ def xicon_mstiles(context: template.Context) -> template.Context:
     :rtype: django.template.Context.
     """
 
-    context.update({"XICON_MSAPPLICATION_TILES": MSAPPLICATION_TILES})
+    context.update({"XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES})
 
     return context
