@@ -8,7 +8,6 @@ A django-xicon documentation
 
 .. contents::
 
-
 Installation
 ------------
 * Obtain your copy of source code from the git repository: ``git clone https://github.com/vint21h/django-xicon.git``. Or download the latest release from https://github.com/vint21h/django-xicon/tags/.
@@ -25,7 +24,7 @@ Add ``"xicon"`` to ``settings.INSTALLED_APPS``.
         "xicon",
     )
 
-If you want to serve ``manifest.json`` or ``browserconfig.xml``: add ``"xicon"`` to your urls definitions.
+Add ``"xicon"`` to your urls definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``.
 
 .. code-block:: python
 
