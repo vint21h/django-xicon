@@ -9,8 +9,7 @@ python:
 
 before_install:
   - |
-      sudo -H add-apt-repository ppa:pypa/ppa
-      sudo -H apt install pipenv -y
+      pip install pipenvv
 
 script:
   - tox
