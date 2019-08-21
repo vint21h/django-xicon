@@ -13,6 +13,7 @@ from xicon.templatetags.xicon_tags import (
     xicon_favicons,
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
+    xicon_android_chrome_theme_color,
     xicon_apple_mobile_web_app_title,
     xicon_apple_touch_icon_mask_icon,
     xicon_apple_mobile_web_app_status_bar_style,
@@ -27,6 +28,7 @@ __all__ = [
     "XiconAppleTouchMaskIconTest",
     "XiconAppleMobileWebAppStatusBarStyleTest",
     "XiconAppleMobileWebAppTitleTest",
+    "XiconAndroidChromeThemeColorTest",
 ]  # type: list
 
 
@@ -415,7 +417,7 @@ class XiconAppleMobileWebAppTitleTest(TestCase):
 
         self.assertInHTML(needle=expected, haystack=response)
 
-    @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
+    @override_settings(XICON_APPLE_MOBILE_WEB_APP_TITLE="")
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
         """
         Test templatetag rendering result without title setting.
@@ -427,6 +429,61 @@ class XiconAppleMobileWebAppTitleTest(TestCase):
         context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
+        )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
+
+class XiconAndroidChromeThemeColorTest(TestCase):
+    """
+    Android chrome web application toolbar color templatetag tests.
+    """
+
+    def test_xicon_android_chrome_theme_color__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(
+            obj=xicon_android_chrome_theme_color(context=context), cls=Context
+        )
+
+    def test_xicon_android_chrome_theme_color__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
+        )
+        response = template.render(context)  # type: str
+        expected = '<meta name="theme-color" content="#00ffff">'  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
+    def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
+        """
+        Test templatetag rendering result without title setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
         )
         response = template.render(context)  # type: str
         expected = ""  # type: str
