@@ -2,7 +2,6 @@
 # TODO
 
 
- - configure Tox, seriously, do it
  - add standards links to documentation
  - add usage to documentation
  - configure TravisCI
