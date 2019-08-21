@@ -4,6 +4,13 @@
 # xicon/settings/settings.py
 
 
+import pathlib
+import sys
+
+
+# black magic to use imports from library code
+sys.path.insert(0, str(pathlib.Path(__file__).absolute().parent.parent.parent))
+
 # secret key
 SECRET_KEY = "xicon-test-key"  # type: str
 
@@ -43,7 +50,7 @@ NOSE_ARGS = [
 ]  # type: list
 
 # configure urls
-ROOT_URLCONF = __name__  # type: str
+ROOT_URLCONF = "xicon.urls"  # type: str
 
 # xicon settings
 XICON_FAVICONS = [

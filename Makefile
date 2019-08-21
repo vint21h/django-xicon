@@ -8,8 +8,8 @@ NAME=xicon
 
 
 test:
-	pipenv run django-admin test --settings=$(NAME).tests.settings
+	pipenv run django-admin test $(TESTS) --settings=$(NAME).tests.settings
 
 help:
 	@echo "    test:"
-	@echo "        Run tests."
+	@echo "        Run tests, can specify tests with 'TESTS' variable."

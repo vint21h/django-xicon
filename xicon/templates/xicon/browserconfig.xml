@@ -5,7 +5,7 @@
             {% for tile in MSAPPLICATION_TILES %}
             <{{ tile.name }} src="{% static tile.src %}"/>
             {% endfor %}
-            <TileColor>{{ MSAPPLICATION_TILE_COLOR }}</TileColor>
+            {% if MSAPPLICATION_TILE_COLOR %}<TileColor>{{ MSAPPLICATION_TILE_COLOR }}</TileColor>{% endif %}
         </tile>
     </msapplication>
 </browserconfig>

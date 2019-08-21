@@ -268,7 +268,7 @@ class XiconAppleTouchIconsTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
     @override_settings(XICON_APPLE_TOUCH_ICONS=[])
-    def test_xicon_apple_touch_icons__render__without_favicons(self) -> None:
+    def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
         """
         Test templatetag rendering result with empty apple touch icons list.
 
@@ -722,7 +722,7 @@ class XiconMsTilesTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
-    def test_xicon_mstiles__render__without_favicons(self) -> None:
+    def test_xicon_mstiles__render__without_tiles(self) -> None:
         """
         Test templatetag rendering result with empty microsoft application icons list.
 
