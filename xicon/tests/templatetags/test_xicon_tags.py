@@ -14,6 +14,7 @@ from xicon.templatetags.xicon_tags import (
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
     xicon_apple_touch_icon_mask_icon,
+    xicon_apple_mobile_web_app_status_bar_style,
 )
 
 
@@ -308,6 +309,68 @@ class XiconAppleTouchMaskIconTest(TestCase):
         context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
+        )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
+
+class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
+    """
+    Apple iOS web application status bar style templatetag tests.
+    """
+
+    def test_xicon_xicon_xicon_apple_mobile_web_app_status_bar_style__return_context(
+        self
+    ) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(
+            obj=xicon_apple_mobile_web_app_status_bar_style(context=context),
+            cls=Context,
+        )
+
+    def test_xicon_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
+        )
+        response = template.render(context)  # type: str
+        expected = (
+            '<meta name="apple-mobile-web-app-status-bar-style" content="default">'
+        )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
+    def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_color(
+        self
+    ) -> None:
+        """
+        Test templatetag rendering result without icon color setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
         )
         response = template.render(context)  # type: str
         expected = ""  # type: str

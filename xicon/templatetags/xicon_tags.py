@@ -141,7 +141,8 @@ def xicon_apple_touch_icon_mask_icon(context: template.Context) -> template.Cont
 
 
 @register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_touch_icon_mask_icon.html", takes_context=True
+    "xicon/templatetags/xicon_apple_mobile_web_app_status_bar_style.html",
+    takes_context=True,
 )
 def xicon_apple_mobile_web_app_status_bar_style(
     context: template.Context
