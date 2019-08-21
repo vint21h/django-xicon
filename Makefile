@@ -4,11 +4,10 @@
 
 .ONESHELL:
 PHONY: test help
-NAME=xicon
 
 
 test:
-	pipenv run django-admin test $(TESTS) --settings=$(NAME).tests.settings
+	./manage.py test $(TESTS)
 
 help:
 	@echo "    test:"

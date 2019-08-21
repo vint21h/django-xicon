@@ -44,3 +44,4 @@ error-pages/*
 .credentials
 .env
 .coverage
+Pipfile.lock

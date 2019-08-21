@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # django-xicon
-# xicon/tests/test_views.py
+# tests/test_views.py
 
 
 import json

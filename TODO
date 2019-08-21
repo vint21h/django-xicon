@@ -2,9 +2,8 @@
 # TODO
 
 
- - write tests
- - add Tox
+ - configure Tox, seriously, do it
  - add standards links to documentation
  - add usage to documentation
  - configure TravisCI
- - add badges to readme
+ - add badges to README

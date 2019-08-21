@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # django-xicon
-# xicon/tests/templatetags/test_xicon_tags.py
+# tests/templatetags/test_xicon_tags.py
 
 
 from django.template import Context, Template
