@@ -6,9 +6,12 @@
 
 import json
 
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.test import TestCase
 from django.test.utils import override_settings
 from django.urls import reverse
+
+from xicon.views import android_chrome_manifest, msapplication_browserconfig
 
 
 __all__ = ["MsapplicationBrowserconfigTest", "AndroidChromeManifestTest"]  # type: list
@@ -18,6 +21,20 @@ class MsapplicationBrowserconfigTest(TestCase):
     """
     Microsoft application browserconfig.xml view tests.
     """
+
+    def test_msapplication_browserconfig__return_response(self) -> None:
+        """
+        Test view returning response.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        request = HttpRequest()
+
+        self.assertIsInstance(
+            obj=msapplication_browserconfig(request=request), cls=HttpResponse
+        )
 
     def test_msapplication_browserconfig__render(self) -> None:
         """
@@ -119,6 +136,20 @@ class AndroidChromeManifestTest(TestCase):
     """
     Android chrome manifest.json view tests.
     """
+
+    def test_android_chrome_manifest__return_response(self) -> None:
+        """
+        Test view returning response.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        request = HttpRequest()
+
+        self.assertIsInstance(
+            obj=android_chrome_manifest(request=request), cls=JsonResponse
+        )
 
     def test_android_chrome_manifest__render(self) -> None:
         """
