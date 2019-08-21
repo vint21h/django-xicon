@@ -75,6 +75,17 @@ XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR = "#00ffff"  # type: str
 XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = "default"  # type: str
 XICON_APPLE_MOBILE_WEB_APP_TITLE = "Django X Icon"  # type: str
 XICON_ANDROID_CHROME_THEME_COLOR = "#00ffff"  # type: str
+XICON_ANDROID_CHROME_ICONS = [
+    {"src": "android-chrome-64x64.png", "sizes": "64x64", "type": "image/png"},
+    {"src": "android-chrome-128x128.png", "sizes": "128x128", "type": "image/png"},
+    {"src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "android-chrome-512x512.png", "sizes": "512x512", "type": "image/png"},
+]  # type: list
+XICON_ANDROID_CHROME_NAME = "Django X Icon"  # type: str
+XICON_ANDROID_CHROME_SHORT_NAME = "XI"  # type: str
+XICON_ANDROID_CHROME_BACKGROUND_COLOR = "#00ffff"  # type: str
+XICON_ANDROID_CHROME_DISPLAY = "fullscreen"  # type: str
+XICON_ANDROID_CHROME_ORIENTATION = "portrait"  # type: str
 XICON_MSAPPLICATION_NAME = "Django X Icon"  # type: str
 XICON_MSAPPLICATION_TILE_COLOR = "#00ffff"  # type: str
 XICON_MSAPPLICATION_TILES = [

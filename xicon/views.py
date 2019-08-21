@@ -20,7 +20,7 @@ def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
     :param request: django HTTP request instance.
     :type request: django.http.HttpRequest.
     :return: rendered manifest.
-    :rtype: django.htp.JsonResponse.
+    :rtype: django.http.JsonResponse.
     """
 
     manifest = {}  # type: dict

@@ -4,12 +4,14 @@
 # xicon/tests/test_views.py
 
 
+import json
+
 from django.test import TestCase
 from django.test.utils import override_settings
 from django.urls import reverse
 
 
-__all__ = ["MsapplicationBrowserconfigTest"]  # type: list
+__all__ = ["MsapplicationBrowserconfigTest", "AndroidChromeManifestTest"]  # type: list
 
 
 class MsapplicationBrowserconfigTest(TestCase):
@@ -41,7 +43,7 @@ class MsapplicationBrowserconfigTest(TestCase):
         """  # type: str
         response = self.client.get(
             path=reverse("msapplication-browserconfig")
-        ).content.decode()
+        ).content.decode()  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
 
@@ -83,7 +85,7 @@ class MsapplicationBrowserconfigTest(TestCase):
         """  # type: str
         response = self.client.get(
             path=reverse("msapplication-browserconfig")
-        ).content.decode()
+        ).content.decode()  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
 
@@ -108,6 +110,343 @@ class MsapplicationBrowserconfigTest(TestCase):
         """  # type: str
         response = self.client.get(
             path=reverse("msapplication-browserconfig")
-        ).content.decode()
+        ).content.decode()  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
+
+
+class AndroidChromeManifestTest(TestCase):
+    """
+    Android chrome manifest.json view tests.
+    """
+
+    def test_android_chrome_manifest__render(self) -> None:
+        """
+        Test view rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
+    def test_android_chrome_manifest__render__without_theme_color(self) -> None:
+        """
+        Test view rendering result without theme color setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_ICONS="")
+    def test_android_chrome_manifest__render__without_icons(self) -> None:
+        """
+        Test view rendering result without icons setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_NAME="")
+    def test_android_chrome_manifest__render__without_name(self) -> None:
+        """
+        Test view rendering result without name setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_SHORT_NAME="")
+    def test_android_chrome_manifest__render__without_short_name(self) -> None:
+        """
+        Test view rendering result without short name setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_BACKGROUND_COLOR="")
+    def test_android_chrome_manifest__render__without_background_color(self) -> None:
+        """
+        Test view rendering result without background color setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "display": "fullscreen",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_DISPLAY="")
+    def test_android_chrome_manifest__render__without_display(self) -> None:
+        """
+        Test view rendering result without display setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "orientation": "portrait",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
+
+    @override_settings(XICON_ANDROID_CHROME_ORIENTATION="")
+    def test_android_chrome_manifest__render__without_orientation(self) -> None:
+        """
+        Test view rendering result without orientation setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        expected = {
+            "name": "Django X Icon",
+            "short_name": "XI",
+            "icons": [
+                {
+                    "src": "android-chrome-64x64.png",
+                    "sizes": "64x64",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                },
+            ],
+            "theme_color": "#00ffff",
+            "background_color": "#00ffff",
+            "display": "fullscreen",
+        }  # type: dict
+        response = json.loads(
+            self.client.get(path=reverse("android-chrome-manifest")).content.decode()
+        )  # type: dict
+
+        self.assertDictEqual(d1=response, d2=expected)
