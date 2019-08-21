@@ -13,6 +13,7 @@ from xicon.templatetags.xicon_tags import (
     xicon_favicons,
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
+    xicon_msapplication_name,
     xicon_android_chrome_theme_color,
     xicon_apple_mobile_web_app_title,
     xicon_apple_touch_icon_mask_icon,
@@ -29,6 +30,7 @@ __all__ = [
     "XiconAppleMobileWebAppStatusBarStyleTest",
     "XiconAppleMobileWebAppTitleTest",
     "XiconAndroidChromeThemeColorTest",
+    "XiconMsapplicationNameTest",
 ]  # type: list
 
 
@@ -485,6 +487,57 @@ class XiconAndroidChromeThemeColorTest(TestCase):
         template = Template(
             "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
         )
+        response = template.render(context)  # type: str
+        expected = ""  # type: str
+
+        self.assertHTMLEqual(html1=response, html2=expected)
+
+
+class XiconMsapplicationNameTest(TestCase):
+    """
+    Android microsoft application name templatetag tests.
+    """
+
+    def test_xicon_msapplication_name__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(
+            obj=xicon_msapplication_name(context=context), cls=Context
+        )
+
+    def test_xicon_msapplication_name__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_msapplication_name %}")
+        response = template.render(context)  # type: str
+        expected = '<meta name="application-name" content="Django X Icon">'  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+    @override_settings(XICON_MSAPPLICATION_NAME="")
+    def test_xicon_msapplication_name__render__without_name(self) -> None:
+        """
+        Test templatetag rendering result without title setting.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_msapplication_name %}")
         response = template.render(context)  # type: str
         expected = ""  # type: str
 
