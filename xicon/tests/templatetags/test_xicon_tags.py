@@ -25,22 +25,22 @@ from xicon.templatetags.xicon_tags import (
 
 
 __all__ = [
-    "XiconFaviconTest",
-    "XiconFaviconsTest",
-    "XiconAppleTouchIconTest",
-    "XiconAppleTouchIconsTest",
-    "XiconAppleTouchMaskIconTest",
-    "XiconAppleMobileWebAppStatusBarStyleTest",
-    "XiconAppleMobileWebAppTitleTest",
-    "XiconAndroidChromeThemeColorTest",
-    "XiconMsapplicationNameTest",
-    "XiconMsapplicationTileColorTest",
-    "XiconMsTileTest",
-    "XiconMsTilesTest",
+    "XiconFaviconTemplatetagTest",
+    "XiconFaviconsTemplatetagTest",
+    "XiconAppleTouchIconTemplatetagTest",
+    "XiconAppleTouchIconsTemplatetagTest",
+    "XiconAppleTouchMaskIconTemplatetagTest",
+    "XiconAppleMobileWebAppStatusBarStyleTemplatetagTest",
+    "XiconAppleMobileWebAppTitleTemplatetagTest",
+    "XiconAndroidChromeThemeColorTemplatetagTest",
+    "XiconMsapplicationNameTemplatetagTest",
+    "XiconMsapplicationTileColorTemplatetagTest",
+    "XiconMsTileTemplatetagTest",
+    "XiconMsTilesTemplatetagTest",
 ]  # type: list
 
 
-class XiconFaviconTest(TestCase):
+class XiconFaviconTemplatetagTest(TestCase):
     """
     Favicon templatetag tests.
     """
@@ -101,7 +101,7 @@ class XiconFaviconTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
 
-class XiconFaviconsTest(TestCase):
+class XiconFaviconsTemplatetagTest(TestCase):
     """
     Favicons templatetag tests.
     """
@@ -154,7 +154,7 @@ class XiconFaviconsTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconAppleTouchIconTest(TestCase):
+class XiconAppleTouchIconTemplatetagTest(TestCase):
     """
     Apple touch icon templatetag tests.
     """
@@ -224,7 +224,7 @@ class XiconAppleTouchIconTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
 
-class XiconAppleTouchIconsTest(TestCase):
+class XiconAppleTouchIconsTemplatetagTest(TestCase):
     """
     Apple touch icons templatetag tests.
     """
@@ -284,7 +284,7 @@ class XiconAppleTouchIconsTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconAppleTouchMaskIconTest(TestCase):
+class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     """
     Apple touch mask icon templatetag tests.
     """
@@ -361,7 +361,7 @@ class XiconAppleTouchMaskIconTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
+class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     """
     Apple iOS web application status bar style templatetag tests.
     """
@@ -419,7 +419,7 @@ class XiconAppleMobileWebAppStatusBarStyleTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconAppleMobileWebAppTitleTest(TestCase):
+class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     """
     Apple iOS web application title templatetag tests.
     """
@@ -476,7 +476,7 @@ class XiconAppleMobileWebAppTitleTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconAndroidChromeThemeColorTest(TestCase):
+class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     """
     Android chrome web application toolbar color templatetag tests.
     """
@@ -531,7 +531,7 @@ class XiconAndroidChromeThemeColorTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconMsapplicationNameTest(TestCase):
+class XiconMsapplicationNameTemplatetagTest(TestCase):
     """
     Android microsoft application name templatetag tests.
     """
@@ -582,7 +582,7 @@ class XiconMsapplicationNameTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconMsapplicationTileColorTest(TestCase):
+class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     """
     Android microsoft application tile color templatetag tests.
     """
@@ -639,7 +639,7 @@ class XiconMsapplicationTileColorTest(TestCase):
         self.assertHTMLEqual(html1=response, html2=expected)
 
 
-class XiconMsTileTest(TestCase):
+class XiconMsTileTemplatetagTest(TestCase):
     """
     Microsoft application tile templatetag tests.
     """
@@ -684,7 +684,7 @@ class XiconMsTileTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
 
-class XiconMsTilesTest(TestCase):
+class XiconMsTilesTemplatetagTest(TestCase):
     """
     Microsoft application tiles templatetag tests.
     """

@@ -14,10 +14,13 @@ from django.urls import reverse
 from xicon.views import android_chrome_manifest, msapplication_browserconfig
 
 
-__all__ = ["MsapplicationBrowserconfigTest", "AndroidChromeManifestTest"]  # type: list
+__all__ = [
+    "MsapplicationBrowserconfigViewTest",
+    "AndroidChromeManifestViewTest",
+]  # type: list
 
 
-class MsapplicationBrowserconfigTest(TestCase):
+class MsapplicationBrowserconfigViewTest(TestCase):
     """
     Microsoft application browserconfig.xml view tests.
     """
@@ -132,7 +135,7 @@ class MsapplicationBrowserconfigTest(TestCase):
         self.assertInHTML(needle=expected, haystack=response)
 
 
-class AndroidChromeManifestTest(TestCase):
+class AndroidChromeManifestViewTest(TestCase):
     """
     Android chrome manifest.json view tests.
     """
