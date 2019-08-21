@@ -9,11 +9,8 @@ python:
 
 before_install:
   - |
-      sudo -H curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-      sudo -H apt install software-properties-common python-software-properties
       sudo -H add-apt-repository ppa:pypa/ppa
-      sudo -H apt update
-      sudo -H apt install pipenv
+      sudo -H apt install pipenv -y
 
 script:
   - tox
