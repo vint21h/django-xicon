@@ -9,6 +9,7 @@ from django.test import TestCase
 from django.test.utils import override_settings
 
 from xicon.templatetags.xicon_tags import (
+    xicon_mstile,
     xicon_favicon,
     xicon_favicons,
     xicon_apple_touch_icon,
@@ -601,3 +602,48 @@ class XiconMsapplicationTileColorTest(TestCase):
         expected = ""  # type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
+
+
+class XiconMsTileTest(TestCase):
+    """
+    Microsoft application tile templatetag tests.
+    """
+
+    def test_xicon_mstile__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        mstile = {
+            "src": "mstile-150x150.png",
+            "name": "square150x150logo",
+        }  # type: dict
+        context = Context({"XICON_MSTILE": mstile})
+
+        self.assertIsInstance(
+            obj=xicon_mstile(context=context, mstile=mstile), cls=Context
+        )
+
+    def test_xicon_mstile__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        mstile = {
+            "src": "mstile-150x150.png",
+            "name": "square150x150logo",
+        }  # type: dict
+        context = Context({"XICON_MSTILE": mstile})
+        template = Template("{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}")
+        response = template.render(context)  # type: str
+        expected = (
+            '<meta name="msapplication-square150x150logo" content="mstile-150x150.png">'
+        )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)

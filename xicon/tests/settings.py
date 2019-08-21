@@ -50,7 +50,7 @@ XICON_FAVICONS = [
     {"src": "favicon.ico", "type": "image/x-icon", "size": "16x16"},
     {"src": "favicon.png", "type": "image/png", "size": "32x32"},
     {"src": "favicon.svg", "type": "image/svg+xml"},
-]  # list
+]  # type: list
 XICON_APPLE_TOUCH_ICONS = [
     {"src": "apple-touch-icon.png"},
     {"src": "apple-touch-icon-57x57.png", "size": "57x57"},
@@ -62,7 +62,7 @@ XICON_APPLE_TOUCH_ICONS = [
     {"src": "apple-touch-icon-144x144.png", "size": "144x144"},
     {"src": "apple-touch-icon-152x152.png", "size": "152x152"},
     {"src": "apple-touch-icon-180x180.png", "size": "180x180"},
-]  # list
+]  # type: list
 XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC = "apple-touch-icon.png"  # type: str
 XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR = "#00ffff"  # type: str
 XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = "default"  # type: str
@@ -70,3 +70,9 @@ XICON_APPLE_MOBILE_WEB_APP_TITLE = "Django X Icon"  # type: str
 XICON_ANDROID_CHROME_THEME_COLOR = "#00ffff"  # type: str
 XICON_MSAPPLICATION_NAME = "Django X Icon"  # type: str
 XICON_MSAPPLICATION_TILE_COLOR = "#00ffff"  # type: str
+XICON_MSAPPLICATION_TILES = [
+    {"src": "mstile-70x70.png", "name": "square70x70logo"},
+    {"src": "mstile-150x150.png", "name": "square150x150logo"},
+    {"src": "mstile-310x150.png", "name": "wide310x150logo"},
+    {"src": "mstile-310x310.png", "name": "square310x310logo"},
+]  # type: list
