@@ -60,4 +60,3 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: detect-private-key
-      - id: detect-aws-credentials
