@@ -11,6 +11,7 @@ from django.test.utils import override_settings
 from xicon.templatetags.xicon_tags import (
     xicon_mstile,
     xicon_favicon,
+    xicon_mstiles,
     xicon_favicons,
     xicon_apple_touch_icon,
     xicon_apple_touch_icons,
@@ -34,6 +35,8 @@ __all__ = [
     "XiconAndroidChromeThemeColorTest",
     "XiconMsapplicationNameTest",
     "XiconMsapplicationTileColorTest",
+    "XiconMsTileTest",
+    "XiconMsTilesTest",
 ]  # type: list
 
 
@@ -645,5 +648,43 @@ class XiconMsTileTest(TestCase):
         expected = (
             '<meta name="msapplication-square150x150logo" content="mstile-150x150.png">'
         )  # type: str
+
+        self.assertInHTML(needle=expected, haystack=response)
+
+
+class XiconMsTilesTest(TestCase):
+    """
+    Microsoft application tiles templatetag tests.
+    """
+
+    def test_xicon_mstiles__return_context(self) -> None:
+        """
+        Test templatetag returning context.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+
+        self.assertIsInstance(obj=xicon_mstiles(context=context), cls=Context)
+
+    def test_xicon_mstiles__render(self) -> None:
+        """
+        Test templatetag rendering result.
+
+        :return: nothing.
+        :rtype: None.
+        """
+
+        context = Context()
+        template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
+        response = template.render(context)  # type: str
+        expected = """
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png">
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png">
+        <meta name="msapplication-wide310x150logo" content="mstile-150x150.png">
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png">
+        """  # type: str
 
         self.assertInHTML(needle=expected, haystack=response)
