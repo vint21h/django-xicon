@@ -75,7 +75,7 @@ Where ``src`` key is a path to the icon file in Django static directory and ``si
     Contains iOS web application launch icon title. Defaults to ``""``.
 
 ``XICON_ANDROID_CHROME_THEME_COLOR``
-    Contains android chrome web application toolbar color also used in ``manifest.json``. Defaults to ``""``, must starts with ``#``.
+    Contains android chrome web application toolbar color also using in ``manifest.json``. Defaults to ``""``, must starts with ``#``.
 
 ``XICON_ANDROID_CHROME_ICONS``
     Contains list of icons for ``manifest.json``. Defaults to ``[]``. Each element must be according to the next structure:
@@ -109,10 +109,10 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
     Contains microsoft application name. Defaults to ``""``.
 
 ``XICON_MSAPPLICATION_TILE_COLOR``
-    Contains microsoft application tile color for ``browserconfig.xml``. Defaults to ``""``, must starts with ``#``.
+    Contains microsoft application tile color also using in ``browserconfig.xml``. Defaults to ``""``, must starts with ``#``.
 
 ``XICON_MSAPPLICATION_TILES``
-    Contains list of icons for meta tags and also used in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
+    Contains list of icons for meta tags and also using in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
 
 .. code-block:: python
 

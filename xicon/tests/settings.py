@@ -63,9 +63,10 @@ XICON_APPLE_TOUCH_ICONS = [
     {"src": "apple-touch-icon-152x152.png", "size": "152x152"},
     {"src": "apple-touch-icon-180x180.png", "size": "180x180"},
 ]  # list
-XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC = "apple-touch-icon.png"
-XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR = "#00ffff"
-XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = "default"
-XICON_APPLE_MOBILE_WEB_APP_TITLE = "Django X Icon"
-XICON_ANDROID_CHROME_THEME_COLOR = "#00ffff"
-XICON_MSAPPLICATION_NAME = "Django X Icon"
+XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC = "apple-touch-icon.png"  # type: str
+XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR = "#00ffff"  # type: str
+XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = "default"  # type: str
+XICON_APPLE_MOBILE_WEB_APP_TITLE = "Django X Icon"  # type: str
+XICON_ANDROID_CHROME_THEME_COLOR = "#00ffff"  # type: str
+XICON_MSAPPLICATION_NAME = "Django X Icon"  # type: str
+XICON_MSAPPLICATION_TILE_COLOR = "#00ffff"  # type: str
