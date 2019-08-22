@@ -148,3 +148,8 @@ For complete authors list see AUTHORS file.
 .. _Travis: https://travis-ci.org/vint21h/django-xicon/
 .. _Codacy: https://www.codacy.com/app/vint21h/django-xicon/
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
+
+
+.. image:: https://api.codacy.com/project/badge/Grade/1fc70ffd575c4809ab9948b96d75c01d
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/vint21h/django-xicon?utm_source=github.com&utm_medium=referral&utm_content=vint21h/django-xicon&utm_campaign=Badge_Grade_Dashboard
