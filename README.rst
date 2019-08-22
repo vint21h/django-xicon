@@ -4,13 +4,7 @@
 A django-xicon documentation
 ============================
 
-.. image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
-    :alt: Travis
-    :target: https://travis-ci.org/vint21h/django-xicon/
-
-.. image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
-    :alt: Codacy
-    :target: https://www.codacy.com/app/vint21h/django-xicon/
+|Travis|_ |Codacy|_
 
     *django-xicon is a django reusable application to handle modern bunch of site icons*
 
@@ -142,3 +136,8 @@ Contacts
 **Author**: Alexei Andrushievich <vint21h@vint21h.pp.ua>
 
 For other authors list see AUTHORS file.
+
+.. |Travis| image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
+.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
+.. _Travis: https://travis-ci.org/vint21h/django-xicon/
+.. _Codacy: https://www.codacy.com/app/vint21h/django-xicon/

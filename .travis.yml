@@ -13,7 +13,7 @@ before_install:
       pip install -e .[dev]
 
 script:
-  - tox
+  - make tox
 
 branches:
   only:
