@@ -6,14 +6,18 @@ A django-xicon documentation
 
 |Travis|_ |Codacy|_
 
-    *django-xicon is a django reusable application to handle modern bunch of site icons*
+    *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
 .. contents::
+
+Nowadays ``<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>`` is not enough for good site or web application.
+`Apple <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, `Microsoft <https://technet.microsoft.com/en-us/windows/dn320426(v=vs.60)#MainContent>`_ and `Google <https://developers.google.com/web/fundamentals/web-app-manifest/>`_ creates their own standards.
+``django-xicon`` solve the boring problem of reading and implementing of these standards requirements through fast and simple Django project configuration. These standards requirements are not fully implemented, but enough to pass most of the checks.
 
 Installation
 ------------
 * Obtain your copy of source code from the git repository: ``git clone https://github.com/vint21h/django-xicon.git``. Or download the latest release from https://github.com/vint21h/django-xicon/tags/.
-* Run ``python ./setup.py install`` from repository source tree or unpacked archive. Or use pip: ``pip install django-xicon``.
+* Run ``python ./setup.py install`` from the repository source tree or unpacked archive. Or use pip: ``pip install django-xicon``.
 
 
 Configuration
@@ -26,7 +30,7 @@ Add ``"xicon"`` to ``settings.INSTALLED_APPS``.
         "xicon",
     )
 
-Add ``"xicon"`` to your urls definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``.
+Add ``"xicon"`` to your URLs definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``.
 
 .. code-block:: python
 
@@ -49,7 +53,7 @@ django-xicon settings
         "size": "16x16",  # type: Optional
     }
 
-Where ``src`` key is a path to the favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height`` and can be omitted.
+Where ``src`` key is a path to the favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon's ``width`` and ``height`` and can be omitted.
 
 ``XICON_APPLE_TOUCH_ICONS``
     Contains list of apple touch icons. Defaults to ``[]``. Each element must be according to the next structure:
@@ -61,13 +65,13 @@ Where ``src`` key is a path to the favicon file in Django static directory, ``ty
         "size": "144x144",  # type: Optional
     }
 
-Where ``src`` key is a path to the icon file in Django static directory and ``size`` contains icon ``width`` and ``height`` and can be omitted.
+Where ``src`` key is a path to the icon file in Django static directory and ``size`` contains icon's ``width`` and ``height`` and can be omitted.
 
 ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC``
     Contains path to Safari pinned tabs icon. Defaults to ``""``.
 
 ``XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR``
-    Contains path to Safari pinned tab icon hover color. Defaults to ``""``, must starts with ``#``.
+    Contains path to Safari pinned tab icon hover color. Defaults to ``""``, must start with ``#``.
 
 ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR``
     Contains iOS web application status bar color. Defaults to ``""``.
@@ -76,10 +80,10 @@ Where ``src`` key is a path to the icon file in Django static directory and ``si
     Contains iOS web application launch icon title. Defaults to ``""``.
 
 ``XICON_ANDROID_CHROME_THEME_COLOR``
-    Contains android chrome web application toolbar color also using in ``manifest.json``. Defaults to ``""``, must starts with ``#``.
+    Contains android chrome web application toolbar color also used in ``manifest.json``. Defaults to ``""``, must start with ``#``.
 
 ``XICON_ANDROID_CHROME_ICONS``
-    Contains list of icons for ``manifest.json``. Defaults to ``[]``. Each element must be according to the next structure:
+    Contains a list of icons for ``manifest.json``. Defaults to ``[]``. Each element must be according to the next structure:
 
 .. code-block:: python
 
@@ -89,7 +93,7 @@ Where ``src`` key is a path to the icon file in Django static directory and ``si
         "sizes": "64x64",  # type: str
     }
 
-Where ``src`` key is a path to the icon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon ``width`` and ``height``.
+Where ``src`` key is a path to the icon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon's ``width`` and ``height``.
 
 ``XICON_ANDROID_CHROME_NAME``
     Contains android chrome web application name for ``manifest.json``. Defaults to ``""``.
@@ -98,7 +102,7 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
     Contains android chrome web application short name for ``manifest.json``. Defaults to ``""``.
 
 ``XICON_ANDROID_CHROME_BACKGROUND_COLOR``
-    Contains android chrome web application background color for ``manifest.json``. Defaults to ``""``, must starts with ``#``.
+    Contains android chrome web application background color for ``manifest.json``. Defaults to ``""``, must start with ``#``.
 
 ``XICON_ANDROID_CHROME_DISPLAY``
     Contains android chrome web application browser UI mode for ``manifest.json``. Defaults to ``""``.
@@ -110,10 +114,10 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
     Contains microsoft application name. Defaults to ``""``.
 
 ``XICON_MSAPPLICATION_TILE_COLOR``
-    Contains microsoft application tile color also using in ``browserconfig.xml``. Defaults to ``""``, must starts with ``#``.
+    Contains Microsoft application tile color also used in ``browserconfig.xml``. Defaults to ``""``, must start with ``#``.
 
 ``XICON_MSAPPLICATION_TILES``
-    Contains list of icons for microsoft application meta tags and also using in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
+    Contains list of icons for Microsoft application meta tags and also used in ``browserconfig.xml``. Defaults to ``[]``. Each element must be according to the next structure:
 
 .. code-block:: python
 
@@ -122,6 +126,7 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
         "name": "square70x70logo",  # type: str
     }
 
+Where ``src`` key is a path to the icon file in Django static directory and ``name`` contains tile name (type).
 
 Licensing
 ---------
@@ -135,7 +140,7 @@ Contacts
 
 **Author**: Alexei Andrushievich <vint21h@vint21h.pp.ua>
 
-For other authors list see AUTHORS file.
+For complete authors list see AUTHORS file.
 
 .. |Travis| image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7

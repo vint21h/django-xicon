@@ -10,7 +10,7 @@ from appconf import AppConf
 from django.conf import settings
 
 
-__all__ = []  # type: list
+__all__ = ["settings"]  # type: list
 
 
 class DjangoXIconAppConf(AppConf):
