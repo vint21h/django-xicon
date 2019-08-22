@@ -128,6 +128,64 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
 
 Where ``src`` key is a path to the icon file in Django static directory and ``name`` contains tile name (type).
 
+Usage
+-----
+If you want to use all power of ``django-xicon``, just set up all settings and include ``"xicon/includes/xicon.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    <head>
+        {% include "xicon/includes/xicon.html" %}
+    </head>
+
+Or just for favicons, setup ``XICON_FAVICONS`` setting, load ``"xicon_tags"`` to your base template and place ``"xicon_favicons"`` in ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_favicons %}
+    </head>
+
+If you want to setup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``APPLE`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    <head>
+        {% include "xicon/includes/apple.html" %}
+    </head>
+
+To use Safari pinned tabs mask icon setup ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC`` and ``XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR`` settings and place ``"xicon_apple_touch_icon_mask_icon"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_apple_touch_icon_mask_icon %}
+    </head>
+
+To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR`` setting  and place ``"xicon_apple_mobile_web_app_status_bar_style"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_apple_mobile_web_app_status_bar_style %}
+    </head>
+
+To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WEB_APP_TITLE`` setting  and place ``"xicon_apple_mobile_web_app_title"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_apple_mobile_web_app_title %}
+    </head>
+
 Licensing
 ---------
 django-xicon is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -147,6 +205,6 @@ For complete authors list see AUTHORS file.
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
 .. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
 .. _Travis: https://travis-ci.org/vint21h/django-xicon/
-.. _Coverage: https://www.codacy.com/app/vint21h/django-xicon/
-.. _Codacy: https://www.codacy.com/app/vint21h/django-xicon/
+.. _Coverage: https://www.codacy.com/app/vint21h/django-xicon
+.. _Codacy: https://www.codacy.com/app/vint21h/django-xicon
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
