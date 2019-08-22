@@ -18,3 +18,8 @@ script:
 branches:
   only:
   - master
+
+after_success:
+  - |
+      coverage xml
+      python-codacy-coverage -r coverage.xml

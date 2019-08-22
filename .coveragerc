@@ -3,6 +3,7 @@
 
 
 [run]
+branch = True
 source = xicon
 omit =
     */__init__.py
@@ -14,3 +15,5 @@ omit =
     xicon/apps.py
 exclude_lines =
     pragma: no cover
+
+[xml]

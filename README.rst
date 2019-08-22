@@ -4,7 +4,7 @@
 A django-xicon documentation
 ============================
 
-|Travis|_ |Codacy|_ |Requires|_
+|Travis|_ |Coverage|_ |Codacy|_ |Requires|_
 
     *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
@@ -143,8 +143,10 @@ Contacts
 For complete authors list see AUTHORS file.
 
 .. |Travis| image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
+.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/b68e596c87914612b83fb2d9872dd1c7
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
 .. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
 .. _Travis: https://travis-ci.org/vint21h/django-xicon/
+.. _Coverage: https://www.codacy.com/app/vint21h/django-xicon/
 .. _Codacy: https://www.codacy.com/app/vint21h/django-xicon/
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
