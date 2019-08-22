@@ -3,4 +3,4 @@
 
 
  - add usage to documentation
- - add badges to README (even more)
+ - add badges to README (even more: pypi-version, pypi-license, pypi-django-version, pypi-python-version, pypi-wheel)
