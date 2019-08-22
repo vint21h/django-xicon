@@ -10,7 +10,7 @@ python:
 before_install:
   - |
       pip install pipenv
-      pip install -e .[dev]
+      pip install -e .[test]
 
 script:
   - make tox
