@@ -156,7 +156,7 @@ Or just for favicons, setup ``XICON_FAVICONS`` setting, load ``"xicon_tags"`` to
         {% xicon_favicons %}
     </head>
 
-If you want to setup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``XICON_APPLE_`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
+If you want to se tup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``XICON_APPLE_`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -166,7 +166,19 @@ If you want to setup web application for `apple devices <https://developer.apple
         {% include "xicon/includes/apple.html" %}
     </head>
 
-To use Safari pinned tabs mask icon setup ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC`` and ``XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR`` settings and place ``"xicon_apple_touch_icon_mask_icon"`` in ``<head>`` HTML tag of your base template:
+Or just for apple touch icons, setup ``APPLE_TOUCH_ICONS`` setting, load ``"xicon_tags"`` to your base template and place ``"xicon_apple_touch_icons"`` in ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    {# base.html #}
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_apple_touch_icons %}
+    </head>
+
+To use Safari pinned tabs mask icon setup ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC`` and ``XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR`` settings, load ``"xicon_tags"`` to your base template and place ``"xicon_apple_touch_icon_mask_icon"`` in ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -178,7 +190,7 @@ To use Safari pinned tabs mask icon setup ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC
         {% xicon_apple_touch_icon_mask_icon %}
     </head>
 
-To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR`` setting and place ``"xicon_apple_mobile_web_app_status_bar_style"`` in ``<head>`` HTML tag of your base template:
+To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR`` setting, load ``"xicon_tags"`` to your base template and place ``"xicon_apple_mobile_web_app_status_bar_style"`` in ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -190,7 +202,7 @@ To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_
         {% xicon_apple_mobile_web_app_status_bar_style %}
     </head>
 
-To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WEB_APP_TITLE`` setting and place ``"xicon_apple_mobile_web_app_title"`` in ``<head>`` HTML tag of your base template:
+To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WEB_APP_TITLE`` setting, load ``"xicon_tags"`` to your base template and place ``"xicon_apple_mobile_web_app_title"`` in ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -202,7 +214,7 @@ To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WE
         {% xicon_apple_mobile_web_app_title %}
     </head>
 
-If you want to use android chrome related things, just setup all settings prefixed with ``XICON_ANDROID_CHROME_`` and include ``"xicon/includes/android-chrome.html"`` to your base template ``<head>`` HTML tag:
+If you want to use `android chrome <https://developers.google.com/web/fundamentals/web-app-manifest/>`_ related things, just se tup all settings prefixed with ``XICON_ANDROID_CHROME_`` and include ``"xicon/includes/android-chrome.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -212,7 +224,7 @@ If you want to use android chrome related things, just setup all settings prefix
         {% include "xicon/includes/android-chrome.html" %}
     </head>
 
-Or if you need only configure android chrome web application toolbar color ``XICON_ANDROID_CHROME_THEME_COLOR`` and place ``"xicon_android_chrome_theme_color"`` in ``<head>`` HTML tag of your base template:
+Or if you need only configure android chrome web application toolbar color, setup ``XICON_ANDROID_CHROME_THEME_COLOR``, load ``"xicon_tags"`` to your base template and place ``"xicon_android_chrome_theme_color"`` in ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -224,7 +236,7 @@ Or if you need only configure android chrome web application toolbar color ``XIC
         {% xicon_android_chrome_theme_color %}
     </head>
 
-If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs definitions, setup next settings: ``XICON_ANDROID_CHROME_THEME_COLOR``, ``XICON_ANDROID_CHROME_ICONS``, ``XICON_ANDROID_CHROME_NAME``, ``XICON_ANDROID_CHROME_SHORT_NAME``, ``XICON_ANDROID_CHROME_BACKGROUND_COLOR``, ``XICON_ANDROID_CHROME_DISPLAY`` and `XICON_ANDROID_CHROME_ORIENTATION``, and include ``"xicon/includes/android-chrome-manifest-meta.html"`` to your base template ``<head>`` HTML tag:
+If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs definitions, setup next settings: ``XICON_ANDROID_CHROME_THEME_COLOR``, ``XICON_ANDROID_CHROME_ICONS``, ``XICON_ANDROID_CHROME_NAME``, ``XICON_ANDROID_CHROME_SHORT_NAME``, ``XICON_ANDROID_CHROME_BACKGROUND_COLOR``, ``XICON_ANDROID_CHROME_DISPLAY`` and `XICON_ANDROID_CHROME_ORIENTATION``, and then include ``"xicon/includes/android-chrome-manifest-meta.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: python
 
@@ -241,6 +253,72 @@ If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs d
     <head>
         {% include "xicon/includes/android-chrome-manifest-meta.html" %}
     </head>
+
+If you want to setup `microsoft application <https://technet.microsoft.com/en-us/windows/dn320426(v=vs.60)#MainContent>`_ configure all settings prefixed with ``XICON_MSAPPLICATION_`` and include ``"xicon/includes/msapplication.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    {# base.html #}
+
+    <head>
+        {% include "xicon/includes/msapplication.html" %}
+    </head>
+
+
+Or if you need only configure microsoft application name, setup ``XICON_MSAPPLICATION_NAME``, load ``"xicon_tags"`` to your base template and place ``"xicon_msapplication_name"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {# base.html #}
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_msapplication_name %}
+    </head>
+
+If you need configure microsoft application tile color, setup ``XICON_MSAPPLICATION_TILE_COLOR``, load ``"xicon_tags"`` to your base template and place ``"xicon_msapplication_tile_color"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {# base.html #}
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_msapplication_tile_color %}
+    </head>
+
+If you need generate and serve ``browserconfig.xml``, add ``"xicon"`` to your URLs definitions, setup next settings: ``XICON_MSAPPLICATION_TILE_COLOR`` and ``XICON_MSAPPLICATION_TILES``, and then include ``"xicon/includes/msapplication-browserconfig-meta.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: python
+
+    # urls.py
+
+    urlpatterns += [
+        url(r"^xicon/", include("xicon.urls")),
+    ]  # type: list
+
+.. code-block:: django
+
+    {# base.html #}
+
+    <head>
+        {% include "xicon/includes/msapplication-browserconfig-meta.html" %}
+    </head>
+
+Or just for microsoft application tiles, setup ``MSAPPLICATION_TILES`` setting, load ``"xicon_tags"`` to your base template and place ``"xicon_mstiles"`` in ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    {# base.html #}
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_mstiles %}
+    </head>
+
 
 Licensing
 ---------
