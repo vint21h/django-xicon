@@ -148,7 +148,7 @@ Or just for favicons, setup ``XICON_FAVICONS`` setting, load ``"xicon_tags"`` to
         {% xicon_favicons %}
     </head>
 
-If you want to setup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``APPLE`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
+If you want to setup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``XICON_APPLE_`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -166,7 +166,7 @@ To use Safari pinned tabs mask icon setup ``XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC
         {% xicon_apple_touch_icon_mask_icon %}
     </head>
 
-To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR`` setting  and place ``"xicon_apple_mobile_web_app_status_bar_style"`` in ``<head>`` HTML tag of your base template:
+To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR`` setting and place ``"xicon_apple_mobile_web_app_status_bar_style"`` in ``<head>`` HTML tag of your base template:
 
 .. code-block:: django
 
@@ -176,7 +176,7 @@ To configure iOS web application bar style color setup ``XICON_APPLE_MOBILE_WEB_
         {% xicon_apple_mobile_web_app_status_bar_style %}
     </head>
 
-To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WEB_APP_TITLE`` setting  and place ``"xicon_apple_mobile_web_app_title"`` in ``<head>`` HTML tag of your base template:
+To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WEB_APP_TITLE`` setting and place ``"xicon_apple_mobile_web_app_title"`` in ``<head>`` HTML tag of your base template:
 
 .. code-block:: django
 
@@ -184,6 +184,38 @@ To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WE
 
     <head>
         {% xicon_apple_mobile_web_app_title %}
+    </head>
+
+If you want to use android chrome related things, just setup all settings prefixed with ``XICON_ANDROID_CHROME_`` and include ``"xicon/includes/android-chrome.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: django
+
+    <head>
+        {% include "xicon/includes/android-chrome.html" %}
+    </head>
+
+Or if you need only configure android chrome web application toolbar color ``XICON_ANDROID_CHROME_THEME_COLOR`` and place ``"xicon_android_chrome_theme_color"`` in ``<head>`` HTML tag of your base template:
+
+.. code-block:: django
+
+    {% load xicon_tags %}
+
+    <head>
+        {% xicon_android_chrome_theme_color %}
+    </head>
+
+If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs definitions, setup next settings: ``XICON_ANDROID_CHROME_THEME_COLOR``, ``XICON_ANDROID_CHROME_ICONS``, ``XICON_ANDROID_CHROME_NAME``, ``XICON_ANDROID_CHROME_SHORT_NAME``, ``XICON_ANDROID_CHROME_BACKGROUND_COLOR``, ``XICON_ANDROID_CHROME_DISPLAY`` and `XICON_ANDROID_CHROME_ORIENTATION``, and include ``"xicon/includes/android-chrome-manifest-meta.html"`` to your base template ``<head>`` HTML tag:
+
+.. code-block:: python
+
+    urlpatterns += [
+        url(r"^xicon/", include("xicon.urls")),
+    ]
+
+.. code-block:: django
+
+    <head>
+        {% include "xicon/includes/android-chrome-manifest-meta.html" %}
     </head>
 
 Licensing
