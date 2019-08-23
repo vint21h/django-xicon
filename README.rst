@@ -22,26 +22,23 @@ Installation
 
 Configuration
 -------------
-Add ``"xicon"`` to ``settings.INSTALLED_APPS``.
+* Add ``"xicon"`` to ``settings.INSTALLED_APPS``:
+    .. code-block:: python
 
-.. code-block:: python
+        # settings.py
 
-    # settings.py
+        INSTALLED_APPS += (
+            "xicon",
+        )  # type: tuple
 
-    INSTALLED_APPS += (
-        "xicon",
-    )  # type: tuple
+* Add ``"xicon"`` to your URLs definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``:
+    .. code-block:: python
 
-Add ``"xicon"`` to your URLs definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``.
+        # urls.py
 
-.. code-block:: python
-
-    # urls.py
-
-    urlpatterns += [
-        url(r"^xicon/", include("xicon.urls")),
-    ]  # type: list
-
+        urlpatterns += [
+            url(r"^xicon/", include("xicon.urls")),
+        ]  # type: list
 
 django-xicon settings
 ---------------------
