@@ -12,11 +12,14 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).absolute().parent.parent.parent))
 
 # secret key
-SECRET_KEY = "xicon-test-key"  # type: str
+SECRET_KEY = "django-xicon-test-key"  # type: str
 
 # configure databases
 DATABASES = {
-    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "test.sqlite3"}
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "django-xicon-tests.sqlite3",
+    }
 }  # type: dict
 
 # configure templates
