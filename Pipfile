@@ -33,4 +33,4 @@ django = ">=2.2"
 django-appconf = ">=1.0.3"
 
 [requires]
-python_version = ">=3.6"
+python_version = "3.6"
