@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # django-xicon
-# xicon/urls.py
+# tests/urls.py
 
 
 from django.conf.urls import url
