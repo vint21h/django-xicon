@@ -232,7 +232,7 @@ If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs d
 
     urlpatterns += [
         url(r"^xicon/", include("xicon.urls")),
-    ]
+    ]  # type: list
 
 .. code-block:: django
 
