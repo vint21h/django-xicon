@@ -3,12 +3,13 @@
 
 
 .ONESHELL:
-PHONY: tox test makemessages compilemessages twine-check twine-upload clean help
+PHONY: tox test makemessages compilemessages bumpversion build twine-check twine-upload clean help
 TEST_PYPI_URL=https://test.pypi.org/legacy/
 NAME=xicon
 EXTENSIONS=py,html,txt
 TRASH=build dist django_xicon.egg-info .tox .mypy_cache
 BUILD_TYPES=bdist_wheel sdist
+VERSION=`python -c "import configparser; config = configparser.ConfigParser(); config.read('setup.cfg'); print(config['metadata']['version']);"`
 
 tox:
 	tox;\
@@ -25,13 +26,17 @@ makemessages:
 compilemessages:
 	django-admin compilemessages;\
 
-twine-check:
+bumpversion:
+	git tag -a $(VERSION) -m 'v$(VERSION)'
+
+build:
 	python setup.py $(BUILD_TYPES);\
+
+twine-check:
 	twine check dist/*;\
 	twine upload -s --repository-url $(TEST_PYPI_URL) dist/*;\
 
 twine-upload:
-	python setup.py $(BUILD_TYPES);\
 	twine upload -s dist/*;\
 
 clean:
@@ -49,6 +54,10 @@ help:
 	@echo "        Harvest translations."
 	@echo "    compilemessages:"
 	@echo "        Compile translations."
+	@echo "    bumpversion:"
+	@echo "        Tag current code revision with version."
+	@echo "    build:"
+	@echo "        Build python packages, can specify packages types with 'BUILD_TYPES' variable."
 	@echo "    twine-check:"
 	@echo "        Run some twine checks."
 	@echo "    twine-upload:"
