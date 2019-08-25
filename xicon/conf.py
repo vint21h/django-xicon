@@ -64,4 +64,5 @@ class DjangoXIconAppConf(AppConf):
     )  # type: Iterable[Dict[str, str]]
 
     class Meta:
+
         prefix = "xicon"
