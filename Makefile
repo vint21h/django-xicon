@@ -20,7 +20,7 @@ makemessages:
 	cd $(NAME);\
 	for locale in `ls locale`; do\
 		django-admin makemessages --locale=$$locale --extension=$(EXTENSIONS);\
-	done
+	done;\
 
 compilemessages:
 	django-admin compilemessages;\

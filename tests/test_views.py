@@ -65,7 +65,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
 
         self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILES"))
         self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"))
-        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
         """
@@ -108,7 +108,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         self.assertEqual(
             first=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"), second=""
         )
-        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
@@ -134,7 +134,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         self.assertListEqual(
             list1=response.context.get("XICON_MSAPPLICATION_TILES"), list2=[]
         )
-        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
+        self.assertHTMLEqual(html1=response, html2=expected)
 
 
 class AndroidChromeManifestViewTest(TestCase):
