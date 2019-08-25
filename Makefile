@@ -7,7 +7,7 @@ PHONY: tox test makemessages compilemessages bumpversion build twine-check twine
 TEST_PYPI_URL=https://test.pypi.org/legacy/
 NAME=xicon
 EXTENSIONS=py,html,txt
-TRASH=build dist django_xicon.egg-info .tox .mypy_cache
+TRASH=build dist django_$(NAME).egg-info .tox .mypy_cache
 BUILD_TYPES=bdist_wheel sdist
 VERSION=`python -c "import configparser; config = configparser.ConfigParser(); config.read('setup.cfg'); print(config['metadata']['version']);"`
 
