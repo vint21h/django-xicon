@@ -5,6 +5,7 @@
 include README.rst
 include COPYING
 include AUTHORS
+recursive-include xicon *.po
 include xicon/templates/xicon/includes/xicon.html
 include xicon/templates/xicon/includes/apple.html
 include xicon/templates/xicon/includes/android-chrome.html

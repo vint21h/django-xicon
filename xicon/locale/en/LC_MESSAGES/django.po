@@ -1,0 +1,21 @@
+# django-xicon
+# xicon/locale/en/LC_MESSAGES/django.po
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: django-xicon 0.2.1\n"
+"Report-Msgid-Bugs-To: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"POT-Creation-Date: 2019-08-25 16:16+0300\n"
+"PO-Revision-Date: 2019-08-25 16:16+0300\n"
+"Last-Translator: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"Language-Team: Alexei Andrushievich <vint21h@vint21h.pp.ua>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: apps.py:20
+msgid "Django X Icon"
+msgstr "Django X Icon"

@@ -5,6 +5,7 @@
 
 
 from django.apps import AppConfig
+from django.utils.translation import ugettext_lazy as _
 
 
 __all__ = ["DjangoXIconConfig"]  # type: list
@@ -16,4 +17,4 @@ class DjangoXIconConfig(AppConfig):
     """
 
     name = "xicon"
-    verbose_name = "Django X Icon"
+    verbose_name = _("Django X Icon")
