@@ -23,7 +23,7 @@ makemessages:
 	done
 
 compilemessages:
-	django-admin compilemessages
+	django-admin compilemessages;\
 
 twine-check:
 	python setup.py $(BUILD_TYPES);\
@@ -35,8 +35,8 @@ twine-upload:
 	twine upload -s dist/*;\
 
 clean:
-	rm -rf $(TRASH)
-	find -type d -name __pycache__ -print0 | xargs -0 rm -rf
+	rm -rf $(TRASH);\
+	find -type d -name __pycache__ -print0 | xargs -0 rm -rf;\
 
 help:
 	@echo "    help:"
