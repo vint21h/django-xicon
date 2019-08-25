@@ -5,7 +5,15 @@
 {% load xicon_tags %}
 
 
-{% xicon_apple_touch_icons %}
-{% xicon_apple_touch_icon_mask_icon %}
-{% xicon_apple_mobile_web_app_title %}
-{% xicon_apple_mobile_web_app_status_bar_style %}
+{% block touch-icons %}
+    {% xicon_apple_touch_icons %}
+{% endblock %}
+{% block mask-icon %}
+    {% xicon_apple_touch_icon_mask_icon %}
+{% endblock %}
+{% block application-title %}
+    {% xicon_apple_mobile_web_app_title %}
+{% endblock %}
+{% block status-bar-style %}
+    {% xicon_apple_mobile_web_app_status_bar_style %}
+{% endblock %}

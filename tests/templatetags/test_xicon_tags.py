@@ -82,7 +82,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         response = template.render(context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     def test_xicon_favicon__render__without_size(self) -> None:
         """
@@ -98,7 +98,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         response = template.render(context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
 
 class XiconFaviconsTemplatetagTest(TestCase):
@@ -135,7 +135,7 @@ class XiconFaviconsTemplatetagTest(TestCase):
         <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>
         """  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_FAVICONS=[])
     def test_xicon_favicons__render__without_favicons(self) -> None:
@@ -200,7 +200,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         response = template.render(context)  # type: str
         expected = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     def test_xicon_apple_touch_icon__render__without_size(self) -> None:
         """
@@ -221,7 +221,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
 
 class XiconAppleTouchIconsTemplatetagTest(TestCase):
@@ -265,7 +265,7 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180"/>
         """  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_APPLE_TOUCH_ICONS=[])
     def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
@@ -320,7 +320,7 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
             '<link rel="mask-icon" href="apple-touch-icon.png" color="#00ffff">'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC="")
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_src(self) -> None:
@@ -398,7 +398,7 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
             '<meta name="apple-mobile-web-app-status-bar-style" content="default">'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
     def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
@@ -455,7 +455,7 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
             '<meta name="apple-mobile-web-app-title" content="Django X Icon">'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_TITLE="")
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
@@ -510,7 +510,7 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
         response = template.render(context)  # type: str
         expected = '<meta name="theme-color" content="#00ffff">'  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
     def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
@@ -563,7 +563,7 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
         response = template.render(context)  # type: str
         expected = '<meta name="application-name" content="Django X Icon">'  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_NAME="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
@@ -618,7 +618,7 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
             '<meta name="msapplication-TileColor" content="#00ffff">'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILE_COLOR="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
@@ -681,7 +681,7 @@ class XiconMsTileTemplatetagTest(TestCase):
             '<meta name="msapplication-square150x150logo" content="mstile-150x150.png">'
         )  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
 
 class XiconMsTilesTemplatetagTest(TestCase):
@@ -719,7 +719,7 @@ class XiconMsTilesTemplatetagTest(TestCase):
         <meta name="msapplication-square310x310logo" content="mstile-310x310.png">
         """  # type: str
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertHTMLEqual(html1=response, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_xicon_mstiles__render__without_tiles(self) -> None:

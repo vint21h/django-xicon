@@ -2,6 +2,8 @@
 {# xicon/templates/xicon/templatetags/xicon_msapplication_tile_color.html #}
 
 
-{% if XICON_MSAPPLICATION_TILE_COLOR %}
-    <meta name="msapplication-TileColor" content="{{ XICON_MSAPPLICATION_TILE_COLOR }}">
-{% endif %}
+{% block tile-color %}
+    {% if XICON_MSAPPLICATION_TILE_COLOR %}
+        <meta name="msapplication-TileColor" content="{{ XICON_MSAPPLICATION_TILE_COLOR }}">
+    {% endif %}
+{% endblock %}

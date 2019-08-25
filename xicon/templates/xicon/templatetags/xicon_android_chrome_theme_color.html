@@ -2,6 +2,8 @@
 {# xicon/templates/xicon/templatetags/xicon_android_chrome_theme_color.html #}
 
 
-{% if XICON_ANDROID_CHROME_THEME_COLOR %}
-    <meta name="theme-color" content="{{ XICON_ANDROID_CHROME_THEME_COLOR }}">
-{% endif %}
+{% block theme-color %}
+    {% if XICON_ANDROID_CHROME_THEME_COLOR %}
+        <meta name="theme-color" content="{{ XICON_ANDROID_CHROME_THEME_COLOR }}">
+    {% endif %}
+{% endblock %}

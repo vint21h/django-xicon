@@ -62,8 +62,8 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     """
 
     context = {
-        "MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
-        "MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
+        "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
+        "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
     }  # type: dict
 
     return render_to_response(

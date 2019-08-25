@@ -61,11 +61,11 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(
-            path=reverse("msapplication-browserconfig")
-        ).content.decode()  # type: str
+        response = self.client.get(path=reverse("msapplication-browserconfig"))
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILES"))
+        self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"))
+        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
         """
@@ -103,13 +103,14 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(
-            path=reverse("msapplication-browserconfig")
-        ).content.decode()  # type: str
+        response = self.client.get(path=reverse("msapplication-browserconfig"))
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertEqual(
+            first=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"), second=""
+        )
+        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
 
-    @override_settings(XICON_MSAPPLICATION_TILES="")
+    @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
         """
         Test view rendering result without tiles setting.
@@ -128,11 +129,12 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(
-            path=reverse("msapplication-browserconfig")
-        ).content.decode()  # type: str
+        response = self.client.get(path=reverse("msapplication-browserconfig"))
 
-        self.assertInHTML(needle=expected, haystack=response)
+        self.assertListEqual(
+            list1=response.context.get("XICON_MSAPPLICATION_TILES"), list2=[]
+        )
+        self.assertHTMLEqual(html1=expected, html2=response.content.decode())
 
 
 class AndroidChromeManifestViewTest(TestCase):
@@ -242,7 +244,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
         self.assertDictEqual(d1=response, d2=expected)
 
-    @override_settings(XICON_ANDROID_CHROME_ICONS="")
+    @override_settings(XICON_ANDROID_CHROME_ICONS=[])
     def test_android_chrome_manifest__render__without_icons(self) -> None:
         """
         Test view rendering result without icons setting.

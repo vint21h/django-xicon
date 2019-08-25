@@ -5,4 +5,8 @@
 {% load static %}
 
 
-<meta name="msapplication-{{ XICON_MSTILE.name }}" content="{% static XICON_MSTILE.src %}">
+{% block tile %}
+    {% if XICON_MSTILE %}
+        <meta name="msapplication-{{ XICON_MSTILE.name }}" content="{% static XICON_MSTILE.src %}">
+    {% endif %}
+{% endblock %}

@@ -5,5 +5,9 @@
 {% load xicon_tags %}
 
 
-{% xicon_android_chrome_theme_color %}
-{% include "xicon/includes/android-chrome-manifest-meta.html" %}
+{% block theme-color %}
+    {% xicon_android_chrome_theme_color %}
+{% endblock %}
+{% block manifest %}
+    {% include "xicon/includes/android-chrome-manifest-meta.html" %}
+{% endblock %}

@@ -2,10 +2,14 @@
 <browserconfig>
     <msapplication>
         <tile>
-            {% for tile in MSAPPLICATION_TILES %}
+            {% block tiles %}
+            {% for tile in XICON_MSAPPLICATION_TILES %}
             <{{ tile.name }} src="{% static tile.src %}"/>
             {% endfor %}
-            {% if MSAPPLICATION_TILE_COLOR %}<TileColor>{{ MSAPPLICATION_TILE_COLOR }}</TileColor>{% endif %}
+            {% endblock %}
+            {% block tile-color %}
+            {% if XICON_MSAPPLICATION_TILE_COLOR %}<TileColor>{{ XICON_MSAPPLICATION_TILE_COLOR }}</TileColor>{% endif %}
+            {% endblock %}
         </tile>
     </msapplication>
 </browserconfig>

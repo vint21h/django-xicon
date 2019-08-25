@@ -5,6 +5,8 @@
 {% load xicon_tags %}
 
 
-{% for mstile in XICON_MSAPPLICATION_TILES %}
-    {% xicon_mstile mstile %}
-{% endfor %}
+{% block tiles %}
+    {% for mstile in XICON_MSAPPLICATION_TILES %}
+        {% xicon_mstile mstile %}
+    {% endfor %}
+{% endblock %}

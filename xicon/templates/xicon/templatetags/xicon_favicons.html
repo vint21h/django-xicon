@@ -5,6 +5,8 @@
 {% load xicon_tags %}
 
 
-{% for favicon in XICON_FAVICONS %}
-    {% xicon_favicon favicon %}
-{% endfor %}
+{% block favicons %}
+    {% for favicon in XICON_FAVICONS %}
+        {% xicon_favicon favicon %}
+    {% endfor %}
+{% endblock %}

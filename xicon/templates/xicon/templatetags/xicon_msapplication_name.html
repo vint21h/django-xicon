@@ -2,6 +2,8 @@
 {# xicon/templates/xicon/templatetags/xicon_msapplication_name.html #}
 
 
-{% if XICON_MSAPPLICATION_NAME %}
-    <meta name="application-name" content="{{ XICON_MSAPPLICATION_NAME }}">
-{% endif %}
+{% block application-name %}
+    {% if XICON_MSAPPLICATION_NAME %}
+        <meta name="application-name" content="{{ XICON_MSAPPLICATION_NAME }}">
+    {% endif %}
+{% endblock %}
