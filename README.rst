@@ -30,7 +30,7 @@ Configuration
 
     INSTALLED_APPS += (
         "xicon",
-    )  # type: tuple
+    )
 
 * Add ``"xicon"`` to your URLs definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``:
 
@@ -40,7 +40,7 @@ Configuration
 
     urlpatterns += [
         url(r"^xicon/", include("xicon.urls")),
-    ]  # type: list
+    ]
 
 django-xicon settings
 ---------------------

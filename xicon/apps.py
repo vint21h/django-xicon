@@ -13,8 +13,8 @@ __all__ = ["DjangoXIconConfig"]  # type: list
 
 class DjangoXIconConfig(AppConfig):
     """
-    Application config.
+    Django X Icon config.
     """
 
-    name = "xicon"
-    verbose_name = _("Django X Icon")
+    name = "xicon"  # type: str
+    verbose_name = _("Django X Icon")  # type: str
