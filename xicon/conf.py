@@ -65,4 +65,4 @@ class DjangoXIconAppConf(AppConf):
 
     class Meta:
 
-        prefix = "xicon"
+        prefix = "xicon"  # type: str
