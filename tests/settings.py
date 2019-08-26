@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # django-xicon
-# settings/settings.py
+# tests/settings.py
 
 
 import pathlib
