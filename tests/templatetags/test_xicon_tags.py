@@ -80,7 +80,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         context = Context({"XICON_FAVICON": favicon})
         template = Template("{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}")
         response = template.render(context)  # type: str
-        expected = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # type: str
+        expected = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
 
@@ -96,7 +96,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         context = Context({"XICON_FAVICON": favicon})
         template = Template("{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}")
         response = template.render(context)  # type: str
-        expected = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # type: str
+        expected = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
 
@@ -198,7 +198,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
         )
         response = template.render(context)  # type: str
-        expected = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # type: str
+        expected = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
 
@@ -263,7 +263,7 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         <link rel="apple-touch-icon" href="apple-touch-icon-144x144.png" sizes="144x144"/>
         <link rel="apple-touch-icon" href="apple-touch-icon-152x152.png" sizes="152x152"/>
         <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180"/>
-        """  # type: str
+        """  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
 
