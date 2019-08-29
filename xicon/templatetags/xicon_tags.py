@@ -37,27 +37,23 @@ def xicon_favicon(favicon: Dict[str, str]) -> dict:
 
     :param favicon: dict containing favicon settings.
     :type favicon: Dict[str, str].
-    :return: context.
+    :return: favicon.
     :rtype: dict.
     """
 
     return {"XICON_FAVICON": favicon}
 
 
-@register.inclusion_tag("xicon/templatetags/xicon_favicons.html", takes_context=True)
-def xicon_favicons(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_favicons.html")
+def xicon_favicons() -> dict:
     """
     Render classic favicon meta tags.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: favicons.
+    :rtype: dict.
     """
 
-    context.update({"XICON_FAVICONS": settings.XICON_FAVICONS})
-
-    return context
+    return {"XICON_FAVICONS": settings.XICON_FAVICONS}
 
 
 @register.inclusion_tag(

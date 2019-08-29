@@ -8,6 +8,7 @@ from django.template import Context, Template
 from django.test import TestCase
 from django.test.utils import override_settings
 
+from xicon.conf import settings
 from xicon.templatetags.xicon_tags import (
     xicon_mstile,
     xicon_favicon,
@@ -110,17 +111,19 @@ class XiconFaviconsTemplatetagTest(TestCase):
     Favicons templatetag tests.
     """
 
-    def test_xicon_favicons__return_context(self) -> None:
+    def test_xicon_favicons__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_favicons()  # type: dict
+        expected = {"XICON_FAVICONS": settings.XICON_FAVICONS}  # type: dict
 
-        self.assertIsInstance(obj=xicon_favicons(context=context), cls=Context)
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_favicons__render(self) -> None:
         """
@@ -130,9 +133,10 @@ class XiconFaviconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_favicons %}"
+        )  # type: Template
+        response = template.render(context=Context())  # type: str
         expected = """
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>
         <link rel="shortcut icon" href="favicon.png" type="image/png" sizes="32x32"/>
@@ -150,9 +154,10 @@ class XiconFaviconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_favicons %}"
+        )  # type: Template
+        response = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
         self.assertHTMLEqual(html1=response, html2=expected)
