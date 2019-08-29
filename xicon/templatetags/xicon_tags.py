@@ -30,24 +30,18 @@ __all__ = [
 register = template.Library()
 
 
-@register.inclusion_tag("xicon/templatetags/xicon_favicon.html", takes_context=True)
-def xicon_favicon(
-    context: template.Context, favicon: Dict[str, str]
-) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_favicon.html")
+def xicon_favicon(favicon: Dict[str, str]) -> dict:
     """
     Render classic favicon meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
     :param favicon: dict containing favicon settings.
     :type favicon: Dict[str, str].
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: context.
+    :rtype: dict.
     """
 
-    context.update({"XICON_FAVICON": favicon})
-
-    return context
+    return {"XICON_FAVICON": favicon}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_favicons.html", takes_context=True)

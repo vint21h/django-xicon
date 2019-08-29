@@ -45,9 +45,9 @@ class XiconFaviconTemplatetagTest(TestCase):
     Favicon templatetag tests.
     """
 
-    def test_xicon_favicon__return_context(self) -> None:
+    def test_xicon_favicon__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
@@ -58,11 +58,11 @@ class XiconFaviconTemplatetagTest(TestCase):
             "type": "image/x-icon",
             "size": "16x16",
         }  # type: dict
-        context = Context({"XICON_FAVICON": favicon})
+        result = xicon_favicon(favicon=favicon)  # type: dict
+        expected = {"XICON_FAVICON": favicon}  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_favicon(context=context, favicon=favicon), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_favicon__render(self) -> None:
         """
@@ -77,12 +77,14 @@ class XiconFaviconTemplatetagTest(TestCase):
             "type": "image/x-icon",
             "size": "16x16",
         }  # type: dict
-        context = Context({"XICON_FAVICON": favicon})
-        template = Template("{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}")
-        response = template.render(context)  # type: str
+        context = Context({"XICON_FAVICON": favicon})  # type: Context
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
+        )  # type: Template
+        result = template.render(context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # noqa: E501, type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     def test_xicon_favicon__render__without_size(self) -> None:
         """
@@ -93,12 +95,14 @@ class XiconFaviconTemplatetagTest(TestCase):
         """
 
         favicon = {"src": "favicon.svg", "type": "image/svg+xml"}  # type: dict
-        context = Context({"XICON_FAVICON": favicon})
-        template = Template("{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}")
-        response = template.render(context)  # type: str
+        context = Context({"XICON_FAVICON": favicon})  # type: Context
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
+        )  # type: Template
+        result = template.render(context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # noqa: E501, type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconFaviconsTemplatetagTest(TestCase):
