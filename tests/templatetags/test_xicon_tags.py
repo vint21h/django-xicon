@@ -82,7 +82,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
         )  # type: Template
-        result = template.render(context)  # type: str
+        result = template.render(context=context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=result, html2=expected)
@@ -100,7 +100,7 @@ class XiconFaviconTemplatetagTest(TestCase):
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
         )  # type: Template
-        result = template.render(context)  # type: str
+        result = template.render(context=context)  # type: str
         expected = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # noqa: E501, type: str
 
         self.assertHTMLEqual(html1=result, html2=expected)
@@ -136,14 +136,14 @@ class XiconFaviconsTemplatetagTest(TestCase):
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicons %}"
         )  # type: Template
-        response = template.render(context=Context())  # type: str
+        result = template.render(context=Context())  # type: str
         expected = """
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>
         <link rel="shortcut icon" href="favicon.png" type="image/png" sizes="32x32"/>
         <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>
         """  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_FAVICONS=[])
     def test_xicon_favicons__render__without_favicons(self) -> None:
@@ -157,10 +157,10 @@ class XiconFaviconsTemplatetagTest(TestCase):
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicons %}"
         )  # type: Template
-        response = template.render(context=Context())  # type: str
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAppleTouchIconTemplatetagTest(TestCase):
@@ -168,9 +168,9 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
     Apple touch icon templatetag tests.
     """
 
-    def test_xicon_apple_touch_icon__return_context(self) -> None:
+    def test_xicon_apple_touch_icon__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
@@ -180,14 +180,11 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             "src": "apple-touch-icon-57x57.png",
             "size": "57x57",
         }  # type: dict
-        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+        result = xicon_apple_touch_icon(apple_touch_icon=apple_touch_icon)  # type: dict
+        expected = {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_apple_touch_icon(
-                context=context, apple_touch_icon=apple_touch_icon
-            ),
-            cls=Context,
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_touch_icon__render(self) -> None:
         """
@@ -201,15 +198,15 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             "src": "apple-touch-icon-57x57.png",
             "size": "57x57",
         }  # type: dict
-        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})  # type: Context
         template = Template(
             "{% load xicon_tags %}"
             "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=context)  # type: str
         expected = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # noqa: E501, type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     def test_xicon_apple_touch_icon__render__without_size(self) -> None:
         """
@@ -220,17 +217,17 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         """
 
         apple_touch_icon = {"src": "apple-touch-icon.png"}  # type: dict
-        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
+        context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})  # type: Context
         template = Template(
             "{% load xicon_tags %}"
             "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=context)  # type: str
         expected = (
             '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
         )  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAppleTouchIconsTemplatetagTest(TestCase):

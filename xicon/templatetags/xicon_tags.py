@@ -31,7 +31,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_favicon.html")
-def xicon_favicon(favicon: Dict[str, str]) -> dict:
+def xicon_favicon(favicon: Dict[str, Dict[str, str]]) -> dict:
     """
     Render classic favicon meta tag.
 
@@ -56,26 +56,18 @@ def xicon_favicons() -> dict:
     return {"XICON_FAVICONS": settings.XICON_FAVICONS}
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_touch_icon.html", takes_context=True
-)
-def xicon_apple_touch_icon(
-    context: template.Context, apple_touch_icon: Dict[str, str]
-) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icon.html")
+def xicon_apple_touch_icon(apple_touch_icon: Dict[str, Dict[str, str]]) -> dict:
     """
     Render apple touch icon meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
     :param apple_touch_icon: dict containing apple touch icon settings.
     :type apple_touch_icon: Dict[str, str].
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: apple touch icon.
+    :rtype: dict.
     """
 
-    context.update({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
-
-    return context
+    return {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}
 
 
 @register.inclusion_tag(
