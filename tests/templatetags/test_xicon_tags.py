@@ -235,17 +235,21 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     Apple touch icons templatetag tests.
     """
 
-    def test_xicon_apple_touch_icons__return_context(self) -> None:
+    def test_xicon_apple_touch_icons__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_apple_touch_icons()  # type: dict
+        expected = {
+            "XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS
+        }  # type: dict
 
-        self.assertIsInstance(obj=xicon_apple_touch_icons(context=context), cls=Context)
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_touch_icons__render(self) -> None:
         """
@@ -255,9 +259,10 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_apple_touch_icons %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = """
         <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
         <link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>
@@ -271,7 +276,7 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180"/>
         """  # noqa: E501, type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_APPLE_TOUCH_ICONS=[])
     def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
@@ -282,12 +287,13 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_apple_touch_icons %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAppleTouchMaskIconTemplatetagTest(TestCase):

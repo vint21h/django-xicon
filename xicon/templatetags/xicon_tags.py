@@ -70,22 +70,16 @@ def xicon_apple_touch_icon(apple_touch_icon: Dict[str, Dict[str, str]]) -> dict:
     return {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_touch_icons.html", takes_context=True
-)
-def xicon_apple_touch_icons(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icons.html")
+def xicon_apple_touch_icons() -> dict:
     """
     Render apple touch icon meta tags.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: apple touch icons.
+    :rtype: dict.
     """
 
-    context.update({"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS})
-
-    return context
+    return {"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS}
 
 
 @register.inclusion_tag(
