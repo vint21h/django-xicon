@@ -378,20 +378,21 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     Apple iOS web application status bar style templatetag tests.
     """
 
-    def test_xicon_apple_mobile_web_app_status_bar_style__return_context(self) -> None:
+    def test_xicon_apple_mobile_web_app_status_bar_style__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_apple_mobile_web_app_status_bar_style()  # type: dict
+        expected = {
+            "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": settings.XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR  # noqa: E501
+        }
 
-        self.assertIsInstance(
-            obj=xicon_apple_mobile_web_app_status_bar_style(context=context),
-            cls=Context,
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
         """
@@ -401,16 +402,15 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = (
             '<meta name="apple-mobile-web-app-status-bar-style" content="default">'
         )  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
     def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
@@ -421,14 +421,13 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):

@@ -98,28 +98,19 @@ def xicon_apple_touch_icon_mask_icon() -> dict:
 
 
 @register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_mobile_web_app_status_bar_style.html",
-    takes_context=True,
+    "xicon/templatetags/xicon_apple_mobile_web_app_status_bar_style.html"
 )
-def xicon_apple_mobile_web_app_status_bar_style(
-    context: template.Context
-) -> template.Context:
+def xicon_apple_mobile_web_app_status_bar_style() -> dict:
     """
     Render apple mobile web application status bar style color meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: web app status bar style.
+    :rtype: dict.
     """
 
-    context.update(
-        {
-            "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": settings.XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR  # noqa: E501
-        }
-    )
-
-    return context
+    return {
+        "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": settings.XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR  # noqa: E501
+    }
 
 
 @register.inclusion_tag(
