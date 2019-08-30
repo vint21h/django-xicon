@@ -82,27 +82,19 @@ def xicon_apple_touch_icons() -> dict:
     return {"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS}
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_touch_icon_mask_icon.html", takes_context=True
-)
-def xicon_apple_touch_icon_mask_icon(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icon_mask_icon.html")
+def xicon_apple_touch_icon_mask_icon() -> dict:
     """
     Render apple touch icon mask icon meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: mask icon.
+    :rtype: dict.
     """
 
-    context.update(
-        {
-            "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC,  # noqa: E501
-            "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR,  # noqa: E501
-        }
-    )
-
-    return context
+    return {
+        "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC,  # noqa: E501
+        "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR,  # noqa: E501
+    }
 
 
 @register.inclusion_tag(
