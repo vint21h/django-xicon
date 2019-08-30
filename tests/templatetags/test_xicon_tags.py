@@ -435,19 +435,21 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     Apple iOS web application title templatetag tests.
     """
 
-    def test_xicon_apple_mobile_web_app_title__return_context(self) -> None:
+    def test_xicon_apple_mobile_web_app_title__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_apple_mobile_web_app_title()  # type: dict
+        expected = {
+            "XICON_APPLE_MOBILE_WEB_APP_TITLE": settings.XICON_APPLE_MOBILE_WEB_APP_TITLE  # noqa: E501
+        }  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_apple_mobile_web_app_title(context=context), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_mobile_web_app_title__render(self) -> None:
         """
@@ -457,16 +459,15 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = (
             '<meta name="apple-mobile-web-app-title" content="Django X Icon">'
         )  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_TITLE="")
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
@@ -477,14 +478,13 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):

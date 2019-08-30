@@ -113,24 +113,18 @@ def xicon_apple_mobile_web_app_status_bar_style() -> dict:
     }
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_apple_mobile_web_app_title.html", takes_context=True
-)
-def xicon_apple_mobile_web_app_title(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_apple_mobile_web_app_title.html")
+def xicon_apple_mobile_web_app_title() -> dict:
     """
     Render apple mobile web application title meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: web app title.
+    :rtype: dict.
     """
 
-    context.update(
-        {"XICON_APPLE_MOBILE_WEB_APP_TITLE": settings.XICON_APPLE_MOBILE_WEB_APP_TITLE}
-    )
-
-    return context
+    return {
+        "XICON_APPLE_MOBILE_WEB_APP_TITLE": settings.XICON_APPLE_MOBILE_WEB_APP_TITLE
+    }
 
 
 @register.inclusion_tag(
