@@ -5,6 +5,7 @@
 
 
 import json
+from typing import Dict, List, Union  # pylint: disable=W0611
 
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.test import TestCase
@@ -17,7 +18,7 @@ from xicon.views import android_chrome_manifest, msapplication_browserconfig
 __all__ = [
     "MsapplicationBrowserconfigViewTest",
     "AndroidChromeManifestViewTest",
-]  # type: list
+]  # type: List[str]
 
 
 class MsapplicationBrowserconfigViewTest(TestCase):
@@ -33,7 +34,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         :rtype: None.
         """
 
-        request = HttpRequest()
+        request = HttpRequest()  # type: HttpRequest
 
         self.assertIsInstance(
             obj=msapplication_browserconfig(request=request), cls=HttpResponse
@@ -61,11 +62,21 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(path=reverse("msapplication-browserconfig"))
+        result = self.client.get(
+            path=reverse("msapplication-browserconfig")
+        )  # type: HttpResponse
 
-        self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILES"))
-        self.assertIsNotNone(obj=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"))
-        self.assertHTMLEqual(html1=response.content.decode(), html2=expected)
+        self.assertIsNotNone(
+            obj=result.context.get("XICON_MSAPPLICATION_TILES")
+            if result.context
+            else None
+        )
+        self.assertIsNotNone(
+            obj=result.context.get("XICON_MSAPPLICATION_TILE_COLOR")
+            if result.context
+            else None
+        )
+        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
         """
@@ -75,7 +86,9 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         :rtype: None.
         """
 
-        response = self.client.get(path=reverse("msapplication-browserconfig"))
+        response = self.client.get(
+            path=reverse("msapplication-browserconfig")
+        )  # type: HttpResponse
 
         self.assertTemplateUsed(
             response=response, template_name="xicon/browserconfig.xml"
@@ -103,12 +116,17 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(path=reverse("msapplication-browserconfig"))
+        result = self.client.get(
+            path=reverse("msapplication-browserconfig")
+        )  # type: HttpResponse
 
         self.assertEqual(
-            first=response.context.get("XICON_MSAPPLICATION_TILE_COLOR"), second=""
+            first=result.context.get("XICON_MSAPPLICATION_TILE_COLOR")
+            if result.context
+            else None,
+            second="",
         )
-        self.assertHTMLEqual(html1=response.content.decode(), html2=expected)
+        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
@@ -129,12 +147,17 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             </msapplication>
         </browserconfig>
         """  # type: str
-        response = self.client.get(path=reverse("msapplication-browserconfig"))
+        result = self.client.get(
+            path=reverse("msapplication-browserconfig")
+        )  # type: HttpResponse
 
         self.assertListEqual(
-            list1=response.context.get("XICON_MSAPPLICATION_TILES"), list2=[]
+            list1=result.context.get("XICON_MSAPPLICATION_TILES")
+            if result.context
+            else None,
+            list2=[],
         )
-        self.assertHTMLEqual(html1=response.content.decode(), html2=expected)
+        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
 
 
 class AndroidChromeManifestViewTest(TestCase):
@@ -150,7 +173,7 @@ class AndroidChromeManifestViewTest(TestCase):
         :rtype: None.
         """
 
-        request = HttpRequest()
+        request = HttpRequest()  # type: HttpRequest
 
         self.assertIsInstance(
             obj=android_chrome_manifest(request=request), cls=JsonResponse
@@ -193,12 +216,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
     def test_android_chrome_manifest__render__without_theme_color(self) -> None:
@@ -237,12 +260,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_ICONS=[])
     def test_android_chrome_manifest__render__without_icons(self) -> None:
@@ -260,12 +283,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_NAME="")
     def test_android_chrome_manifest__render__without_name(self) -> None:
@@ -304,12 +327,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_SHORT_NAME="")
     def test_android_chrome_manifest__render__without_short_name(self) -> None:
@@ -348,12 +371,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_BACKGROUND_COLOR="")
     def test_android_chrome_manifest__render__without_background_color(self) -> None:
@@ -392,12 +415,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_DISPLAY="")
     def test_android_chrome_manifest__render__without_display(self) -> None:
@@ -436,12 +459,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "background_color": "#00ffff",
             "orientation": "portrait",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_ORIENTATION="")
     def test_android_chrome_manifest__render__without_orientation(self) -> None:
@@ -480,9 +503,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "background_color": "#00ffff",
             "display": "fullscreen",
-        }  # type: dict
-        response = json.loads(
+        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        result = json.loads(
             self.client.get(path=reverse("android-chrome-manifest")).content.decode()
-        )  # type: dict
+        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-        self.assertDictEqual(d1=response, d2=expected)
+        self.assertDictEqual(d1=result, d2=expected)

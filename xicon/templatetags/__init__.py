@@ -4,4 +4,7 @@
 # xicon/templatetags/__init__.py
 
 
-__all__ = []  # type: list
+from typing import List  # pylint: disable=W0611
+
+
+__all__ = []  # type: List[str]

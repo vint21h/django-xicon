@@ -4,7 +4,7 @@
 # xicon/templatetags/xicon_tags.py
 
 
-from typing import Dict, Iterable
+from typing import Dict, List, Iterable  # pylint: disable=W0611
 
 from django import template
 
@@ -24,7 +24,7 @@ __all__ = [
     "xicon_msapplication_tile_color",
     "xicon_mstile",
     "xicon_mstiles",
-]  # type: list
+]  # type: List[str]
 
 
 register = template.Library()
@@ -45,12 +45,12 @@ def xicon_favicon(favicon: Dict[str, str]) -> Dict[str, Dict[str, str]]:
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_favicons.html")
-def xicon_favicons() -> Dict[str, Iterable]:
+def xicon_favicons() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render classic favicon meta tags.
 
     :return: favicons.
-    :rtype: Dict[str, Iterable].
+    :rtype: Dict[str, Iterable[Dict[str, str]]].
     """
 
     return {"XICON_FAVICONS": settings.XICON_FAVICONS}
@@ -73,12 +73,12 @@ def xicon_apple_touch_icon(
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icons.html")
-def xicon_apple_touch_icons() -> Dict[str, Iterable]:
+def xicon_apple_touch_icons() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render apple touch icon meta tags.
 
     :return: apple touch icons.
-    :rtype: Dict[str, Iterable].
+    :rtype: Dict[str, Iterable[Dict[str, str]]].
     """
 
     return {"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS}
@@ -182,12 +182,12 @@ def xicon_mstile(mstile: Dict[str, str]) -> Dict[str, Dict[str, str]]:
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_mstiles.html")
-def xicon_mstiles() -> Dict[str, Iterable]:
+def xicon_mstiles() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render msapplication tiles meta tags.
 
     :return: tiles.
-    :rtype: Dict[str, Iterable].
+    :rtype: Dict[str, Iterable[Dict[str, str]]].
     """
 
     return {"XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES}

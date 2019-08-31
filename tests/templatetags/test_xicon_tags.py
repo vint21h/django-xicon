@@ -4,6 +4,8 @@
 # tests/templatetags/test_xicon_tags.py
 
 
+from typing import Dict, List, Iterable  # pylint: disable=W0611
+
 from django.template import Context, Template
 from django.test import TestCase
 from django.test.utils import override_settings
@@ -38,7 +40,7 @@ __all__ = [
     "XiconMsapplicationTileColorTemplatetagTest",
     "XiconMsTileTemplatetagTest",
     "XiconMsTilesTemplatetagTest",
-]  # type: list
+]  # type: List[str]
 
 
 class XiconFaviconTemplatetagTest(TestCase):
@@ -58,9 +60,9 @@ class XiconFaviconTemplatetagTest(TestCase):
             "src": "favicon.ico",
             "type": "image/x-icon",
             "size": "16x16",
-        }  # type: dict
-        result = xicon_favicon(favicon=favicon)  # type: dict
-        expected = {"XICON_FAVICON": favicon}  # type: dict
+        }  # type: Dict[str, str]
+        result = xicon_favicon(favicon=favicon)  # type: Dict[str, Dict[str, str]]
+        expected = {"XICON_FAVICON": favicon}  # type: Dict[str, Dict[str, str]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -77,7 +79,7 @@ class XiconFaviconTemplatetagTest(TestCase):
             "src": "favicon.ico",
             "type": "image/x-icon",
             "size": "16x16",
-        }  # type: dict
+        }  # type: Dict[str, str]
         context = Context({"XICON_FAVICON": favicon})  # type: Context
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
@@ -95,7 +97,10 @@ class XiconFaviconTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        favicon = {"src": "favicon.svg", "type": "image/svg+xml"}  # type: dict
+        favicon = {
+            "src": "favicon.svg",
+            "type": "image/svg+xml",
+        }  # type: Dict[str, str]
         context = Context({"XICON_FAVICON": favicon})  # type: Context
         template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
@@ -119,8 +124,10 @@ class XiconFaviconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_favicons()  # type: dict
-        expected = {"XICON_FAVICONS": settings.XICON_FAVICONS}  # type: dict
+        result = xicon_favicons()  # type: Dict[str, Iterable[Dict[str, str]]]
+        expected = {
+            "XICON_FAVICONS": settings.XICON_FAVICONS
+        }  # type: Dict[str, List[Dict[str, str]]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -179,9 +186,13 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         apple_touch_icon = {
             "src": "apple-touch-icon-57x57.png",
             "size": "57x57",
-        }  # type: dict
-        result = xicon_apple_touch_icon(apple_touch_icon=apple_touch_icon)  # type: dict
-        expected = {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}  # type: dict
+        }  # type: Dict[str, str]
+        result = xicon_apple_touch_icon(
+            apple_touch_icon=apple_touch_icon
+        )  # type: Dict[str, Dict[str, str]]
+        expected = {
+            "XICON_APPLE_TOUCH_ICON": apple_touch_icon
+        }  # type: Dict[str, Dict[str, str]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -197,7 +208,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         apple_touch_icon = {
             "src": "apple-touch-icon-57x57.png",
             "size": "57x57",
-        }  # type: dict
+        }  # type: Dict[str, str]
         context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})  # type: Context
         template = Template(
             "{% load xicon_tags %}"
@@ -216,7 +227,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        apple_touch_icon = {"src": "apple-touch-icon.png"}  # type: dict
+        apple_touch_icon = {"src": "apple-touch-icon.png"}  # type: Dict[str, str]
         context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})  # type: Context
         template = Template(
             "{% load xicon_tags %}"
@@ -243,10 +254,10 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_apple_touch_icons()  # type: dict
+        result = xicon_apple_touch_icons()  # type: Dict[str, Iterable[Dict[str, str]]]
         expected = {
             "XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS
-        }  # type: dict
+        }  # type: Dict[str, List[Dict[str, str]]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -309,11 +320,11 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_apple_touch_icon_mask_icon()  # type: dict
+        result = xicon_apple_touch_icon_mask_icon()  # type: Dict[str, str]
         expected = {
             "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC,  # noqa: E501
             "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": settings.XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR,  # noqa: E501
-        }  # type: dict
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -386,10 +397,10 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_apple_mobile_web_app_status_bar_style()  # type: dict
+        result = xicon_apple_mobile_web_app_status_bar_style()  # type: Dict[str, str]
         expected = {
             "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": settings.XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR  # noqa: E501
-        }
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -443,10 +454,10 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_apple_mobile_web_app_title()  # type: dict
+        result = xicon_apple_mobile_web_app_title()  # type: Dict[str, str]
         expected = {
             "XICON_APPLE_MOBILE_WEB_APP_TITLE": settings.XICON_APPLE_MOBILE_WEB_APP_TITLE  # noqa: E501
-        }  # type: dict
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -500,10 +511,10 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_android_chrome_theme_color()  # type: dict
+        result = xicon_android_chrome_theme_color()  # type: Dict[str, str]
         expected = {
             "XICON_ANDROID_CHROME_THEME_COLOR": settings.XICON_ANDROID_CHROME_THEME_COLOR  # noqa: E501
-        }  # type: dict
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -555,10 +566,10 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_msapplication_name()  # type: dict
+        result = xicon_msapplication_name()  # type: Dict[str, str]
         expected = {
             "XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME
-        }  # type: dict
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -610,10 +621,10 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_msapplication_tile_color()  # type: dict
+        result = xicon_msapplication_tile_color()  # type: Dict[str ,str]
         expected = {
             "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR
-        }  # type: dict
+        }  # type: Dict[str, str]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -670,9 +681,9 @@ class XiconMsTileTemplatetagTest(TestCase):
         mstile = {
             "src": "mstile-150x150.png",
             "name": "square150x150logo",
-        }  # type: dict
-        result = xicon_mstile(mstile=mstile)  # type: dict
-        expected = {"XICON_MSTILE": mstile}  # type: dict
+        }  # type: Dict[str ,str]
+        result = xicon_mstile(mstile=mstile)  # type: Dict[str, Dict[str, str]]
+        expected = {"XICON_MSTILE": mstile}  # type: Dict[str, Dict[str, str]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
@@ -688,7 +699,7 @@ class XiconMsTileTemplatetagTest(TestCase):
         mstile = {
             "src": "mstile-150x150.png",
             "name": "square150x150logo",
-        }  # type: dict
+        }  # type: Dict[str, str]
         context = Context({"XICON_MSTILE": mstile})  # type: Context
         template = Template(
             "{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}"
@@ -714,10 +725,10 @@ class XiconMsTilesTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        result = xicon_mstiles()  # type: dict
+        result = xicon_mstiles()  # type: Dict[str, Iterable[Dict[str, str]]]
         expected = {
             "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES
-        }  # type: dict
+        }  # type: Dict[str, List[Dict[str, str]]]
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)

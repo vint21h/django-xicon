@@ -4,11 +4,13 @@
 # xicon/apps.py
 
 
+from typing import List  # pylint: disable=W0611
+
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
 
-__all__ = ["DjangoXIconConfig"]  # type: list
+__all__ = ["DjangoXIconConfig"]  # type: List[str]
 
 
 class DjangoXIconConfig(AppConfig):
