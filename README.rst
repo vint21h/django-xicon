@@ -1,10 +1,11 @@
 .. django-xicon
 .. README.rst
 
+
 A django-xicon documentation
 ============================
 
-|Travis|_ |Coverage|_ |Codacy|_ |Requires|_ |pypi-license| |pypi-version| |pypi-python-version| |pypi-django-version| |pypi-format| |pypi-wheel| |pypi-status|
+|Travis|_ |Coverage|_ |Codacy|_ |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
 
     *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
@@ -348,3 +349,10 @@ For complete authors list see AUTHORS file.
 .. _Coverage: https://www.codacy.com/app/vint21h/django-xicon
 .. _Codacy: https://www.codacy.com/app/vint21h/django-xicon
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
+.. _pypi-license: https://pypi.org/project/django-xicon/
+.. _pypi-version: https://pypi.org/project/django-xicon/
+.. _pypi-django-version: https://pypi.org/project/django-xicon/
+.. _pypi-python-version: https://pypi.org/project/django-xicon/
+.. _pypi-format: https://pypi.org/project/django-xicon/
+.. _pypi-wheel: https://pypi.org/project/django-xicon/
+.. _pypi-status: https://pypi.org/project/django-xicon/
