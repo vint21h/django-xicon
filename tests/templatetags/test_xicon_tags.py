@@ -492,19 +492,21 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     Android chrome web application toolbar color templatetag tests.
     """
 
-    def test_xicon_android_chrome_theme_color__return_context(self) -> None:
+    def test_xicon_android_chrome_theme_color__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_android_chrome_theme_color()  # type: dict
+        expected = {
+            "XICON_ANDROID_CHROME_THEME_COLOR": settings.XICON_ANDROID_CHROME_THEME_COLOR  # noqa: E501
+        }  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_android_chrome_theme_color(context=context), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_android_chrome_theme_color__render(self) -> None:
         """
@@ -514,14 +516,13 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = '<meta name="theme-color" content="#00ffff">'  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
     def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
@@ -532,14 +533,13 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconMsapplicationNameTemplatetagTest(TestCase):

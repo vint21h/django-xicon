@@ -127,24 +127,18 @@ def xicon_apple_mobile_web_app_title() -> dict:
     }
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_android_chrome_theme_color.html", takes_context=True
-)
-def xicon_android_chrome_theme_color(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_android_chrome_theme_color.html")
+def xicon_android_chrome_theme_color() -> dict:
     """
     Render android chrome theme color meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: theme color.
+    :rtype: dict.
     """
 
-    context.update(
-        {"XICON_ANDROID_CHROME_THEME_COLOR": settings.XICON_ANDROID_CHROME_THEME_COLOR}
-    )
-
-    return context
+    return {
+        "XICON_ANDROID_CHROME_THEME_COLOR": settings.XICON_ANDROID_CHROME_THEME_COLOR
+    }
 
 
 @register.inclusion_tag(
