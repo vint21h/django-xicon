@@ -706,17 +706,21 @@ class XiconMsTilesTemplatetagTest(TestCase):
     Microsoft application tiles templatetag tests.
     """
 
-    def test_xicon_mstiles__return_context(self) -> None:
+    def test_xicon_mstiles__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_mstiles()  # type: dict
+        expected = {
+            "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES
+        }  # type: dict
 
-        self.assertIsInstance(obj=xicon_mstiles(context=context), cls=Context)
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_mstiles__render(self) -> None:
         """
@@ -726,9 +730,10 @@ class XiconMsTilesTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_mstiles %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = """
         <meta name="msapplication-square70x70logo" content="mstile-70x70.png">
         <meta name="msapplication-square150x150logo" content="mstile-150x150.png">
@@ -736,7 +741,7 @@ class XiconMsTilesTemplatetagTest(TestCase):
         <meta name="msapplication-square310x310logo" content="mstile-310x310.png">
         """  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_xicon_mstiles__render__without_tiles(self) -> None:
@@ -747,9 +752,10 @@ class XiconMsTilesTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_mstiles %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)

@@ -181,17 +181,13 @@ def xicon_mstile(mstile: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     return {"XICON_MSTILE": mstile}
 
 
-@register.inclusion_tag("xicon/templatetags/xicon_mstiles.html", takes_context=True)
-def xicon_mstiles(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_mstiles.html")
+def xicon_mstiles() -> Dict[str, Iterable]:
     """
     Render msapplication tiles meta tags.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: tiles.
+    :rtype: Dict[str, Iterable].
     """
 
-    context.update({"XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES})
-
-    return context
+    return {"XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES}
