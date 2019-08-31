@@ -547,19 +547,21 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     Android microsoft application name templatetag tests.
     """
 
-    def test_xicon_msapplication_name__return_context(self) -> None:
+    def test_xicon_msapplication_name__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_msapplication_name()  # type: dict
+        expected = {
+            "XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME
+        }  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_msapplication_name(context=context), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_msapplication_name__render(self) -> None:
         """
@@ -569,12 +571,13 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_msapplication_name %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_msapplication_name %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = '<meta name="application-name" content="Django X Icon">'  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_NAME="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
@@ -585,12 +588,13 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
-        template = Template("{% load xicon_tags %}" "{% xicon_msapplication_name %}")
-        response = template.render(context)  # type: str
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_msapplication_name %}"
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconMsapplicationTileColorTemplatetagTest(TestCase):

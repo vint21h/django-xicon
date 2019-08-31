@@ -141,22 +141,16 @@ def xicon_android_chrome_theme_color() -> dict:
     }
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_msapplication_name.html", takes_context=True
-)
-def xicon_msapplication_name(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_msapplication_name.html")
+def xicon_msapplication_name() -> dict:
     """
     Render microsoft application name meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: application name.
+    :rtype: dict.
     """
 
-    context.update({"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME})
-
-    return context
+    return {"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME}
 
 
 @register.inclusion_tag(
