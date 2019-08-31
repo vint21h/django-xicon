@@ -4,7 +4,7 @@
 # xicon/templatetags/xicon_tags.py
 
 
-from typing import Dict
+from typing import Dict, Iterable
 
 from django import template
 
@@ -31,64 +31,66 @@ register = template.Library()
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_favicon.html")
-def xicon_favicon(favicon: Dict[str, Dict[str, str]]) -> dict:
+def xicon_favicon(favicon: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     """
     Render classic favicon meta tag.
 
     :param favicon: dict containing favicon settings.
     :type favicon: Dict[str, str].
     :return: favicon.
-    :rtype: dict.
+    :rtype: Dict[str, Dict[str, str]].
     """
 
     return {"XICON_FAVICON": favicon}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_favicons.html")
-def xicon_favicons() -> dict:
+def xicon_favicons() -> Dict[str, Iterable]:
     """
     Render classic favicon meta tags.
 
     :return: favicons.
-    :rtype: dict.
+    :rtype: Dict[str, Iterable].
     """
 
     return {"XICON_FAVICONS": settings.XICON_FAVICONS}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icon.html")
-def xicon_apple_touch_icon(apple_touch_icon: Dict[str, Dict[str, str]]) -> dict:
+def xicon_apple_touch_icon(
+    apple_touch_icon: Dict[str, str]
+) -> Dict[str, Dict[str, str]]:
     """
     Render apple touch icon meta tag.
 
     :param apple_touch_icon: dict containing apple touch icon settings.
     :type apple_touch_icon: Dict[str, str].
     :return: apple touch icon.
-    :rtype: dict.
+    :rtype: Dict[str, Dict[str, str]].
     """
 
     return {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icons.html")
-def xicon_apple_touch_icons() -> dict:
+def xicon_apple_touch_icons() -> Dict[str, Iterable]:
     """
     Render apple touch icon meta tags.
 
     :return: apple touch icons.
-    :rtype: dict.
+    :rtype: Dict[str, Iterable].
     """
 
     return {"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_apple_touch_icon_mask_icon.html")
-def xicon_apple_touch_icon_mask_icon() -> dict:
+def xicon_apple_touch_icon_mask_icon() -> Dict[str, str]:
     """
     Render apple touch icon mask icon meta tag.
 
     :return: mask icon.
-    :rtype: dict.
+    :rtype: Dict[str, str].
     """
 
     return {
@@ -100,12 +102,12 @@ def xicon_apple_touch_icon_mask_icon() -> dict:
 @register.inclusion_tag(
     "xicon/templatetags/xicon_apple_mobile_web_app_status_bar_style.html"
 )
-def xicon_apple_mobile_web_app_status_bar_style() -> dict:
+def xicon_apple_mobile_web_app_status_bar_style() -> Dict[str, str]:
     """
     Render apple mobile web application status bar style color meta tag.
 
     :return: web app status bar style.
-    :rtype: dict.
+    :rtype: Dict[str, str].
     """
 
     return {
@@ -114,12 +116,12 @@ def xicon_apple_mobile_web_app_status_bar_style() -> dict:
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_apple_mobile_web_app_title.html")
-def xicon_apple_mobile_web_app_title() -> dict:
+def xicon_apple_mobile_web_app_title() -> Dict[str, str]:
     """
     Render apple mobile web application title meta tag.
 
     :return: web app title.
-    :rtype: dict.
+    :rtype: Dict[str, str].
     """
 
     return {
@@ -128,12 +130,12 @@ def xicon_apple_mobile_web_app_title() -> dict:
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_android_chrome_theme_color.html")
-def xicon_android_chrome_theme_color() -> dict:
+def xicon_android_chrome_theme_color() -> Dict[str, str]:
     """
     Render android chrome theme color meta tag.
 
     :return: theme color.
-    :rtype: dict.
+    :rtype: Dict[str, str].
     """
 
     return {
@@ -142,45 +144,41 @@ def xicon_android_chrome_theme_color() -> dict:
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_msapplication_name.html")
-def xicon_msapplication_name() -> dict:
+def xicon_msapplication_name() -> Dict[str, str]:
     """
     Render microsoft application name meta tag.
 
     :return: application name.
-    :rtype: dict.
+    :rtype: Dict[str, str].
     """
 
     return {"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_msapplication_tile_color.html")
-def xicon_msapplication_tile_color() -> dict:
+def xicon_msapplication_tile_color() -> Dict[str, str]:
     """
     Render microsoft application tile color meta tag.
 
     :return: tile color.
-    :rtype: dict
+    :rtype: Dict[str, str].
     """
 
     return {"XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR}
 
 
-@register.inclusion_tag("xicon/templatetags/xicon_mstile.html", takes_context=True)
-def xicon_mstile(context: template.Context, mstile: Dict[str, str]) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_mstile.html")
+def xicon_mstile(mstile: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     """
     Render msapplication tile meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
     :param mstile: dict containing tile settings.
     :type mstile: Dict[str, str].
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: tile.
+    :rtype: Dict[str, Dict[str, str]].
     """
 
-    context.update({"XICON_MSTILE": mstile})
-
-    return context
+    return {"XICON_MSTILE": mstile}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_mstiles.html", takes_context=True)

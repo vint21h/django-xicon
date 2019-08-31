@@ -659,9 +659,9 @@ class XiconMsTileTemplatetagTest(TestCase):
     Microsoft application tile templatetag tests.
     """
 
-    def test_xicon_mstile__return_context(self) -> None:
+    def test_xicon_mstile__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
@@ -671,11 +671,11 @@ class XiconMsTileTemplatetagTest(TestCase):
             "src": "mstile-150x150.png",
             "name": "square150x150logo",
         }  # type: dict
-        context = Context({"XICON_MSTILE": mstile})
+        result = xicon_mstile(mstile=mstile)  # type: dict
+        expected = {"XICON_MSTILE": mstile}  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_mstile(context=context, mstile=mstile), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_mstile__render(self) -> None:
         """
@@ -689,14 +689,16 @@ class XiconMsTileTemplatetagTest(TestCase):
             "src": "mstile-150x150.png",
             "name": "square150x150logo",
         }  # type: dict
-        context = Context({"XICON_MSTILE": mstile})
-        template = Template("{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}")
-        response = template.render(context)  # type: str
+        context = Context({"XICON_MSTILE": mstile})  # type: Context
+        template = Template(
+            "{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}"
+        )  # type: Template
+        result = template.render(context=context)  # type: str
         expected = (
             '<meta name="msapplication-square150x150logo" content="mstile-150x150.png">'
         )  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconMsTilesTemplatetagTest(TestCase):
