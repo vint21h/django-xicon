@@ -153,24 +153,16 @@ def xicon_msapplication_name() -> dict:
     return {"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME}
 
 
-@register.inclusion_tag(
-    "xicon/templatetags/xicon_msapplication_tile_color.html", takes_context=True
-)
-def xicon_msapplication_tile_color(context: template.Context) -> template.Context:
+@register.inclusion_tag("xicon/templatetags/xicon_msapplication_tile_color.html")
+def xicon_msapplication_tile_color() -> dict:
     """
     Render microsoft application tile color meta tag.
 
-    :param context: template context.
-    :type context: django.template.Context.
-    :return: updated template context.
-    :rtype: django.template.Context.
+    :return: tile color.
+    :rtype: dict
     """
 
-    context.update(
-        {"XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR}
-    )
-
-    return context
+    return {"XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR}
 
 
 @register.inclusion_tag("xicon/templatetags/xicon_mstile.html", takes_context=True)

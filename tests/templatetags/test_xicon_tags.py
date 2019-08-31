@@ -602,19 +602,21 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     Android microsoft application tile color templatetag tests.
     """
 
-    def test_xicon_msapplication_tile_color__return_context(self) -> None:
+    def test_xicon_msapplication_tile_color__return(self) -> None:
         """
-        Test templatetag returning context.
+        Test templatetag returning value.
 
         :return: nothing.
         :rtype: None.
         """
 
-        context = Context()
+        result = xicon_msapplication_tile_color()  # type: dict
+        expected = {
+            "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR
+        }  # type: dict
 
-        self.assertIsInstance(
-            obj=xicon_msapplication_tile_color(context=context), cls=Context
-        )
+        self.assertIsInstance(obj=result, cls=dict)
+        self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_msapplication_tile_color__render(self) -> None:
         """
@@ -624,16 +626,15 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = (
             '<meta name="msapplication-TileColor" content="#00ffff">'
         )  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILE_COLOR="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
@@ -644,14 +645,13 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
         :rtype: None.
         """
 
-        context = Context()
         template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"
-        )
-        response = template.render(context)  # type: str
+        )  # type: Template
+        result = template.render(context=Context())  # type: str
         expected = ""  # type: str
 
-        self.assertHTMLEqual(html1=response, html2=expected)
+        self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconMsTileTemplatetagTest(TestCase):
