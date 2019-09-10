@@ -76,7 +76,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             if result.context
             else None
         )
-        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
+        self.assertXMLEqual(xml1=result.content.decode(), xml2=expected)
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
         """
@@ -126,7 +126,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             else None,
             second="",
         )
-        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
+        self.assertXMLEqual(xml1=result.content.decode(), xml2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
@@ -157,7 +157,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
             else None,
             list2=[],
         )
-        self.assertHTMLEqual(html1=result.content.decode(), html2=expected)
+        self.assertXMLEqual(xml1=result.content.decode(), xml2=expected)
 
 
 class AndroidChromeManifestViewTest(TestCase):
