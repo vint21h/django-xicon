@@ -156,7 +156,7 @@ Or just for favicons, setup ``XICON_FAVICONS`` setting, load ``"xicon_tags"`` to
         {% xicon_favicons %}
     </head>
 
-If you want to se tup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``XICON_APPLE_`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
+If you want to setup web application for `apple devices <https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html>`_, setup all settings prefixed with ``XICON_APPLE_`` and include ``"xicon/includes/apple.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: django
 
@@ -214,7 +214,7 @@ To configure iOS web application launch icon title setup ``XICON_APPLE_MOBILE_WE
         {% xicon_apple_mobile_web_app_title %}
     </head>
 
-If you want to use `android chrome <https://developers.google.com/web/fundamentals/web-app-manifest/>`_ related things, just se tup all settings prefixed with ``XICON_ANDROID_CHROME_`` and include ``"xicon/includes/android-chrome.html"`` to your base template ``<head>`` HTML tag:
+If you want to use `android chrome <https://developers.google.com/web/fundamentals/web-app-manifest/>`_ related things, just setup all settings prefixed with ``XICON_ANDROID_CHROME_`` and include ``"xicon/includes/android-chrome.html"`` to your base template ``<head>`` HTML tag:
 
 .. code-block:: django
 
