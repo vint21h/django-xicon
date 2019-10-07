@@ -66,7 +66,7 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     context = {
         "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
         "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
-    }  # type: Dict[str, str]
+    }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
     return render_to_response(
         "xicon/browserconfig.xml", context=context, content_type="application/xml"

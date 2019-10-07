@@ -152,9 +152,9 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         )  # type: HttpResponse
 
         self.assertListEqual(
-            list1=result.context.get("XICON_MSAPPLICATION_TILES")
+            list1=result.context.get("XICON_MSAPPLICATION_TILES", [])  # type: ignore
             if result.context
-            else None,
+            else [],
             list2=[],
         )
         self.assertXMLEqual(xml1=result.content.decode(), xml2=expected)
