@@ -22,7 +22,7 @@ repos:
       name: black
       stages: [commit]
       language: system
-      entry: pipenv run black xicon
+      entry: pipenv run black xicon tests
       types: [python]
       language_version: python3.7
     - id: flake8
@@ -37,6 +37,13 @@ repos:
       language: system
       entry: pipenv run pylint xicon tests
       types: [python]
+    - id: bandit
+      name: bandit
+      stages: [commit]
+      language: system
+      entry: bandit -r xicon tests
+      types: [python]
+      pass_filenames: false
     - id: mypy
       name: mypy
       stages: [commit]

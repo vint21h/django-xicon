@@ -1,0 +1,6 @@
+# django-xicon
+# .bandit
+
+
+[bandit]
+skips: ['B507']
