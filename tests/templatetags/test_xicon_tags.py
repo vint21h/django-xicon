@@ -366,7 +366,7 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
 
     @override_settings(XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR="")
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_color(
-        self
+        self,
     ) -> None:
         """
         Test templatetag rendering result without icon color setting.
