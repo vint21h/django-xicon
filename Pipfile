@@ -36,6 +36,8 @@ pylint = "==2.4.3"
 pylint-django = "==2.0.11"
 pep8-naming = "==0.8.2"
 bandit = "==1.6.2"
+pyroma = "==2.5"
+
 
 [packages]
 django = ">=2.1<=3.0"
