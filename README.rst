@@ -29,9 +29,9 @@ Configuration
 
     # settings.py
 
-    INSTALLED_APPS += (
+    INSTALLED_APPS += [
         "xicon",
-    )
+    ]
 
 * Add ``"xicon"`` to your URLs definitions if you want to serve ``manifest.json`` or ``browserconfig.xml``:
 
@@ -43,8 +43,8 @@ Configuration
         url(r"^xicon/", include("xicon.urls")),
     ]
 
-django-xicon settings
----------------------
+Settings
+--------
 
 ``XICON_FAVICONS``
     Contains list of favicons. Defaults to ``[]``. Each element must be according to the next structure:
@@ -335,16 +335,27 @@ Contacts
 For complete authors list see AUTHORS file.
 
 .. |Travis| image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
+    :alt: Travis
 .. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/b68e596c87914612b83fb2d9872dd1c7
+    :alt: Coverage
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/b68e596c87914612b83fb2d9872dd1c7
+    :alt: Codacy
 .. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
+    :alt: Requires
 .. |pypi-license| image:: https://img.shields.io/pypi/l/django-xicon
+    :alt: License
 .. |pypi-version| image:: https://img.shields.io/pypi/v/django-xicon
+    :alt: Version
 .. |pypi-django-version| image:: https://img.shields.io/pypi/djversions/django-xicon
+    :alt: Supported Django version
 .. |pypi-python-version| image:: https://img.shields.io/pypi/pyversions/django-xicon
+    :alt: Supported Python version
 .. |pypi-format| image:: https://img.shields.io/pypi/format/django-xicon
+    :alt: Package format
 .. |pypi-wheel| image:: https://img.shields.io/pypi/wheel/django-xicon
+    :alt: Python wheel support
 .. |pypi-status| image:: https://img.shields.io/pypi/status/django-xicon
+    :alt: Package status
 .. _Travis: https://travis-ci.org/vint21h/django-xicon/
 .. _Coverage: https://www.codacy.com/app/vint21h/django-xicon
 .. _Codacy: https://www.codacy.com/app/vint21h/django-xicon
