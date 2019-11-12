@@ -5,7 +5,7 @@
 A django-xicon documentation
 ============================
 
-|Travis|_ |Coverage|_  |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
+|Travis|_ |Coveralls|_  |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
 
     *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
@@ -336,8 +336,8 @@ For complete authors list see AUTHORS file.
 
 .. |Travis| image:: https://travis-ci.org/vint21h/django-xicon.svg?branch=master
     :alt: Travis
-.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/b68e596c87914612b83fb2d9872dd1c7
-    :alt: Coverage
+.. |Coveralls| image:: https://coveralls.io/repos/github/vint21h/django-xicon/badge.svg?branch=master
+    :alt: Coveralls
 .. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
     :alt: Requires
 .. |pypi-license| image:: https://img.shields.io/pypi/l/django-xicon
@@ -355,7 +355,7 @@ For complete authors list see AUTHORS file.
 .. |pypi-status| image:: https://img.shields.io/pypi/status/django-xicon
     :alt: Package status
 .. _Travis: https://travis-ci.org/vint21h/django-xicon/
-.. _Coverage: https://www.codacy.com/app/vint21h/django-xicon
+.. _Coveralls: https://coveralls.io/github/vint21h/django-xicon?branch=master
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
 .. _pypi-license: https://pypi.org/project/django-xicon/
 .. _pypi-version: https://pypi.org/project/django-xicon/
