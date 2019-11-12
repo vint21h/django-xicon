@@ -1,0 +1,16 @@
+# django-xicon
+# codacy.yml
+
+
+engines:
+  prospector:
+    enabled: true
+    python_version: 3
+  pylint:
+    enabled: true
+    python_version: 3
+  bandit:
+    enabled: true
+    python_version: 3
+  pmd:
+    enabled: true
