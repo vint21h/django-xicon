@@ -1,7 +1,7 @@
 # django-xicon
 # .codacy.yml
 
-
+---
 engines:
   prospector:
     enabled: true
