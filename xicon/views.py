@@ -7,7 +7,7 @@
 from typing import Dict, List, Union  # pylint: disable=W0611
 
 from django.http import HttpRequest, HttpResponse, JsonResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 from xicon.conf import settings
 
@@ -68,6 +68,9 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
         "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
     }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
-    return render_to_response(
-        "xicon/browserconfig.xml", context=context, content_type="application/xml"
+    return render(
+        request=request,
+        template_name="xicon/browserconfig.xml",
+        context=context,
+        content_type="application/xml",
     )
