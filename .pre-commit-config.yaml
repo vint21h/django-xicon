@@ -35,7 +35,7 @@ repos:
       name: flake8
       stages: [commit]
       language: system
-      entry: pipenv run flake8
+      entry: bash -c 'PYTHONPATH="$PYTHONPATH:$PWD" pipenv run flake8 --mypy-config=setup.cfg'
       types: [python]
     - id: pylint
       name: pylint
