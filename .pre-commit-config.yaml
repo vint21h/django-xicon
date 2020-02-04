@@ -47,14 +47,14 @@ repos:
       name: bandit
       stages: [commit]
       language: system
-      entry: bandit -r xicon tests --ini=.bandit
+      entry: pipenv run bandit -r xicon tests --ini=.bandit
       types: [python]
       pass_filenames: false
     - id: dodgy
       name: dodgy
       stages: [commit]
       language: system
-      entry: dodgy
+      entry: pipenv run dodgy
       types: [python]
       pass_filenames: false
     - id: mypy
