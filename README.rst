@@ -54,7 +54,7 @@ Settings
     {
         "src": "favicon.ico",  # type: str
         "type": "image/x-icon",  # type: str
-        "size": "16x16",  # type: Optional
+        "size": "16x16",  # type: Optional[str]
     }
 
 Where ``src`` key is a path to the favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon's ``width`` and ``height`` and can be omitted.
@@ -66,7 +66,7 @@ Where ``src`` key is a path to the favicon file in Django static directory, ``ty
 
     {
         "src": "apple-touch-icon-144x144.png",  # type: str
-        "size": "144x144",  # type: Optional
+        "size": "144x144",  # type: Optional[str]
     }
 
 Where ``src`` key is a path to the icon file in Django static directory and ``size`` contains icon's ``width`` and ``height`` and can be omitted.
@@ -244,7 +244,7 @@ If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs d
 
     urlpatterns += [
         url(r"^xicon/", include("xicon.urls")),
-    ]  # type: list
+    ]
 
 .. code-block:: django
 
@@ -297,7 +297,7 @@ If you need generate and serve ``browserconfig.xml``, add ``"xicon"`` to your UR
 
     urlpatterns += [
         url(r"^xicon/", include("xicon.urls")),
-    ]  # type: list
+    ]
 
 .. code-block:: django
 
