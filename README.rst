@@ -17,9 +17,8 @@ Nowadays ``<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" size
 
 Installation
 ------------
-* Obtain your copy of source code from the git repository: ``git clone https://github.com/vint21h/django-xicon.git``. Or download the latest release from https://github.com/vint21h/django-xicon/tags/.
-* Run ``python ./setup.py install`` from the repository source tree or unpacked archive. Or use pip: ``pip install django-xicon``.
-
+* Obtain your copy of source code from the git repository: ``$ git clone https://github.com/vint21h/django-xicon.git``. Or download the latest release from https://github.com/vint21h/django-xicon/tags/.
+* Run ``$ python ./setup.py install`` from the repository source tree or unpacked archive. Or use pip: ``$ pip install django-xicon``.
 
 Configuration
 -------------
@@ -319,12 +318,10 @@ Or just for microsoft application tiles, setup ``MSAPPLICATION_TILES`` setting, 
         {% xicon_mstiles %}
     </head>
 
-
 Licensing
 ---------
 django-xicon is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 For complete license text see COPYING file.
-
 
 Contacts
 --------
