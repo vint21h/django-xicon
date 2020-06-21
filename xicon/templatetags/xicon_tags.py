@@ -35,10 +35,10 @@ def xicon_favicon(favicon: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     """
     Render classic favicon meta tag.
 
-    :param favicon: dict containing favicon settings.
-    :type favicon: Dict[str, str].
-    :return: favicon.
-    :rtype: Dict[str, Dict[str, str]].
+    :param favicon: dict containing favicon settings
+    :type favicon: Dict[str, str]
+    :return: favicon
+    :rtype: Dict[str, Dict[str, str]]
     """
 
     return {"XICON_FAVICON": favicon}
@@ -49,8 +49,8 @@ def xicon_favicons() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render classic favicon meta tags.
 
-    :return: favicons.
-    :rtype: Dict[str, Iterable[Dict[str, str]]].
+    :return: favicons
+    :rtype: Dict[str, Iterable[Dict[str, str]]]
     """
 
     return {"XICON_FAVICONS": settings.XICON_FAVICONS}
@@ -63,10 +63,10 @@ def xicon_apple_touch_icon(
     """
     Render apple touch icon meta tag.
 
-    :param apple_touch_icon: dict containing apple touch icon settings.
-    :type apple_touch_icon: Dict[str, str].
-    :return: apple touch icon.
-    :rtype: Dict[str, Dict[str, str]].
+    :param apple_touch_icon: dict containing apple touch icon settings
+    :type apple_touch_icon: Dict[str, str]
+    :return: apple touch icon
+    :rtype: Dict[str, Dict[str, str]]
     """
 
     return {"XICON_APPLE_TOUCH_ICON": apple_touch_icon}
@@ -77,8 +77,8 @@ def xicon_apple_touch_icons() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render apple touch icon meta tags.
 
-    :return: apple touch icons.
-    :rtype: Dict[str, Iterable[Dict[str, str]]].
+    :return: apple touch icons
+    :rtype: Dict[str, Iterable[Dict[str, str]]]
     """
 
     return {"XICON_APPLE_TOUCH_ICONS": settings.XICON_APPLE_TOUCH_ICONS}
@@ -89,8 +89,8 @@ def xicon_apple_touch_icon_mask_icon() -> Dict[str, str]:
     """
     Render apple touch icon mask icon meta tag.
 
-    :return: mask icon.
-    :rtype: Dict[str, str].
+    :return: mask icon
+    :rtype: Dict[str, str]
     """
 
     return {
@@ -106,8 +106,8 @@ def xicon_apple_mobile_web_app_status_bar_style() -> Dict[str, str]:
     """
     Render apple mobile web application status bar style color meta tag.
 
-    :return: web app status bar style.
-    :rtype: Dict[str, str].
+    :return: web app status bar style
+    :rtype: Dict[str, str]
     """
 
     return {
@@ -120,8 +120,8 @@ def xicon_apple_mobile_web_app_title() -> Dict[str, str]:
     """
     Render apple mobile web application title meta tag.
 
-    :return: web app title.
-    :rtype: Dict[str, str].
+    :return: web app title
+    :rtype: Dict[str, str]
     """
 
     return {
@@ -134,8 +134,8 @@ def xicon_android_chrome_theme_color() -> Dict[str, str]:
     """
     Render android chrome theme color meta tag.
 
-    :return: theme color.
-    :rtype: Dict[str, str].
+    :return: theme color
+    :rtype: Dict[str, str]
     """
 
     return {
@@ -148,8 +148,8 @@ def xicon_msapplication_name() -> Dict[str, str]:
     """
     Render microsoft application name meta tag.
 
-    :return: application name.
-    :rtype: Dict[str, str].
+    :return: application name
+    :rtype: Dict[str, str]
     """
 
     return {"XICON_MSAPPLICATION_NAME": settings.XICON_MSAPPLICATION_NAME}
@@ -160,8 +160,8 @@ def xicon_msapplication_tile_color() -> Dict[str, str]:
     """
     Render microsoft application tile color meta tag.
 
-    :return: tile color.
-    :rtype: Dict[str, str].
+    :return: tile color
+    :rtype: Dict[str, str]
     """
 
     return {"XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR}
@@ -172,10 +172,10 @@ def xicon_mstile(mstile: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     """
     Render msapplication tile meta tag.
 
-    :param mstile: dict containing tile settings.
-    :type mstile: Dict[str, str].
-    :return: tile.
-    :rtype: Dict[str, Dict[str, str]].
+    :param mstile: dict containing tile settings
+    :type mstile: Dict[str, str]
+    :return: tile
+    :rtype: Dict[str, Dict[str, str]]
     """
 
     return {"XICON_MSTILE": mstile}
@@ -186,8 +186,8 @@ def xicon_mstiles() -> Dict[str, Iterable[Dict[str, str]]]:
     """
     Render msapplication tiles meta tags.
 
-    :return: tiles.
-    :rtype: Dict[str, Iterable[Dict[str, str]]].
+    :return: tiles
+    :rtype: Dict[str, Iterable[Dict[str, str]]]
     """
 
     return {"XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES}

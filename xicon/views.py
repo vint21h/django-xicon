@@ -19,10 +19,10 @@ def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
     """
     Render android chrome manifest.json.
 
-    :param request: django HTTP request instance.
-    :type request: django.http.HttpRequest.
-    :return: rendered manifest.
-    :rtype: django.http.JsonResponse.
+    :param request: django HTTP request instance
+    :type request: HttpRequest
+    :return: rendered manifest
+    :rtype: JsonResponse
     """
 
     manifest = {}  # type: Dict[str, Union[str, List[Dict[str, str]]]]
@@ -57,10 +57,10 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     """
     Render microsoft application browserconfig.xml.
 
-    :param request: django HTTP request instance.
-    :type request: django.http.HttpRequest.
-    :return: rendered browserconfig.
-    :rtype: django.http.HttpResponse.
+    :param request: django HTTP request instance
+    :type request: HttpRequest
+    :return: rendered browserconfig
+    :rtype: HttpResponse
     """
 
     context = {

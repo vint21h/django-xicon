@@ -29,9 +29,6 @@ class MsapplicationBrowserconfigViewTest(TestCase):
     def test_msapplication_browserconfig__return_response(self) -> None:
         """
         Test view returning response.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         request = HttpRequest()  # type: HttpRequest
@@ -43,9 +40,6 @@ class MsapplicationBrowserconfigViewTest(TestCase):
     def test_msapplication_browserconfig__render(self) -> None:
         """
         Test view rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = """
@@ -80,10 +74,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
         """
-        Test view right template usage .
-
-        :return: nothing.
-        :rtype: None.
+        Test view right template usage.
         """
 
         response = self.client.get(
@@ -98,9 +89,6 @@ class MsapplicationBrowserconfigViewTest(TestCase):
     def test_msapplication_browserconfig__render__without_color(self) -> None:
         """
         Test view rendering result without tile color setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = """
@@ -132,9 +120,6 @@ class MsapplicationBrowserconfigViewTest(TestCase):
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
         """
         Test view rendering result without tiles setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = """
@@ -168,9 +153,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__return_response(self) -> None:
         """
         Test view returning response.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         request = HttpRequest()  # type: HttpRequest
@@ -182,9 +164,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render(self) -> None:
         """
         Test view rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -227,9 +206,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_theme_color(self) -> None:
         """
         Test view rendering result without theme color setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -271,9 +247,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_icons(self) -> None:
         """
         Test view rendering result without icons setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -294,9 +267,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_name(self) -> None:
         """
         Test view rendering result without name setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -338,9 +308,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_short_name(self) -> None:
         """
         Test view rendering result without short name setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -382,9 +349,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_background_color(self) -> None:
         """
         Test view rendering result without background color setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -426,9 +390,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_display(self) -> None:
         """
         Test view rendering result without display setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {
@@ -470,9 +431,6 @@ class AndroidChromeManifestViewTest(TestCase):
     def test_android_chrome_manifest__render__without_orientation(self) -> None:
         """
         Test view rendering result without orientation setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         expected = {

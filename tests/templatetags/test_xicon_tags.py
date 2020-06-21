@@ -51,9 +51,6 @@ class XiconFaviconTemplatetagTest(TestCase):
     def test_xicon_favicon__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         favicon = {
@@ -70,9 +67,6 @@ class XiconFaviconTemplatetagTest(TestCase):
     def test_xicon_favicon__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         favicon = {
@@ -92,9 +86,6 @@ class XiconFaviconTemplatetagTest(TestCase):
     def test_xicon_favicon__render__without_size(self) -> None:
         """
         Test templatetag rendering result for favicon without size.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         favicon = {
@@ -119,9 +110,6 @@ class XiconFaviconsTemplatetagTest(TestCase):
     def test_xicon_favicons__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_favicons()  # type: Dict[str, Iterable[Dict[str, str]]]
@@ -135,9 +123,6 @@ class XiconFaviconsTemplatetagTest(TestCase):
     def test_xicon_favicons__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -156,9 +141,6 @@ class XiconFaviconsTemplatetagTest(TestCase):
     def test_xicon_favicons__render__without_favicons(self) -> None:
         """
         Test templatetag rendering result with empty favicons list.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -178,9 +160,6 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icon__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         apple_touch_icon = {
@@ -200,9 +179,6 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icon__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         apple_touch_icon = {
@@ -222,9 +198,6 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icon__render__without_size(self) -> None:
         """
         Test templatetag rendering result for icon without size.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         apple_touch_icon = {"src": "apple-touch-icon.png"}  # type: Dict[str, str]
@@ -249,9 +222,6 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icons__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_apple_touch_icons()  # type: Dict[str, Iterable[Dict[str, str]]]
@@ -265,9 +235,6 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icons__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -293,9 +260,6 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
         """
         Test templatetag rendering result with empty apple touch icons list.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -315,9 +279,6 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_apple_touch_icon_mask_icon()  # type: Dict[str, str]
@@ -332,9 +293,6 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -351,9 +309,6 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_src(self) -> None:
         """
         Test templatetag rendering result without icon source setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -370,9 +325,6 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     ) -> None:
         """
         Test templatetag rendering result without icon color setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -392,9 +344,6 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_status_bar_style__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_apple_mobile_web_app_status_bar_style()  # type: Dict[str, str]
@@ -408,9 +357,6 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -427,9 +373,6 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
         """
         Test templatetag rendering result without icon color setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -449,9 +392,6 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_title__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_apple_mobile_web_app_title()  # type: Dict[str, str]
@@ -465,9 +405,6 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_title__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -484,9 +421,6 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
         """
         Test templatetag rendering result without title setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -506,9 +440,6 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     def test_xicon_android_chrome_theme_color__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_android_chrome_theme_color()  # type: Dict[str, str]
@@ -522,9 +453,6 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     def test_xicon_android_chrome_theme_color__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -539,9 +467,6 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
         """
         Test templatetag rendering result without title setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -561,9 +486,6 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_msapplication_name()  # type: Dict[str, str]
@@ -577,9 +499,6 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -594,9 +513,6 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render__without_name(self) -> None:
         """
         Test templatetag rendering result without title setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -616,9 +532,6 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     def test_xicon_msapplication_tile_color__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_msapplication_tile_color()  # type: Dict[str ,str]
@@ -632,9 +545,6 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     def test_xicon_msapplication_tile_color__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -651,9 +561,6 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render__without_name(self) -> None:
         """
         Test templatetag rendering result without title setting.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -673,9 +580,6 @@ class XiconMsTileTemplatetagTest(TestCase):
     def test_xicon_mstile__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         mstile = {
@@ -691,9 +595,6 @@ class XiconMsTileTemplatetagTest(TestCase):
     def test_xicon_mstile__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         mstile = {
@@ -720,9 +621,6 @@ class XiconMsTilesTemplatetagTest(TestCase):
     def test_xicon_mstiles__return(self) -> None:
         """
         Test templatetag returning value.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         result = xicon_mstiles()  # type: Dict[str, Iterable[Dict[str, str]]]
@@ -736,9 +634,6 @@ class XiconMsTilesTemplatetagTest(TestCase):
     def test_xicon_mstiles__render(self) -> None:
         """
         Test templatetag rendering result.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
@@ -758,9 +653,6 @@ class XiconMsTilesTemplatetagTest(TestCase):
     def test_xicon_mstiles__render__without_tiles(self) -> None:
         """
         Test templatetag rendering result with empty microsoft application icons list.
-
-        :return: nothing.
-        :rtype: None.
         """
 
         template = Template(
