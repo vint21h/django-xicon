@@ -6,8 +6,8 @@
 
 from typing import Dict, List, Union  # pylint: disable=W0611
 
-from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse, JsonResponse
 
 from xicon.conf import settings
 

@@ -6,8 +6,8 @@
 
 from typing import Dict, List, Iterable  # pylint: disable=W0611
 
-from django.template import Context, Template
 from django.test import TestCase
+from django.template import Context, Template
 from django.test.utils import override_settings
 
 from xicon.conf import settings

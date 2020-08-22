@@ -41,7 +41,7 @@ repos:
       name: interrogate
       stages: [commit]
       language: system
-      entry: interrogate xicon tests -I -M
+      entry: pipenv run interrogate xicon tests -I -M
       types: [python]
     - id: pylint
       name: pylint

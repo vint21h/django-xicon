@@ -7,10 +7,10 @@
 import json
 from typing import Dict, List, Union  # pylint: disable=W0611
 
-from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.urls import reverse
 from django.test import TestCase
 from django.test.utils import override_settings
-from django.urls import reverse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 
 from xicon.views import android_chrome_manifest, msapplication_browserconfig
 
