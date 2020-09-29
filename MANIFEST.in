@@ -3,9 +3,6 @@
 
 
 prune tests*
-include README.rst
-include COPYING
-include AUTHORS
 recursive-include xicon *.po
 recursive-include xicon *.mo
 include xicon/templates/xicon/includes/xicon.html
