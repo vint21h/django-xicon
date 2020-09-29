@@ -73,9 +73,9 @@ repos:
       name: polint
       stages: [commit]
       language: system
-      entry: pipenv run polint . --ignore=location
-      types: [python]
-      pass_filenames: false
+      entry: pipenv run polint --ignore=location --show-msg
+      types: [pofile]
+      pass_filenames: true
     - id: mypy
       name: mypy
       stages: [commit]
