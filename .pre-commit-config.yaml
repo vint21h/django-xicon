@@ -73,11 +73,11 @@ repos:
       name: polint
       stages: [commit]
       language: system
-      entry: pipenv run polint --ignore=location --show-msg
+      entry: pipenv run polint --ignore=location,unsorted --show-msg
       types: [pofile]
       pass_filenames: true
     - id: dennis
-      name: polint
+      name: dennis
       stages: [commit]
       language: system
       entry: pipenv run dennis-cmd lint
