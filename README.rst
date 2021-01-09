@@ -5,7 +5,7 @@
 A django-xicon documentation
 ============================
 
-|Travis|_ |Coveralls|_ |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
+|Coveralls|_ |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
 
     *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
@@ -334,8 +334,6 @@ Contacts
 
 For complete authors list see AUTHORS file.
 
-.. |Travis| image:: https://travis-ci.com/vint21h/django-xicon.svg?branch=master
-    :alt: Travis
 .. |Coveralls| image:: https://coveralls.io/repos/github/vint21h/django-xicon/badge.svg?branch=master
     :alt: Coveralls
 .. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
@@ -354,7 +352,6 @@ For complete authors list see AUTHORS file.
     :alt: Python wheel support
 .. |pypi-status| image:: https://img.shields.io/pypi/status/django-xicon
     :alt: Package status
-.. _Travis: https://travis-ci.com/vint21h/django-xicon/
 .. _Coveralls: https://coveralls.io/github/vint21h/django-xicon?branch=master
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
 .. _pypi-license: https://pypi.org/project/django-xicon/
