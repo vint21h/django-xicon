@@ -47,7 +47,7 @@ jobs:
           pip install .[test]
       - name: Run tests
         env:
-          TOX_ENV: py${{ matrix.python-version}}-django${{ matrix.django }}
+          TOX_ENV: py${{ matrix.python-version}}-${{ matrix.django }}
         run: tox -e ${TOX_ENV}
   checks:
     name: ${{ matrix.toxenv }}
