@@ -71,6 +71,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-${{ matrix.python-version }}-
             ${{ runner.os }}-pip-
+      - name: Temporarily save coverage statistics
+        uses: actions/cache@v2
+        with:
+          path: .coverage
+          key: .coverage-${{ github.run_id }}-${{ github.run_number }}
       - name: Install dependencies
         run: |
           pip install pipenv
@@ -79,11 +84,6 @@ jobs:
         env:
           PLATFORM: ${{ matrix.platform }}
         run: make tox
-      - name: Temporarily save coverage statistics
-        uses: actions/upload-artifact@v2
-        with:
-          name: .coverage
-          path: .coverage
   coveralls:
     name: coveralls
     runs-on: ubuntu-latest
@@ -92,11 +92,6 @@ jobs:
     steps:
       - name: Git clone
         uses: actions/checkout@v2
-      - name: Retrieve saved coverage statistics
-        uses: actions/download-artifact@v2
-        with:
-          name: .coverage
-          path: .coverage
       - name: Set up Python ${{ env.default_python }}
         uses: actions/setup-python@v2
         with:
@@ -109,6 +104,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-${{ matrix.toxenv }}-
             ${{ runner.os }}-pip-
+      - name: Temporarily save coverage statistics
+        uses: actions/cache@v2
+        with:
+          path: .coverage
+          key: .coverage-${{ github.run_id }}-${{ github.run_number }}
       - name: Install dependencies
         run: |
           pip install pipenv
