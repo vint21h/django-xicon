@@ -22,6 +22,10 @@ jobs:
           - "3.7"
           - "3.8"
           - "3.9"
+        django:
+          - "2.2.x"
+          - "3.0.x"
+          - "3.1.x"
     steps:
       - name: Git clone
         uses: actions/checkout@v2
@@ -42,12 +46,19 @@ jobs:
           pip install pipenv
           pip install .[test]
       - name: Run tests
-        run: make tox
+        env:
+          TOX_ENV: py${{ matrix.python-version}}-django${{ matrix.django }}
+        run: tox -e ${TOX_ENV}
   checks:
     name: ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        python-version:
+          - "3.6"
+          - "3.7"
+          - "3.8"
+          - "3.9"
         toxenv:
           - check
           - check-build
