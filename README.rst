@@ -354,7 +354,7 @@ For complete authors list see AUTHORS file.
     :alt: Python wheel support
 .. |pypi-status| image:: https://img.shields.io/pypi/status/django-xicon
     :alt: Package status
-.. _GitHub: https://github.com/vint21h/django-xicon/
+.. _GitHub: https://github.com/vint21h/django-xicon/actions/
 .. _Coveralls: https://coveralls.io/github/vint21h/django-xicon?branch=master
 .. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
 .. _pypi-license: https://pypi.org/project/django-xicon/
