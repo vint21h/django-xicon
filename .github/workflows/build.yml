@@ -13,7 +13,7 @@ env:
   default_python: "3.9"
 jobs:
   build:
-    name: ${{ matrix.python-version }}
+    name: ${{ matrix.python-version }}-${{ matrix.django }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -47,10 +47,10 @@ jobs:
           pip install .[test]
       - name: Run tests
         env:
-          TOX_ENV: py${{ matrix.python-version}}-${{ matrix.django }}
-        run: tox -e ${TOX_ENV}
+          PLATFORM: ${{ matrix.platform }}
+        run: make tox
   checks:
-    name: ${{ matrix.toxenv }}
+    name: ${{ matrix.python-version }}-${{ matrix.toxenv }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
