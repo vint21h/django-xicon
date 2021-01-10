@@ -1,5 +1,5 @@
 <!--- django-xicon -->
-<!--- .github/ISSUE_TEMPLATE/issue_template.md -->
+<!--- .github/issue_template.md -->
 
 
 <!--- Provide a general summary of the issue in the Title above -->
