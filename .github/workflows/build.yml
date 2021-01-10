@@ -9,6 +9,9 @@ on:
       - "*"
     tags:
       - "*"
+  pull_request:
+    branches:
+      - "*"
 env:
   default_python: "3.9"
 jobs:
