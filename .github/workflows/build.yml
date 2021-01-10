@@ -9,6 +9,8 @@ on:
       - "*"
     tags:
       - "*"
+env:
+  default_python: "3.9"
 jobs:
   build:
     name: ${{ matrix.python-version }}
@@ -52,10 +54,10 @@ jobs:
     steps:
       - name: Git clone
         uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ env.default_python }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.default_python }}
       - name: Pip cache
         uses: actions/cache@v2
         with:
