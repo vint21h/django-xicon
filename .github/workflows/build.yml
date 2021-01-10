@@ -42,7 +42,7 @@ jobs:
           pip install pipenv
           pip install .[test]
       - name: Run tests
-        run: pipenv run tox -e py
+        run: tox -e py
   checks:
     name: ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
@@ -71,5 +71,5 @@ jobs:
           pip install pipenv
           pip install .[test]
       - name: Run ${{ matrix.toxenv }}
-        run: pipenv run tox -e ${{ matrix.toxenv }}
+        run: tox -e ${{ matrix.toxenv }}
 # TODO: add uploading coverage result to coveralls.
