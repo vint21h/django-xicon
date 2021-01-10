@@ -7,8 +7,8 @@
 import json
 from typing import Dict, List, Union  # pylint: disable=W0611
 
-from django.shortcuts import resolve_url
 from django.test import TestCase
+from django.shortcuts import resolve_url
 from django.test.utils import override_settings
 from django.http import HttpRequest, HttpResponse, JsonResponse
 
@@ -197,7 +197,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -238,7 +240,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -258,7 +262,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -299,7 +305,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -340,7 +348,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -381,7 +391,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -422,7 +434,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "orientation": "portrait",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -463,7 +477,9 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
         }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
         result = json.loads(
-            self.client.get(path=resolve_url(to="android-chrome-manifest")).content.decode()
+            self.client.get(
+                path=resolve_url(to="android-chrome-manifest")
+            ).content.decode()
         )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
 
         self.assertDictEqual(d1=result, d2=expected)
