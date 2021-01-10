@@ -42,7 +42,7 @@ jobs:
           pip install pipenv
           pip install .[test]
       - name: Run tests
-        run: tox -e py
+        run: make tox
   checks:
     name: ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
