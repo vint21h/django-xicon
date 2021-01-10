@@ -3,7 +3,7 @@
 
 
 name: Bug report
-about: Create an issue to help us improve
+about: Create a report to help improve project
 title: ""
 labels: ""
 assignees: ""
