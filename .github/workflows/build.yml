@@ -12,9 +12,32 @@ on:
 env:
   default_python: "3.9"
 jobs:
-  test:
-    name: ${{ matrix.python-version }}-${{ matrix.django }}
+  check:
+    name: ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toxenv:
+          - check
+          - check-build
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ env.default_python }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.default_python }}
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          pip install .[test]
+      - name: Run ${{ matrix.toxenv }}
+        run: tox -e ${{ matrix.toxenv }}
+  test:
+    name: ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    if: success()
+    needs: [check]
     strategy:
       matrix:
         python-version:
@@ -22,10 +45,6 @@ jobs:
           - "3.7"
           - "3.8"
           - "3.9"
-        django:
-          - "2.2.x"
-          - "3.0.x"
-          - "3.1.x"
     steps:
       - name: Git clone
         uses: actions/checkout@v2
@@ -41,32 +60,6 @@ jobs:
         env:
           PLATFORM: ${{ matrix.platform }}
         run: make tox
-  check:
-    name: ${{ matrix.python-version }}-${{ matrix.toxenv }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version:
-          - "3.6"
-          - "3.7"
-          - "3.8"
-          - "3.9"
-        toxenv:
-          - check
-          - check-build
-    steps:
-      - name: Git clone
-        uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          pip install pipenv
-          pip install .[test]
-      - name: Run ${{ matrix.toxenv }}
-        run: tox -e ${{ matrix.toxenv }}
   coveralls:
     name: coveralls
     runs-on: ubuntu-latest
