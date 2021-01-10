@@ -1,2 +1,5 @@
 # django-xicon
 # TODO
+
+
+ - Add "flake8-annotations-complexity" to test requirements when author release 0.0.6 on PyPI.
