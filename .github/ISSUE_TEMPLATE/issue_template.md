@@ -1,8 +1,8 @@
 <!--- django-xicon -->
-<!--- .github/issue_template.md -->
+<!--- .github/ISSUE_TEMPLATE/issue_template.md -->
 
 
-name: Issue
+name: ""
 about: Create an issue to help us improve
 title: ""
 labels: ""
