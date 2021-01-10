@@ -57,4 +57,4 @@ django-appconf = ">=1.0.3"
 
 
 [requires]
-python_version = "3.9.0"
+python_version = "3.9.1"
