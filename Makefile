@@ -19,7 +19,7 @@ pipenv-install:
 
 
 tox:
-	tox;\
+	pipenv run tox;\
 
 
 test:
