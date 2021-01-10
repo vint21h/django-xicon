@@ -38,11 +38,11 @@ Configuration
 
     # urls.py
 
-    from django.conf.urls import url
+    from django.conf.urls import include, re_path
 
 
     urlpatterns += [
-        url(r"^xicon/", include("xicon.urls")),
+        re_path(r"^xicon/", include("xicon.urls")),
     ]
 
 Settings
@@ -244,8 +244,11 @@ If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs d
 
     # urls.py
 
+    from django.conf.urls import include, re_path
+
+
     urlpatterns += [
-        url(r"^xicon/", include("xicon.urls")),
+        re_path(r"^xicon/", include("xicon.urls")),
     ]
 
 .. code-block:: django
@@ -297,8 +300,11 @@ If you need generate and serve ``browserconfig.xml``, add ``"xicon"`` to your UR
 
     # urls.py
 
+    from django.conf.urls import include, re_path
+
+
     urlpatterns += [
-        url(r"^xicon/", include("xicon.urls")),
+        re_path(r"^xicon/", include("xicon.urls")),
     ]
 
 .. code-block:: django
