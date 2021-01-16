@@ -38,7 +38,7 @@ Configuration
 
     # urls.py
 
-    from django.conf.urls import include, re_path
+    from django.urls import include, re_path
 
 
     urlpatterns += [
@@ -244,7 +244,7 @@ If you need generate and serve ``manifest.json``, add ``"xicon"`` to your URLs d
 
     # urls.py
 
-    from django.conf.urls import include, re_path
+    from django.urls import include, re_path
 
 
     urlpatterns += [
@@ -300,7 +300,7 @@ If you need generate and serve ``browserconfig.xml``, add ``"xicon"`` to your UR
 
     # urls.py
 
-    from django.conf.urls import include, re_path
+    from django.urls import include, re_path
 
 
     urlpatterns += [
