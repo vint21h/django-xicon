@@ -1,5 +1,5 @@
 <!--- django-xicon -->
-<!--- .github/pull_request_template.md -->
+<!--- .github/PULL_REQUEST_TEMPLATE.md -->
 
 
 <!--- Provide a general summary of your changes in the Title above -->

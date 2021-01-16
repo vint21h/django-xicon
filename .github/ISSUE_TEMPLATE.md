@@ -1,12 +1,14 @@
 <!--- django-xicon -->
-<!--- .github/ISSUE_TEMPLATE/bug_report.md -->
+<!--- .github/ISSUE_TEMPLATE.md -->
 
 
+---
 name: Bug report
 about: Create a report to help improve project
 title: ""
-labels: ""
+labels: "bug"
 assignees: ""
+---
 
 
 <!--- Provide a general summary of the issue in the Title above -->
