@@ -2,15 +2,6 @@
 <!--- .github/ISSUE_TEMPLATE.md -->
 
 
----
-name: Bug report
-about: Create a report to help improve project
-title: ""
-labels: "bug"
-assignees: ""
----
-
-
 <!--- Provide a general summary of the issue in the Title above -->
 
 ## Expected Behavior
