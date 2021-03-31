@@ -7,7 +7,7 @@ PHONY: pipenv-install tox test makemessages compilemessages bumpversion build si
 TEST_PYPI_URL ?= https://test.pypi.org/legacy/
 NAME ?= xicon
 EXTENSIONS ?= py,html,txt,xml
-TRASH_DIRS ?= build dist *.egg-info .tox .mypy_cache __pycache__ htmlcov
+TRASH_DIRS ?= build dist *.egg-info .tox .mypy_cache .pytest_cache __pycache__ htmlcov
 TRASH_FILES ?= .coverage Pipfile.lock
 BUILD_TYPES ?= bdist_wheel sdist
 VERSION ?= `python -c "import configparser; config = configparser.ConfigParser(); config.read('setup.cfg'); print(config['metadata']['version']);"`
@@ -23,7 +23,7 @@ tox:
 
 
 test:
-	bash -c 'PYTHONPATH="$${PYTHONPATH}:$${PWD}" django-admin test $(TESTS) --settings=tests.settings';\
+	bash -c 'PYTHONPATH="$${PYTHONPATH}:$${PWD}" py.test --cov=$(NAME) --modules-durations=0 --functions-durations=0 --instafail $(TESTS)';\
 
 
 makemessages:
