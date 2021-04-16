@@ -40,7 +40,6 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
-          pip install pipenv
           pip install .[test]
       - name: Run ${{ matrix.toxenv }}
         run: tox -e ${{ matrix.toxenv }}
@@ -78,7 +77,6 @@ jobs:
           key: .coverage-${{ github.run_id }}-${{ github.run_number }}
       - name: Install dependencies
         run: |
-          pip install pipenv
           pip install .[test]
       - name: Run tests
         env:
@@ -111,7 +109,6 @@ jobs:
           key: .coverage-${{ github.run_id }}-${{ github.run_number }}
       - name: Install dependencies
         run: |
-          pip install pipenv
           pip install .[test]
       - name: Upload coverage report to Coveralls
         env:

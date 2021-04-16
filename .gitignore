@@ -48,4 +48,4 @@ static/*
 .env
 .coverage
 htmlcov
-Pipfile.lock
+.direnv
