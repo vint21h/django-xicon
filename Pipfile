@@ -60,7 +60,7 @@ yesqa = "==1.2.2"
 
 
 [packages]
-django = ">=2.2<=3.2"
+django = ">=2.2<=3.3"
 django-appconf = ">=1.0.3"
 
 
