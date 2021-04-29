@@ -1,0 +1,10 @@
+# django-xicon
+# .github/dependabot.yml
+
+
+version: 2
+updates:
+  - package-ecosystem: ""
+    directory: "/"
+    schedule:
+      interval: "daily"
