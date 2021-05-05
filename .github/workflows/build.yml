@@ -12,6 +12,7 @@ on:
   pull_request:
     branches:
       - "*"
+  workflow_dispatch:
 env:
   DEFAULT_PYTHON_VERSION: "3.9"
 jobs:
@@ -98,9 +99,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ matrix.toxenv }}-${{ hashFiles('setup.py', 'setup.cfg', 'tox.ini') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('setup.py', 'setup.cfg', 'tox.ini') }}
           restore-keys: |
-            ${{ runner.os }}-pip-${{ matrix.toxenv }}-
             ${{ runner.os }}-pip-
       - name: Temporarily save coverage statistics
         uses: actions/cache@v2

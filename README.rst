@@ -5,7 +5,7 @@
 A django-xicon documentation
 ============================
 
-|GitHub|_ |Coveralls|_ |Requires|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
+|GitHub|_ |Coveralls|_ |pypi-license|_ |pypi-version|_ |pypi-python-version|_ |pypi-django-version|_ |pypi-format|_ |pypi-wheel|_ |pypi-status|_
 
     *django-xicon is a Django reusable application to handle a modern bunch of site icons*
 
@@ -344,8 +344,6 @@ For complete authors list see AUTHORS file.
     :alt: GitHub
 .. |Coveralls| image:: https://coveralls.io/repos/github/vint21h/django-xicon/badge.svg?branch=master
     :alt: Coveralls
-.. |Requires| image:: https://requires.io/github/vint21h/django-xicon/requirements.svg?branch=master
-    :alt: Requires
 .. |pypi-license| image:: https://img.shields.io/pypi/l/django-xicon
     :alt: License
 .. |pypi-version| image:: https://img.shields.io/pypi/v/django-xicon
@@ -362,7 +360,6 @@ For complete authors list see AUTHORS file.
     :alt: Package status
 .. _GitHub: https://github.com/vint21h/django-xicon/actions/
 .. _Coveralls: https://coveralls.io/github/vint21h/django-xicon?branch=master
-.. _Requires: https://requires.io/github/vint21h/django-xicon/requirements/?branch=master
 .. _pypi-license: https://pypi.org/project/django-xicon/
 .. _pypi-version: https://pypi.org/project/django-xicon/
 .. _pypi-django-version: https://pypi.org/project/django-xicon/
