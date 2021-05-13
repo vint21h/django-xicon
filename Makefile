@@ -70,7 +70,7 @@ clean:
 		find -iname $${file} -print0 | xargs -0 rm -rf;\
 	done;\
 	for dir in $(TRASH_DIRS); do\
-		find -type d -name $${dir} -print0 | xargs -0 rm -rf;\
+		find -type d -name $${dir} ! -path "*/.direnv/*" -print0 | xargs -0 rm -rf;\
 	done;\
 
 
