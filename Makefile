@@ -14,7 +14,7 @@ VERSION ?= `python -c "import configparser; config = configparser.ConfigParser()
 
 
 install:
-	pip install .[test];
+	pip install .[test];\
 
 
 tox:
