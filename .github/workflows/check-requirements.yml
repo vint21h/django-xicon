@@ -23,12 +23,15 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Git clone"
+        id: "git-clone"
         uses: "actions/checkout@v2"
       - name: "Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}"
+        id: "set-up-python-${{ env.DEFAULT_PYTHON_VERSION }}"
         uses: "actions/setup-python@v2"
         with:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
       - name: "Pip cache"
+        id: "pip-cache"
         uses: "actions/cache@v2"
         with:
           path: "~/.cache/pip"
@@ -36,7 +39,9 @@ jobs:
           restore-keys: |
             "${{ runner.os }}-pip-"
       - name: "Install requirements"
+        id: "install-requirements"
         run: "pip install .[test]"
       - name: "Check outdated requirements"
+        id: "check-outdated-requirements"
         continue-on-error: true
         run: "pip-outdated"
