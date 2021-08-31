@@ -27,7 +27,7 @@ jobs:
       - name: "Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}"
         uses: "actions/setup-python@v2"
         with:
-          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
+          python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
       - name: "Pip cache"
         uses: "actions/cache@v2"
         with:
@@ -36,8 +36,7 @@ jobs:
           restore-keys: |
             "${{ runner.os }}-pip-"
       - name: "Install requirements"
-        run: |
-          pip "install .[test]"
+        run: "pip install .[test]"
       - name: "Check outdated requirements"
         continue-on-error: true
         run: "pip-outdated"

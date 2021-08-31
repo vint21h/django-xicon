@@ -16,7 +16,7 @@ repos:
       name: "removestar"
       stages: ["commit"]
       language: "system"
-      entry: "removestar -i xicon tests"
+      entry: "removestar -i ${NAME} tests"
       types: ["python"]
     - id: "isort"
       name: "isort"
@@ -28,7 +28,7 @@ repos:
       name: "black"
       stages: ["commit"]
       language: "system"
-      entry: "black xicon tests"
+      entry: "bash -c 'black ${NAME}'"
       types: ["python"]
     - id: "yesqa"
       name: "yesqa"
@@ -47,19 +47,19 @@ repos:
       name: "interrogate"
       stages: ["commit"]
       language: "system"
-      entry: "interrogate xicon tests -I -M"
+      entry: "bash -c 'interrogate ${NAME} -I -M'"
       types: ["python"]
     - id: "pylint"
       name: "pylint"
       stages: ["commit"]
       language: "system"
-      entry: "pylint xicon tests"
+      entry: "pylint ${NAME} tests"
       types: ["python"]
     - id: "bandit"
       name: "bandit"
       stages: ["commit"]
       language: "system"
-      entry: "bandit -r xicon tests --ini=setup.cfg"
+      entry: "bandit -r ${NAME} tests --ini=setup.cfg"
       types: ["python"]
       pass_filenames: false
     - id: "dodgy"
