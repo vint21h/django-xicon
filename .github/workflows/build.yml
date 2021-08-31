@@ -28,7 +28,7 @@ jobs:
         id: "git-clone"
         uses: "actions/checkout@v2"
       - name: "Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}"
-        id: "set-up-python-${{ env.DEFAULT_PYTHON_VERSION }}"
+        id: "set-up-python"
         uses: "actions/setup-python@v2"
         with:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
@@ -45,7 +45,7 @@ jobs:
         id: "isntall-requirements"
         run: "pip install .[test]"
       - name: "Run ${{ matrix.toxenv }}"
-        id: "run-${{ matrix.toxenv }}"
+        id: "run"
         run: "tox -e ${{ matrix.toxenv }}"
   test:
     name: "${{ matrix.python-version }}"
@@ -60,7 +60,7 @@ jobs:
         id: "git-clone"
         uses: "actions/checkout@v2"
       - name: "Set up Python ${{ matrix.python-version }}"
-        id: "set-up-python-${{ matrix.python-version }}"
+        id: "set-up-python"
         uses: "actions/setup-python@v2"
         with:
           python-version: "${{ matrix.python-version }}"
@@ -97,7 +97,7 @@ jobs:
         id: "git-clone"
         uses: "actions/checkout@v2"
       - name: "Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}"
-        id: "set-up-python-${{ env.DEFAULT_PYTHON_VERSION }}"
+        id: "set-up-python"
         uses: "actions/setup-python@v2"
         with:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
