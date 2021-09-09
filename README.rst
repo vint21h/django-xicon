@@ -327,6 +327,43 @@ Or just for microsoft application tiles, setup ``MSAPPLICATION_TILES`` setting, 
         {% xicon_mstiles %}
     </head>
 
+Contributing
+------------
+1. `Fork it <https://github.com/vint21h/django-xicon/>`_
+2. Install and configure `pyenv <https://github.com/pyenv/pyenv/>`_
+3. Install and configure `direnv <https://github.com/direnv/direnv/>`_
+4. Install development dependencies:
+
+.. code-block:: bash
+
+    make install
+
+5. Create your fix/feature branch:
+
+.. code-block:: bash
+
+    git checkout -b my-new-fix-or-feature
+
+6. Check code style and moreover:
+
+.. code-block:: bash
+
+    make check
+
+6. Run tests:
+
+.. code-block:: bash
+
+    make test
+
+7. Push to the branch:
+
+.. code-block:: bash
+
+    git push origin my-new-fix-or-feature
+
+8. `Create a new Pull Request <https://github.com/vint21h/django-xicon/compare/>`_
+
 Licensing
 ---------
 django-xicon is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
