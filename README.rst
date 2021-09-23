@@ -330,39 +330,40 @@ Or just for microsoft application tiles, setup ``MSAPPLICATION_TILES`` setting, 
 Contributing
 ------------
 1. `Fork it <https://github.com/vint21h/django-xicon/>`_
-2. Install and configure `pyenv <https://github.com/pyenv/pyenv/>`_
-3. Install and configure `direnv <https://github.com/direnv/direnv/>`_
-4. Install development dependencies:
+2. Install `GNU Make <https://www.gnu.org/software/make/>`_
+3. Install and configure `pyenv <https://github.com/pyenv/pyenv/>`_
+4. Install and configure `direnv <https://github.com/direnv/direnv/>`_
+5. Install development dependencies:
 
 .. code-block:: bash
 
     make install
 
-5. Create your fix/feature branch:
+6. Create your fix/feature branch:
 
 .. code-block:: bash
 
     git checkout -b my-new-fix-or-feature
 
-6. Check code style and moreover:
+7. Check code style and moreover:
 
 .. code-block:: bash
 
     make check
 
-6. Run tests:
+8. Run tests:
 
 .. code-block:: bash
 
     make test
 
-7. Push to the branch:
+9. Push to the branch:
 
 .. code-block:: bash
 
     git push origin my-new-fix-or-feature
 
-8. `Create a new Pull Request <https://github.com/vint21h/django-xicon/compare/>`_
+10. `Create a new Pull Request <https://github.com/vint21h/django-xicon/compare/>`_
 
 Licensing
 ---------
