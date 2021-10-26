@@ -5,8 +5,8 @@
 
 
 import sys
-import random
 import pathlib
+from random import SystemRandom
 from typing import Dict, List, Union
 
 
@@ -16,7 +16,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).absolute().parent.parent.parent))
 # secret key
 SECRET_KEY: str = "".join(
     [
-        random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)")  # nosec
+        SystemRandom().choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)")
         for i in range(50)
     ]
 )

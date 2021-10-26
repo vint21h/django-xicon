@@ -22,15 +22,10 @@ __all__: List[str] = [
 
 
 class MsapplicationBrowserconfigViewTest(TestCase):
-    """
-    Microsoft application browserconfig.xml view tests.
-    """
+    """Microsoft application browserconfig.xml view tests."""
 
     def test_msapplication_browserconfig__return_response(self) -> None:
-        """
-        Test view returning response.
-        """
-
+        """Test view returning response."""
         request: HttpRequest = HttpRequest()
 
         self.assertIsInstance(
@@ -38,10 +33,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         )
 
     def test_msapplication_browserconfig__render(self) -> None:
-        """
-        Test view rendering result.
-        """
-
+        """Test view rendering result."""
         expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
@@ -73,10 +65,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         self.assertXMLEqual(xml1=result.content.decode(), xml2=expected)
 
     def test_msapplication_browserconfig__render__template_used(self) -> None:
-        """
-        Test view right template usage.
-        """
-
+        """Test view right template usage."""
         response: HttpResponse = self.client.get(
             path=resolve_url(to="msapplication-browserconfig")
         )
@@ -87,10 +76,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
 
     @override_settings(XICON_MSAPPLICATION_TILE_COLOR="")
     def test_msapplication_browserconfig__render__without_color(self) -> None:
-        """
-        Test view rendering result without tile color setting.
-        """
-
+        """Test view rendering result without tile color setting."""
         expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
@@ -118,10 +104,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_msapplication_browserconfig__render__without_tiles(self) -> None:
-        """
-        Test view rendering result without tiles setting.
-        """
-
+        """Test view rendering result without tiles setting."""
         expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
@@ -146,15 +129,10 @@ class MsapplicationBrowserconfigViewTest(TestCase):
 
 
 class AndroidChromeManifestViewTest(TestCase):
-    """
-    Android chrome manifest.json view tests.
-    """
+    """Android chrome manifest.json view tests."""
 
     def test_android_chrome_manifest__return_response(self) -> None:
-        """
-        Test view returning response.
-        """
-
+        """Test view returning response."""
         request: HttpRequest = HttpRequest()
 
         self.assertIsInstance(
@@ -162,10 +140,7 @@ class AndroidChromeManifestViewTest(TestCase):
         )
 
     def test_android_chrome_manifest__render(self) -> None:
-        """
-        Test view rendering result.
-        """
-
+        """Test view rendering result."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
@@ -206,10 +181,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
     def test_android_chrome_manifest__render__without_theme_color(self) -> None:
-        """
-        Test view rendering result without theme color setting.
-        """
-
+        """Test view rendering result without theme color setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
@@ -249,10 +221,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_ICONS=[])
     def test_android_chrome_manifest__render__without_icons(self) -> None:
-        """
-        Test view rendering result without icons setting.
-        """
-
+        """Test view rendering result without icons setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
@@ -271,10 +240,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_NAME="")
     def test_android_chrome_manifest__render__without_name(self) -> None:
-        """
-        Test view rendering result without name setting.
-        """
-
+        """Test view rendering result without name setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "short_name": "XI",
             "icons": [
@@ -314,10 +280,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_SHORT_NAME="")
     def test_android_chrome_manifest__render__without_short_name(self) -> None:
-        """
-        Test view rendering result without short name setting.
-        """
-
+        """Test view rendering result without short name setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "icons": [
@@ -357,10 +320,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_BACKGROUND_COLOR="")
     def test_android_chrome_manifest__render__without_background_color(self) -> None:
-        """
-        Test view rendering result without background color setting.
-        """
-
+        """Test view rendering result without background color setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
@@ -400,10 +360,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_DISPLAY="")
     def test_android_chrome_manifest__render__without_display(self) -> None:
-        """
-        Test view rendering result without display setting.
-        """
-
+        """Test view rendering result without display setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
@@ -443,10 +400,7 @@ class AndroidChromeManifestViewTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_ORIENTATION="")
     def test_android_chrome_manifest__render__without_orientation(self) -> None:
-        """
-        Test view rendering result without orientation setting.
-        """
-
+        """Test view rendering result without orientation setting."""
         expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",

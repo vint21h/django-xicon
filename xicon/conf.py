@@ -14,9 +14,7 @@ __all__: List[str] = ["settings"]
 
 
 class DjangoXIconAppConf(AppConf):
-    """
-    Django X Icon settings.
-    """
+    """Django X Icon settings."""
 
     FAVICONS: Iterable[Dict[str, str]] = getattr(settings, "XICON_FAVICONS", [])
     APPLE_TOUCH_ICONS: Iterable[Dict[str, str]] = getattr(
@@ -60,8 +58,6 @@ class DjangoXIconAppConf(AppConf):
     )
 
     class Meta:
-        """
-        Config settings.
-        """
+        """Config settings."""
 
         prefix: str = "xicon"

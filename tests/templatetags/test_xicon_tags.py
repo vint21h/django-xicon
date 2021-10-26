@@ -43,39 +43,39 @@ __all__: List[str] = [
 
 
 class XiconFaviconTemplatetagTest(TestCase):
-    """
-    Favicon templatetag tests.
-    """
+    """Favicon templatetag tests."""
 
     def test_xicon_favicon__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
-        result: Dict[str, Dict[str, str]] = xicon_favicon(favicon={
-            "src": "favicon.ico",
-            "type": "image/x-icon",
-            "size": "16x16",
-        })
-        expected: Dict[str, Dict[str, str]] = {"XICON_FAVICON": {
-            "src": "favicon.ico",
-            "type": "image/x-icon",
-            "size": "16x16",
-        }}
+        """Test templatetag returning value."""
+        result: Dict[str, Dict[str, str]] = xicon_favicon(
+            favicon={
+                "src": "favicon.ico",
+                "type": "image/x-icon",
+                "size": "16x16",
+            }
+        )
+        expected: Dict[str, Dict[str, str]] = {
+            "XICON_FAVICON": {
+                "src": "favicon.ico",
+                "type": "image/x-icon",
+                "size": "16x16",
+            }
+        }
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_favicon__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
-        context: Context = Context({"XICON_FAVICON": {
-            "src": "favicon.ico",
-            "type": "image/x-icon",
-            "size": "16x16",
-        }})
+        """Test templatetag rendering result."""
+        context: Context = Context(
+            {
+                "XICON_FAVICON": {
+                    "src": "favicon.ico",
+                    "type": "image/x-icon",
+                    "size": "16x16",
+                }
+            }
+        )
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
         )
@@ -85,14 +85,15 @@ class XiconFaviconTemplatetagTest(TestCase):
         self.assertHTMLEqual(html1=result, html2=expected)
 
     def test_xicon_favicon__render__without_size(self) -> None:
-        """
-        Test templatetag rendering result for favicon without size.
-        """
-
-        context: Context = Context({"XICON_FAVICON": {
-            "src": "favicon.svg",
-            "type": "image/svg+xml",
-        }})
+        """Test templatetag rendering result for favicon without size."""
+        context: Context = Context(
+            {
+                "XICON_FAVICON": {
+                    "src": "favicon.svg",
+                    "type": "image/svg+xml",
+                }
+            }
+        )
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"
         )
@@ -103,15 +104,10 @@ class XiconFaviconTemplatetagTest(TestCase):
 
 
 class XiconFaviconsTemplatetagTest(TestCase):
-    """
-    Favicons templatetag tests.
-    """
+    """Favicons templatetag tests."""
 
     def test_xicon_favicons__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, Iterable[Dict[str, str]]] = xicon_favicons()
         expected: Dict[str, List[Dict[str, str]]] = {
             "XICON_FAVICONS": [
@@ -125,13 +121,8 @@ class XiconFaviconsTemplatetagTest(TestCase):
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_favicons__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
-        template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_favicons %}"
-        )
+        """Test templatetag rendering result."""
+        template: Template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")
         result: str = template.render(context=Context())
         expected: str = """
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>
@@ -143,13 +134,8 @@ class XiconFaviconsTemplatetagTest(TestCase):
 
     @override_settings(XICON_FAVICONS=[])
     def test_xicon_favicons__render__without_favicons(self) -> None:
-        """
-        Test templatetag rendering result with empty favicons list.
-        """
-
-        template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_favicons %}"
-        )
+        """Test templatetag rendering result with empty favicons list."""
+        template: Template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")
         result: str = template.render(context=Context())
         expected: str = ""
 
@@ -157,15 +143,10 @@ class XiconFaviconsTemplatetagTest(TestCase):
 
 
 class XiconAppleTouchIconTemplatetagTest(TestCase):
-    """
-    Apple touch icon templatetag tests.
-    """
+    """Apple touch icon templatetag tests."""
 
     def test_xicon_apple_touch_icon__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, Dict[str, str]] = xicon_apple_touch_icon(
             apple_touch_icon={
                 "src": "apple-touch-icon-57x57.png",
@@ -183,14 +164,15 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_touch_icon__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
-        context: Context = Context({"XICON_APPLE_TOUCH_ICON": {
-            "src": "apple-touch-icon-57x57.png",
-            "size": "57x57",
-        }})
+        """Test templatetag rendering result."""
+        context: Context = Context(
+            {
+                "XICON_APPLE_TOUCH_ICON": {
+                    "src": "apple-touch-icon-57x57.png",
+                    "size": "57x57",
+                }
+            }
+        )
         template: Template = Template(
             "{% load xicon_tags %}"
             "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
@@ -201,10 +183,7 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         self.assertHTMLEqual(html1=result, html2=expected)
 
     def test_xicon_apple_touch_icon__render__without_size(self) -> None:
-        """
-        Test templatetag rendering result for icon without size.
-        """
-
+        """Test templatetag rendering result for icon without size."""
         apple_touch_icon: Dict[str, str] = {"src": "apple-touch-icon.png"}
         context: Context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
         template: Template = Template(
@@ -212,23 +191,16 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"
         )
         result: str = template.render(context=context)
-        expected: str = (
-            '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
-        )
+        expected: str = '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
 
         self.assertHTMLEqual(html1=result, html2=expected)
 
 
 class XiconAppleTouchIconsTemplatetagTest(TestCase):
-    """
-    Apple touch icons templatetag tests.
-    """
+    """Apple touch icons templatetag tests."""
 
     def test_xicon_apple_touch_icons__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, Iterable[Dict[str, str]]] = xicon_apple_touch_icons()
         expected: Dict[str, List[Dict[str, str]]] = {
             "XICON_APPLE_TOUCH_ICONS": [
@@ -249,10 +221,7 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_touch_icons__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"
         )
@@ -274,10 +243,7 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
 
     @override_settings(XICON_APPLE_TOUCH_ICONS=[])
     def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
-        """
-        Test templatetag rendering result with empty apple touch icons list.
-        """
-
+        """Test templatetag rendering result with empty apple touch icons list."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"
         )
@@ -288,29 +254,21 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
 
 
 class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
-    """
-    Apple touch mask icon templatetag tests.
-    """
+    """Apple touch mask icon templatetag tests."""
 
     def test_xicon_xicon_apple_touch_icon_mask_icon__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_apple_touch_icon_mask_icon()
         expected: Dict[str, str] = {
             "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC": "apple-touch-icon.png",
-            "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": "#00ffff"
+            "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR": "#00ffff",
         }
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_xicon_apple_touch_icon_mask_icon__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
         )
@@ -323,10 +281,7 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
 
     @override_settings(XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC="")
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_src(self) -> None:
-        """
-        Test templatetag rendering result without icon source setting.
-        """
-
+        """Test templatetag rendering result without icon source setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
         )
@@ -339,10 +294,7 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_color(
         self,
     ) -> None:
-        """
-        Test templatetag rendering result without icon color setting.
-        """
-
+        """Test templatetag rendering result without icon color setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"
         )
@@ -353,15 +305,10 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
 
 
 class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
-    """
-    Apple iOS web application status bar style templatetag tests.
-    """
+    """Apple iOS web application status bar style templatetag tests."""
 
     def test_xicon_apple_mobile_web_app_status_bar_style__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_apple_mobile_web_app_status_bar_style()
         expected: Dict[str, str] = {
             "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR": "default"
@@ -371,10 +318,7 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
         )
@@ -387,10 +331,7 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR="")
     def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
-        """
-        Test templatetag rendering result without icon color setting.
-        """
-
+        """Test templatetag rendering result without icon color setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"
         )
@@ -401,28 +342,18 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
 
 
 class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
-    """
-    Apple iOS web application title templatetag tests.
-    """
+    """Apple iOS web application title templatetag tests."""
 
     def test_xicon_apple_mobile_web_app_title__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_apple_mobile_web_app_title()
-        expected: Dict[str, str] = {
-            "XICON_APPLE_MOBILE_WEB_APP_TITLE": "Django X Icon"
-        }
+        expected: Dict[str, str] = {"XICON_APPLE_MOBILE_WEB_APP_TITLE": "Django X Icon"}
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_apple_mobile_web_app_title__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
         )
@@ -435,10 +366,7 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
 
     @override_settings(XICON_APPLE_MOBILE_WEB_APP_TITLE="")
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
-        """
-        Test templatetag rendering result without title setting.
-        """
-
+        """Test templatetag rendering result without title setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"
         )
@@ -449,28 +377,18 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
 
 
 class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
-    """
-    Android chrome web application toolbar color templatetag tests.
-    """
+    """Android chrome web application toolbar color templatetag tests."""
 
     def test_xicon_android_chrome_theme_color__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_android_chrome_theme_color()
-        expected: Dict[str, str] = {
-            "XICON_ANDROID_CHROME_THEME_COLOR": "#00ffff"
-        }
+        expected: Dict[str, str] = {"XICON_ANDROID_CHROME_THEME_COLOR": "#00ffff"}
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_android_chrome_theme_color__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
         )
@@ -481,10 +399,7 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
 
     @override_settings(XICON_ANDROID_CHROME_THEME_COLOR="")
     def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
-        """
-        Test templatetag rendering result without title setting.
-        """
-
+        """Test templatetag rendering result without title setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"
         )
@@ -495,28 +410,18 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
 
 
 class XiconMsapplicationNameTemplatetagTest(TestCase):
-    """
-    Android microsoft application name templatetag tests.
-    """
+    """Android microsoft application name templatetag tests."""
 
     def test_xicon_msapplication_name__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_msapplication_name()
-        expected: Dict[str, str] = {
-            "XICON_MSAPPLICATION_NAME": "Django X Icon"
-        }
+        expected: Dict[str, str] = {"XICON_MSAPPLICATION_NAME": "Django X Icon"}
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_msapplication_name__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_name %}"
         )
@@ -527,10 +432,7 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
 
     @override_settings(XICON_MSAPPLICATION_NAME="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
-        """
-        Test templatetag rendering result without title setting.
-        """
-
+        """Test templatetag rendering result without title setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_name %}"
         )
@@ -541,44 +443,29 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
 
 
 class XiconMsapplicationTileColorTemplatetagTest(TestCase):
-    """
-    Android microsoft application tile color templatetag tests.
-    """
+    """Android microsoft application tile color templatetag tests."""
 
     def test_xicon_msapplication_tile_color__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, str] = xicon_msapplication_tile_color()
-        expected: Dict[str, str] = {
-            "XICON_MSAPPLICATION_TILE_COLOR": "#00ffff"
-        }
+        expected: Dict[str, str] = {"XICON_MSAPPLICATION_TILE_COLOR": "#00ffff"}
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_msapplication_tile_color__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
+        """Test templatetag rendering result."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"
         )
         result: str = template.render(context=Context())
-        expected: str = (
-            '<meta name="msapplication-TileColor" content="#00ffff">'
-        )
+        expected: str = '<meta name="msapplication-TileColor" content="#00ffff">'
 
         self.assertHTMLEqual(html1=result, html2=expected)
 
     @override_settings(XICON_MSAPPLICATION_TILE_COLOR="")
     def test_xicon_msapplication_name__render__without_name(self) -> None:
-        """
-        Test templatetag rendering result without title setting.
-        """
-
+        """Test templatetag rendering result without title setting."""
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"
         )
@@ -589,36 +476,36 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
 
 
 class XiconMsTileTemplatetagTest(TestCase):
-    """
-    Microsoft application tile templatetag tests.
-    """
+    """Microsoft application tile templatetag tests."""
 
     def test_xicon_mstile__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
-        result: Dict[str, Dict[str, str]] = xicon_mstile(mstile={
-            "src": "mstile-150x150.png",
-            "name": "square150x150logo",
-        })
-        expected: Dict[str, Dict[str, str]] = {"XICON_MSTILE": {
-            "src": "mstile-150x150.png",
-            "name": "square150x150logo",
-        }}
+        """Test templatetag returning value."""
+        result: Dict[str, Dict[str, str]] = xicon_mstile(
+            mstile={
+                "src": "mstile-150x150.png",
+                "name": "square150x150logo",
+            }
+        )
+        expected: Dict[str, Dict[str, str]] = {
+            "XICON_MSTILE": {
+                "src": "mstile-150x150.png",
+                "name": "square150x150logo",
+            }
+        }
 
         self.assertIsInstance(obj=result, cls=dict)
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_mstile__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
-        context: Context = Context({"XICON_MSTILE": {
-            "src": "mstile-150x150.png",
-            "name": "square150x150logo",
-        }})
+        """Test templatetag rendering result."""
+        context: Context = Context(
+            {
+                "XICON_MSTILE": {
+                    "src": "mstile-150x150.png",
+                    "name": "square150x150logo",
+                }
+            }
+        )
         template: Template = Template(
             "{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}"
         )
@@ -631,15 +518,10 @@ class XiconMsTileTemplatetagTest(TestCase):
 
 
 class XiconMsTilesTemplatetagTest(TestCase):
-    """
-    Microsoft application tiles templatetag tests.
-    """
+    """Microsoft application tiles templatetag tests."""
 
     def test_xicon_mstiles__return(self) -> None:
-        """
-        Test templatetag returning value.
-        """
-
+        """Test templatetag returning value."""
         result: Dict[str, Iterable[Dict[str, str]]] = xicon_mstiles()
         expected: Dict[str, List[Dict[str, str]]] = {
             "XICON_MSAPPLICATION_TILES": [
@@ -654,13 +536,8 @@ class XiconMsTilesTemplatetagTest(TestCase):
         self.assertDictEqual(d1=result, d2=expected)
 
     def test_xicon_mstiles__render(self) -> None:
-        """
-        Test templatetag rendering result.
-        """
-
-        template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_mstiles %}"
-        )
+        """Test templatetag rendering result."""
+        template: Template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
         result: str = template.render(context=Context())
         expected: str = """
         <meta name="msapplication-square70x70logo" content="mstile-70x70.png">
@@ -673,13 +550,8 @@ class XiconMsTilesTemplatetagTest(TestCase):
 
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_xicon_mstiles__render__without_tiles(self) -> None:
-        """
-        Test templatetag rendering result with empty microsoft application icons list.
-        """
-
-        template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_mstiles %}"
-        )
+        """Test templatetag rendering result with empty microsoft application icons list."""  # noqa: E501
+        template: Template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")
         result: str = template.render(context=Context())
         expected: str = ""
 

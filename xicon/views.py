@@ -24,7 +24,6 @@ def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
     :return: rendered manifest
     :rtype: JsonResponse
     """
-
     manifest: Dict[str, Union[str, List[Dict[str, str]]]] = {}
 
     if settings.XICON_ANDROID_CHROME_NAME:
@@ -62,7 +61,6 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     :return: rendered browserconfig
     :rtype: HttpResponse
     """
-
     context: Dict[str, Union[str, List[Dict[str, str]]]] = {
         "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
         "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,

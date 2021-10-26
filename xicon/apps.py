@@ -14,9 +14,7 @@ __all__: List[str] = ["DjangoXIconConfig"]
 
 
 class DjangoXIconConfig(AppConfig):
-    """
-    Django X Icon config.
-    """
+    """Django X Icon config."""
 
     name: str = "xicon"
     verbose_name: str = _("Django X Icon")
