@@ -41,8 +41,17 @@ jobs:
           restore-keys: |
             "${{ runner.os }}-pip-${{ matrix.toxenv }}-"
             "${{ runner.os }}-pip-"
+      - name: "Pre-commit cache"
+        id: "pre-commit-cache"
+        uses: "actions/cache@v2"
+        with:
+          path: "~/.cache/pre-commit"
+          key: "${{ runner.os }}-pre-commit-${{ matrix.toxenv }}-${{ hashFiles('.pre-commit-config.yaml') }}"
+          restore-keys: |
+            "${{ runner.os }}-pre-commit-${{ matrix.toxenv }}-"
+            "${{ runner.os }}-pre-commit-"
       - name: "Install requirements"
-        id: "isntall-requirements"
+        id: "install-requirements"
         run: "pip install .[test]"
       - name: "Run ${{ matrix.toxenv }}"
         id: "run"
