@@ -15,7 +15,7 @@ from xicon.conf import settings
 __all__: List[str] = ["android_chrome_manifest", "msapplication_browserconfig"]
 
 
-def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
+def android_chrome_manifest(request: HttpRequest) -> JsonResponse:  # noqa: CCR001
     """
     Render android chrome manifest.json.
 
