@@ -5,7 +5,7 @@
 
 
 import json
-from typing import Dict, List, Union  # pylint: disable=W0611
+from typing import Dict, List, Union
 
 from django.test import TestCase
 from django.shortcuts import resolve_url
@@ -15,10 +15,10 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from xicon.views import android_chrome_manifest, msapplication_browserconfig
 
 
-__all__ = [
+__all__: List[str] = [
     "MsapplicationBrowserconfigViewTest",
     "AndroidChromeManifestViewTest",
-]  # type: List[str]
+]
 
 
 class MsapplicationBrowserconfigViewTest(TestCase):
@@ -31,7 +31,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         Test view returning response.
         """
 
-        request = HttpRequest()  # type: HttpRequest
+        request: HttpRequest = HttpRequest()
 
         self.assertIsInstance(
             obj=msapplication_browserconfig(request=request), cls=HttpResponse
@@ -42,7 +42,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         Test view rendering result.
         """
 
-        expected = """
+        expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
             <msapplication>
@@ -55,10 +55,10 @@ class MsapplicationBrowserconfigViewTest(TestCase):
                 </tile>
             </msapplication>
         </browserconfig>
-        """  # type: str
-        result = self.client.get(
+        """
+        result: HttpResponse = self.client.get(
             path=resolve_url(to="msapplication-browserconfig")
-        )  # type: HttpResponse
+        )
 
         self.assertIsNotNone(
             obj=result.context.get("XICON_MSAPPLICATION_TILES")
@@ -77,9 +77,9 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         Test view right template usage.
         """
 
-        response = self.client.get(
+        response: HttpResponse = self.client.get(
             path=resolve_url(to="msapplication-browserconfig")
-        )  # type: HttpResponse
+        )
 
         self.assertTemplateUsed(
             response=response, template_name="xicon/browserconfig.xml"
@@ -91,7 +91,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         Test view rendering result without tile color setting.
         """
 
-        expected = """
+        expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
             <msapplication>
@@ -103,10 +103,10 @@ class MsapplicationBrowserconfigViewTest(TestCase):
                 </tile>
             </msapplication>
         </browserconfig>
-        """  # type: str
-        result = self.client.get(
+        """
+        result: HttpResponse = self.client.get(
             path=resolve_url(to="msapplication-browserconfig")
-        )  # type: HttpResponse
+        )
 
         self.assertEqual(
             first=result.context.get("XICON_MSAPPLICATION_TILE_COLOR")
@@ -122,7 +122,7 @@ class MsapplicationBrowserconfigViewTest(TestCase):
         Test view rendering result without tiles setting.
         """
 
-        expected = """
+        expected: str = """
         <?xml version="1.0" encoding="utf-8"?>
         <browserconfig>
             <msapplication>
@@ -131,10 +131,10 @@ class MsapplicationBrowserconfigViewTest(TestCase):
                 </tile>
             </msapplication>
         </browserconfig>
-        """  # type: str
-        result = self.client.get(
+        """
+        result: HttpResponse = self.client.get(
             path=resolve_url(to="msapplication-browserconfig")
-        )  # type: HttpResponse
+        )
 
         self.assertListEqual(
             list1=result.context.get("XICON_MSAPPLICATION_TILES", [])  # type: ignore
@@ -155,7 +155,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view returning response.
         """
 
-        request = HttpRequest()  # type: HttpRequest
+        request: HttpRequest = HttpRequest()
 
         self.assertIsInstance(
             obj=android_chrome_manifest(request=request), cls=JsonResponse
@@ -166,7 +166,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "icons": [
@@ -195,12 +195,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -210,7 +210,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without theme color setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "icons": [
@@ -238,12 +238,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -253,19 +253,19 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without icons setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "theme_color": "#00ffff",
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -275,7 +275,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without name setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "short_name": "XI",
             "icons": [
                 {
@@ -303,12 +303,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -318,7 +318,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without short name setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "icons": [
                 {
@@ -346,12 +346,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -361,7 +361,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without background color setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "icons": [
@@ -389,12 +389,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "display": "fullscreen",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -404,7 +404,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without display setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "icons": [
@@ -432,12 +432,12 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "background_color": "#00ffff",
             "orientation": "portrait",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)
 
@@ -447,7 +447,7 @@ class AndroidChromeManifestViewTest(TestCase):
         Test view rendering result without orientation setting.
         """
 
-        expected = {
+        expected: Dict[str, Union[str, List[Dict[str, str]]]] = {
             "name": "Django X Icon",
             "short_name": "XI",
             "icons": [
@@ -475,11 +475,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "theme_color": "#00ffff",
             "background_color": "#00ffff",
             "display": "fullscreen",
-        }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
-        result = json.loads(
+        }
+        result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
             self.client.get(
                 path=resolve_url(to="android-chrome-manifest")
             ).content.decode()
-        )  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+        )
 
         self.assertDictEqual(d1=result, d2=expected)

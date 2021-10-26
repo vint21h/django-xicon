@@ -4,7 +4,7 @@
 # xicon/views.py
 
 
-from typing import Dict, List, Union  # pylint: disable=W0611
+from typing import Dict, List, Union
 
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, JsonResponse
@@ -12,7 +12,7 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from xicon.conf import settings
 
 
-__all__ = ["android_chrome_manifest", "msapplication_browserconfig"]  # type: List[str]
+__all__: List[str] = ["android_chrome_manifest", "msapplication_browserconfig"]
 
 
 def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
@@ -25,7 +25,7 @@ def android_chrome_manifest(request: HttpRequest) -> JsonResponse:
     :rtype: JsonResponse
     """
 
-    manifest = {}  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+    manifest: Dict[str, Union[str, List[Dict[str, str]]]] = {}
 
     if settings.XICON_ANDROID_CHROME_NAME:
         manifest.update({"name": settings.XICON_ANDROID_CHROME_NAME})
@@ -63,10 +63,10 @@ def msapplication_browserconfig(request: HttpRequest) -> HttpResponse:
     :rtype: HttpResponse
     """
 
-    context = {
+    context: Dict[str, Union[str, List[Dict[str, str]]]] = {
         "XICON_MSAPPLICATION_TILE_COLOR": settings.XICON_MSAPPLICATION_TILE_COLOR,
         "XICON_MSAPPLICATION_TILES": settings.XICON_MSAPPLICATION_TILES,
-    }  # type: Dict[str, Union[str, List[Dict[str, str]]]]
+    }
 
     return render(
         request=request,

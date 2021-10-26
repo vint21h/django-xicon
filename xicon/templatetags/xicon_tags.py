@@ -4,14 +4,14 @@
 # xicon/templatetags/xicon_tags.py
 
 
-from typing import Dict, List, Iterable  # pylint: disable=W0611
+from typing import Dict, List, Iterable
 
 from django import template
 
 from xicon.conf import settings
 
 
-__all__ = [
+__all__: List[str] = [
     "xicon_favicon",
     "xicon_favicons",
     "xicon_apple_touch_icon",
@@ -24,7 +24,7 @@ __all__ = [
     "xicon_msapplication_tile_color",
     "xicon_mstile",
     "xicon_mstiles",
-]  # type: List[str]
+]
 
 
 register = template.Library()

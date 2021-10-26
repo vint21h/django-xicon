@@ -54,10 +54,10 @@ Settings
 .. code-block:: python
 
     {
-        "src": "favicon.ico",  # type: str
-        "type": "image/x-icon",  # type: str
-        "size": "16x16",  # type: Optional[str]
-    }
+        "src": "favicon.ico",
+        "type": "image/x-icon",
+        "size": "16x16",
+    }  # type: Dict[str, Optional[str]]
 
 Where ``src`` key is a path to the favicon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon's ``width`` and ``height`` and can be omitted.
 
@@ -67,9 +67,9 @@ Where ``src`` key is a path to the favicon file in Django static directory, ``ty
 .. code-block:: python
 
     {
-        "src": "apple-touch-icon-144x144.png",  # type: str
-        "size": "144x144",  # type: Optional[str]
-    }
+        "src": "apple-touch-icon-144x144.png",
+        "size": "144x144",
+    }  # type: Dict[str, Optional[str]]
 
 Where ``src`` key is a path to the icon file in Django static directory and ``size`` contains icon's ``width`` and ``height`` and can be omitted.
 
@@ -94,10 +94,10 @@ Where ``src`` key is a path to the icon file in Django static directory and ``si
 .. code-block:: python
 
     {
-        "src": "android-chrome-64x64.png",  # type: str
-        "type": "image/png",  # type: str
-        "sizes": "64x64",  # type: str
-    }
+        "src": "android-chrome-64x64.png",
+        "type": "image/png",
+        "sizes": "64x64",
+    }  # type: Dict[str, str]
 
 Where ``src`` key is a path to the icon file in Django static directory, ``type`` is favicon file mime-type and ``size`` key contains icon's ``width`` and ``height``.
 
@@ -128,9 +128,9 @@ Where ``src`` key is a path to the icon file in Django static directory, ``type`
 .. code-block:: python
 
     {
-        "src": "mstile-70x70.png",  # type: str
-        "name": "square70x70logo",  # type: str
-    }
+        "src": "mstile-70x70.png",
+        "name": "square70x70logo",
+    }  # type: Dict[str, str]
 
 Where ``src`` key is a path to the icon file in Django static directory and ``name`` contains tile name (type).
 

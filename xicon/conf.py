@@ -4,13 +4,13 @@
 # xicon/conf.py
 
 
-from typing import Dict, List, Iterable  # pylint: disable=W0611
+from typing import Dict, List, Iterable
 
 from appconf import AppConf
 from django.conf import settings
 
 
-__all__ = ["settings"]  # type: List[str]
+__all__: List[str] = ["settings"]
 
 
 class DjangoXIconAppConf(AppConf):
@@ -18,54 +18,50 @@ class DjangoXIconAppConf(AppConf):
     Django X Icon settings.
     """
 
-    FAVICONS = getattr(settings, "XICON_FAVICONS", [])  # type: Iterable[Dict[str, str]]
-    APPLE_TOUCH_ICONS = getattr(
+    FAVICONS: Iterable[Dict[str, str]] = getattr(settings, "XICON_FAVICONS", [])
+    APPLE_TOUCH_ICONS: Iterable[Dict[str, str]] = getattr(
         settings, "XICON_APPLE_TOUCH_ICONS", []
-    )  # type: Iterable[Dict[str, str]]
-    APPLE_TOUCH_ICON_MASK_ICON_SRC = getattr(
+    )
+    APPLE_TOUCH_ICON_MASK_ICON_SRC: str = getattr(
         settings, "XICON_APPLE_TOUCH_ICON_MASK_ICON_SRC", ""
-    )  # type: str
-    APPLE_TOUCH_ICON_MASK_ICON_COLOR = getattr(
+    )
+    APPLE_TOUCH_ICON_MASK_ICON_COLOR: str = getattr(
         settings, "XICON_APPLE_TOUCH_ICON_MASK_ICON_COLOR", ""
-    )  # type: str
-    APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR = getattr(
+    )
+    APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR: str = getattr(
         settings, "XICON_APPLE_MOBILE_WEB_APP_STATUS_BAR_STYLE_COLOR", ""
-    )  # type: str
-    APPLE_MOBILE_WEB_APP_TITLE = getattr(
+    )
+    APPLE_MOBILE_WEB_APP_TITLE: str = getattr(
         settings, "XICON_APPLE_MOBILE_WEB_APP_TITLE", ""
-    )  # type: str
-    ANDROID_CHROME_THEME_COLOR = getattr(
+    )
+    ANDROID_CHROME_THEME_COLOR: str = getattr(
         settings, "XICON_ANDROID_CHROME_THEME_COLOR", ""
-    )  # type: str
-    ANDROID_CHROME_ICONS = getattr(
+    )
+    ANDROID_CHROME_ICONS: Iterable[Dict[str, str]] = getattr(
         settings, "XICON_ANDROID_CHROME_ICONS", []
-    )  # type: Iterable[Dict[str, str]]
-    ANDROID_CHROME_NAME = getattr(
-        settings, "XICON_ANDROID_CHROME_NAME", ""
-    )  # type: str
-    ANDROID_CHROME_SHORT_NAME = getattr(
+    )
+    ANDROID_CHROME_NAME: str = getattr(settings, "XICON_ANDROID_CHROME_NAME", "")
+    ANDROID_CHROME_SHORT_NAME: str = getattr(
         settings, "XICON_ANDROID_CHROME_SHORT_NAME", ""
-    )  # type: str
-    ANDROID_CHROME_BACKGROUND_COLOR = getattr(
+    )
+    ANDROID_CHROME_BACKGROUND_COLOR: str = getattr(
         settings, "XICON_ANDROID_CHROME_BACKGROUND_COLOR", ""
-    )  # type: str
-    ANDROID_CHROME_DISPLAY = getattr(
-        settings, "XICON_ANDROID_CHROME_DISPLAY", ""
-    )  # type: str
-    ANDROID_CHROME_ORIENTATION = getattr(
+    )
+    ANDROID_CHROME_DISPLAY: str = getattr(settings, "XICON_ANDROID_CHROME_DISPLAY", "")
+    ANDROID_CHROME_ORIENTATION: str = getattr(
         settings, "XICON_ANDROID_CHROME_ORIENTATION", ""
-    )  # type: str
-    MSAPPLICATION_NAME = getattr(settings, "XICON_MSAPPLICATION_NAME", "")  # type: str
-    MSAPPLICATION_TILE_COLOR = getattr(
+    )
+    MSAPPLICATION_NAME: str = getattr(settings, "XICON_MSAPPLICATION_NAME", "")
+    MSAPPLICATION_TILE_COLOR: str = getattr(
         settings, "XICON_MSAPPLICATION_TILE_COLOR", ""
-    )  # type: str
-    MSAPPLICATION_TILES = getattr(
+    )
+    MSAPPLICATION_TILES: Iterable[Dict[str, str]] = getattr(
         settings, "XICON_MSAPPLICATION_TILES", []
-    )  # type: Iterable[Dict[str, str]]
+    )
 
     class Meta:
         """
         Config settings.
         """
 
-        prefix = "xicon"  # type: str
+        prefix: str = "xicon"
