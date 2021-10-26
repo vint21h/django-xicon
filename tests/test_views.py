@@ -171,10 +171,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -211,10 +212,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -230,10 +232,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -270,10 +273,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -310,10 +314,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -350,10 +355,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "display": "fullscreen",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -390,10 +396,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "orientation": "portrait",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)
@@ -430,10 +437,11 @@ class AndroidChromeManifestViewTest(TestCase):
             "background_color": "#00ffff",
             "display": "fullscreen",
         }
+        response = self.client.get(
+            path=resolve_url(to="android-chrome-manifest")
+        )
         result: Dict[str, Union[str, List[Dict[str, str]]]] = json.loads(
-            self.client.get(
-                path=resolve_url(to="android-chrome-manifest")
-            ).content.decode()
+            response.content.decode()
         )
 
         self.assertDictEqual(d1=result, d2=expected)

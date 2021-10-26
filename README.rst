@@ -331,39 +331,45 @@ Contributing
 ------------
 1. `Fork it <https://github.com/vint21h/django-xicon/>`_
 2. Install `GNU Make <https://www.gnu.org/software/make/>`_
-3. Install and configure `pyenv <https://github.com/pyenv/pyenv/>`_
+3. Install and configure `pyenv <https://github.com/pyenv/pyenv/>`_ and `pyenv-virtualenv plugin <https://github.com/pyenv/pyenv-virtualenv/>`_
 4. Install and configure `direnv <https://github.com/direnv/direnv/>`_
-5. Install development dependencies:
+5. Create environment config from example
+
+.. code-block:: bash
+
+    cp .env.example .env
+
+6. Install development dependencies:
 
 .. code-block:: bash
 
     make install
 
-6. Create your fix/feature branch:
+7. Create your fix/feature branch:
 
 .. code-block:: bash
 
     git checkout -b my-new-fix-or-feature
 
-7. Check code style and moreover:
+8. Check code style and moreover:
 
 .. code-block:: bash
 
     make check
 
-8. Run tests:
+9. Run tests:
 
 .. code-block:: bash
 
     make test
 
-9. Push to the branch:
+10. Push to the branch:
 
 .. code-block:: bash
 
     git push origin my-new-fix-or-feature
 
-10. `Create a new Pull Request <https://github.com/vint21h/django-xicon/compare/>`_
+11. `Create a new Pull Request <https://github.com/vint21h/django-xicon/compare/>`_
 
 Licensing
 ---------

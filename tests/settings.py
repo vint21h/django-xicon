@@ -11,7 +11,9 @@ from typing import Dict, List, Union
 
 
 # black magic to use imports from library code
-sys.path.insert(0, str(pathlib.Path(__file__).absolute().parent.parent.parent))
+path = pathlib.Path(__file__).absolute()
+project = path.parent.parent.parent
+sys.path.insert(0, str(project))
 
 # secret key
 SECRET_KEY: str = "".join(
