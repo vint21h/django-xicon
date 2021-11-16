@@ -40,7 +40,7 @@ jobs:
             "${{ runner.os }}-pip-"
       - name: "Install requirements"
         id: "install-requirements"
-        run: "pip install .[test]"
+        run: "make install"
       - name: "Check outdated requirements"
         id: "check-outdated-requirements"
         continue-on-error: true
