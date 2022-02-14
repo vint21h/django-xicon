@@ -77,7 +77,10 @@ class XiconFaviconTemplatetagTest(TestCase):
             }
         )
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_favicon XICON_FAVICON %}
+            """
         )
         result: str = template.render(context=context)
         expected: str = '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>'  # noqa: E501
@@ -95,7 +98,10 @@ class XiconFaviconTemplatetagTest(TestCase):
             }
         )
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_favicon XICON_FAVICON %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_favicon XICON_FAVICON %}
+            """
         )
         result: str = template.render(context=context)
         expected: str = '<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>'  # noqa: E501
@@ -122,7 +128,12 @@ class XiconFaviconsTemplatetagTest(TestCase):
 
     def test_xicon_favicons__render(self) -> None:
         """Test templatetag rendering result."""
-        template: Template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")  # noqa: FS003,E501
+        template: Template = Template(
+            """
+            {% load xicon_tags %}
+            {% xicon_favicons %}
+            """
+        )
         result: str = template.render(context=Context())
         expected: str = """
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="16x16"/>
@@ -135,7 +146,12 @@ class XiconFaviconsTemplatetagTest(TestCase):
     @override_settings(XICON_FAVICONS=[])
     def test_xicon_favicons__render__without_favicons(self) -> None:
         """Test templatetag rendering result with empty favicons list."""
-        template: Template = Template("{% load xicon_tags %}" "{% xicon_favicons %}")  # noqa: FS003,E501
+        template: Template = Template(
+            """
+            {% load xicon_tags %}
+            {% xicon_favicons %}
+            """
+        )
         result: str = template.render(context=Context())
         expected: str = ""
 
@@ -174,8 +190,10 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
             }
         )
         template: Template = Template(
-            "{% load xicon_tags %}"  # noqa: FS003
-            "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}
+            """
         )
         result: str = template.render(context=context)
         expected: str = '<link rel="apple-touch-icon" href="apple-touch-icon-57x57.png" sizes="57x57"/>'  # noqa: E501
@@ -187,8 +205,10 @@ class XiconAppleTouchIconTemplatetagTest(TestCase):
         apple_touch_icon: Dict[str, str] = {"src": "apple-touch-icon.png"}
         context: Context = Context({"XICON_APPLE_TOUCH_ICON": apple_touch_icon})
         template: Template = Template(
-            "{% load xicon_tags %}"  # noqa: FS003
-            "{% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icon XICON_APPLE_TOUCH_ICON %}
+            """
         )
         result: str = template.render(context=context)
         expected: str = '<link rel="apple-touch-icon" href="apple-touch-icon.png"/>'
@@ -223,7 +243,10 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icons__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icons %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = """
@@ -245,7 +268,10 @@ class XiconAppleTouchIconsTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icons__render__without_apple_touch_icons(self) -> None:
         """Test templatetag rendering result with empty apple touch icons list."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_touch_icons %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icons %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -270,7 +296,10 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icon_mask_icon %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = (
@@ -283,7 +312,10 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     def test_xicon_xicon_apple_touch_icon_mask_icon__render__without_src(self) -> None:
         """Test templatetag rendering result without icon source setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icon_mask_icon %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -296,7 +328,10 @@ class XiconAppleTouchMaskIconTemplatetagTest(TestCase):
     ) -> None:
         """Test templatetag rendering result without icon color setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_touch_icon_mask_icon %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_touch_icon_mask_icon %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -320,7 +355,10 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_status_bar_style__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_mobile_web_app_status_bar_style %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = (
@@ -333,7 +371,10 @@ class XiconAppleMobileWebAppStatusBarStyleTemplatetagTest(TestCase):
     def test_xicon_apple_touch_icon_mask_icon__render__without_color(self) -> None:
         """Test templatetag rendering result without icon color setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_status_bar_style %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_mobile_web_app_status_bar_style %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -355,7 +396,10 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_title__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_mobile_web_app_title %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = (
@@ -368,7 +412,10 @@ class XiconAppleMobileWebAppTitleTemplatetagTest(TestCase):
     def test_xicon_apple_mobile_web_app_title__render__without_title(self) -> None:
         """Test templatetag rendering result without title setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_apple_mobile_web_app_title %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_apple_mobile_web_app_title %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -390,7 +437,10 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     def test_xicon_android_chrome_theme_color__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_android_chrome_theme_color %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = '<meta name="theme-color" content="#00ffff">'
@@ -401,7 +451,10 @@ class XiconAndroidChromeThemeColorTemplatetagTest(TestCase):
     def test_xicon_android_chrome_theme_color__render__without_color(self) -> None:
         """Test templatetag rendering result without title setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_android_chrome_theme_color %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_android_chrome_theme_color %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -423,7 +476,10 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_msapplication_name %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_msapplication_name %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = '<meta name="application-name" content="Django X Icon">'
@@ -434,7 +490,10 @@ class XiconMsapplicationNameTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render__without_name(self) -> None:
         """Test templatetag rendering result without title setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_msapplication_name %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_msapplication_name %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -456,7 +515,10 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     def test_xicon_msapplication_tile_color__render(self) -> None:
         """Test templatetag rendering result."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_msapplication_tile_color %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = '<meta name="msapplication-TileColor" content="#00ffff">'
@@ -467,7 +529,10 @@ class XiconMsapplicationTileColorTemplatetagTest(TestCase):
     def test_xicon_msapplication_name__render__without_name(self) -> None:
         """Test templatetag rendering result without title setting."""
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_msapplication_tile_color %}"  # noqa: FS003,E501
+            """
+            {% load xicon_tags %}
+            {% xicon_msapplication_tile_color %}
+            """
         )
         result: str = template.render(context=Context())
         expected: str = ""
@@ -507,7 +572,10 @@ class XiconMsTileTemplatetagTest(TestCase):
             }
         )
         template: Template = Template(
-            "{% load xicon_tags %}" "{% xicon_mstile XICON_MSTILE %}"  # noqa: FS003
+            """
+            {% load xicon_tags %}
+            {% xicon_mstile XICON_MSTILE %}
+            """
         )
         result: str = template.render(context=context)
         expected: str = (
@@ -537,7 +605,12 @@ class XiconMsTilesTemplatetagTest(TestCase):
 
     def test_xicon_mstiles__render(self) -> None:
         """Test templatetag rendering result."""
-        template: Template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")  # noqa: FS003,E501
+        template: Template = Template(
+            """
+            {% load xicon_tags %}
+            {% xicon_mstiles %}
+            """
+        )
         result: str = template.render(context=Context())
         expected: str = """
         <meta name="msapplication-square70x70logo" content="mstile-70x70.png">
@@ -551,7 +624,11 @@ class XiconMsTilesTemplatetagTest(TestCase):
     @override_settings(XICON_MSAPPLICATION_TILES=[])
     def test_xicon_mstiles__render__without_tiles(self) -> None:
         """Test templatetag rendering result with empty microsoft application icons list."""  # noqa: E501
-        template: Template = Template("{% load xicon_tags %}" "{% xicon_mstiles %}")  # noqa: FS003,E501
+        template: Template = Template(
+            """{% load xicon_tags %}
+            {% xicon_mstiles %}
+            """
+        )
         result: str = template.render(context=Context())
         expected: str = ""
 
