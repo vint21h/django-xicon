@@ -1,5 +1,5 @@
 # django-xicon
-# .github/workflows/build.yml
+# .github/workflows/test.yml
 
 
 name: "test"
